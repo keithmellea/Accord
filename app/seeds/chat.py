@@ -17,5 +17,5 @@ def seed_chat():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_chat():
-    db.session.execute('TRUNCATE servers RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE chats RESTART IDENTITY CASCADE;')
     db.session.commit()

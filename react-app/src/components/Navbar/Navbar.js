@@ -4,6 +4,7 @@ import LogoutButton from '../auth/LogoutButton';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 import './Navbar.css'
 
@@ -17,35 +18,43 @@ const NavBar = () => {
     dispatch(getUsersServers());
   }, [dispatch]);
 
+
   return (
     <nav className="navbar">
-      <ul className="server-list">
-        {usersServers?.map((userServer) => (
-          <li className="user_server-div">
-            <NavLink key={userServer.name} to={`/servers/${usersServers.id}`}>
-              <div className="user_server-icon">
-                <img className="user_server-img" src={userServer?.photo}></img>
-              </div>
-            </NavLink>
-          </li>
-        ))}
-        <li className="create-button">
-          <NavLink to={"/servers/create"}>
-            <div className="create-server-icon">
-              <img className="create-server-img">{/* PLUS SIGN HERE */}</img>
-            </div>
-          </NavLink>
-        </li>
-        <li className="explore-button">
-          <NavLink to={"/servers/"}>
-            <div className="explore-servers-icon">
-              <img className="explore-servers-img">
-                {/* COMPASS ICON HERE */}
-                </img>
-            </div>
-          </NavLink>
-        </li>
-      </ul>
+      <ContextMenuTrigger id="contextmenu">
+        <div className="servers"></div>
+      </ContextMenuTrigger>
+
+      <ContextMenu id="contextmenu">
+        <ul className="server-list">
+          {usersServers?.map((userServer) => (
+            <li className="user_server-div">
+              <NavLink key={userServer.name} to={`/servers/${usersServers.id}`}>
+                <div className="user_server-icon">
+                  <img
+                    className="user_server-img"
+                    src={userServer?.photo}
+                  ></img>
+                </div>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </ContextMenu>
+      <li className="create-button">
+        <NavLink to={"/servers/create"}>
+          <div className="create-server-icon">
+            <img className="create-server-img">{/* PLUS SIGN HERE */}</img>
+          </div>
+        </NavLink>
+      </li>
+      <li className="explore-button">
+        <NavLink to={"/servers/"}>
+          <div className="explore-servers-icon">
+            <img className="explore-servers-img">{/* COMPASS ICON HERE */}</img>
+          </div>
+        </NavLink>
+      </li>
     </nav>
   );
 }

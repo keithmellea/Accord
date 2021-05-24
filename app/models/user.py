@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .user_server import user_server
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -10,6 +11,11 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
 
+  servers = db.relationship(
+        "Server",
+        secondary=user_server,
+        back_populates="users"
+  )
 
   @property
   def password(self):

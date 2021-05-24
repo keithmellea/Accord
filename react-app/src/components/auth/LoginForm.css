@@ -44,18 +44,18 @@
    font-size: 16px;
 }
 
-input, label {
+form input, label {
    display: block
 }
 
-label {
+#login__form label {
    font-size: 12px;
    color: #A5A7AB;
    font-weight: bold;
    margin-bottom: 4px;
 }
 
-input {
+#login__form input {
    width: 382px;
    height: 40px;
    border-radius: 3px;
@@ -70,10 +70,11 @@ input {
 }
 
 
-input:hover {
+#login__form input:hover {
    border: 1px solid black;
 }
-input:focus {
+
+#login__form input:focus {
    border: 1px solid #00B0F4;
 }
 
@@ -81,7 +82,7 @@ input:focus {
    margin-top:12px;
 }
 
-button {
+#login__form button {
    display: block;
    width: 395px;
    height: 40px;
@@ -95,7 +96,7 @@ button {
    margin-top:16px;
 }
 
-button:hover {
+#login__form button:hover {
    background-color: #5C6FB1;
 }
 

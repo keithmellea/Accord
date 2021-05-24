@@ -36,7 +36,7 @@ const LoginForm = () => {
       <div id="login__container">
       <h1 id="login__title">Welcome back!</h1>
       <h3 id="login__title--subtitle">We're so excited to see you again!</h3>
-        <form onSubmit={onLogin}>
+        <form onSubmit={onLogin} id="login__form">
           <div>
             {errors.map((error) => (
               <div>{error}</div>

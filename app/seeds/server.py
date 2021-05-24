@@ -1,12 +1,10 @@
-from app.models import db, Category
+from app.models import db, Server
 
 # Adds a demo user, you can add other users here if you want
-def seed_categories():
+def seed_serv():
 
-    gaming = Category(title='Gaming')
-    study = Category(title='Study')
-
-
+    gaming = Server(server_name="Gaming", img_url="url")
+    study = Server(server_name="Study", img_url="url")
     db.session.add(gaming)
     db.session.add(study)
 
@@ -17,6 +15,6 @@ def seed_categories():
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
-def undo_categories():
-    db.session.execute('TRUNCATE categories RESTART IDENTITY CASCADE;')
+def undo_serv():
+    db.session.execute('TRUNCATE servers RESTART IDENTITY CASCADE;')
     db.session.commit()

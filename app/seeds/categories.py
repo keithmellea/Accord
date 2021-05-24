@@ -1,12 +1,15 @@
 from app.models import db, Category
+from faker import Faker
 
+faker = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_categories():
 
     gaming = Category(title='Gaming')
     study = Category(title='Study')
-
-
+    for i in range(0, 20):
+        another = Category(title=faker.word())
+        db.session.add(another)
     db.session.add(gaming)
     db.session.add(study)
 

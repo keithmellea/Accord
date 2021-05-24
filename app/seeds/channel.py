@@ -1,11 +1,16 @@
 from app.models import db, Channel
+from faker import Faker
+import random
 
+faker = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_channel():
 
     gaming = Channel(title="Gaming", category_id=1, server_id=1)
     study = Channel(title="Study", category_id=2, server_id=2)
-
+    for i in range(0, 23):
+        another = Channel(title=faker.word(), category_id=random.randint(1, 10), server_id=random.randint(1,9))
+        db.session.add(another)
     db.session.add(gaming)
     db.session.add(study)
 

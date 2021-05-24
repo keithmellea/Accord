@@ -1,5 +1,7 @@
 from app.models import db, Server
+from faker import Faker
 
+faker = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_serv():
 
@@ -7,8 +9,9 @@ def seed_serv():
     study = Server(server_name="Study", img_url="url")
     db.session.add(gaming)
     db.session.add(study)
-
-
+    for i in range(0, 10):
+        another = Server(server_name=faker.word(), img_url=faker.image_url())
+        db.session.add(another)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.

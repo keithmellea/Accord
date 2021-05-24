@@ -33,9 +33,82 @@
 #login__title {
    color: white;
    margin: 0;
+   margin-bottom: 8px;
+   font-size: 24px;
 }
 
 #login__title--subtitle {
-   color:white;
+   color:#A5A7AB;
    margin: 0;
+   margin-bottom: 12px;
+   font-size: 16px;
+}
+
+input, label {
+   display: block
+}
+
+label {
+   font-size: 12px;
+   color: #A5A7AB;
+   font-weight: bold;
+   margin-bottom: 4px;
+}
+
+input {
+   width: 382px;
+   height: 40px;
+   border-radius: 3px;
+   border: 1px solid #222428;
+   background-color: #303339;
+   outline: white;
+   caret-color: white;
+   color: #C7C8CA;
+   font-size: 16px;
+   padding-left: 10px;
+   transition: border .2s;
+}
+
+
+input:hover {
+   border: 1px solid black;
+}
+input:focus {
+   border: 1px solid #00B0F4;
+}
+
+#password--margin {
+   margin-top:12px;
+}
+
+button {
+   display: block;
+   width: 395px;
+   height: 40px;
+   margin: 0;
+   border-radius: 3px;
+   background-color: #7289DA;
+   color: white;
+   transition: background-color .17s ;
+   transition-timing-function: ease;
+   border-style: none;
+   margin-top:16px;
+}
+
+button:hover {
+   background-color: #5C6FB1;
+}
+
+#register__link {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   font-size: 14px;
+   color: #60646B;
+}
+
+#register__link a {
+   text-decoration: none;
+   color: #02ACED;
+   margin-left: 5px;
 }

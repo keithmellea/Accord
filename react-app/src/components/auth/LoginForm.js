@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import './LoginForm.css'
 const LoginForm = () => {
@@ -47,23 +47,25 @@ const LoginForm = () => {
             <input
               name="email"
               type="text"
-              placeholder="Email"
               value={email}
               onChange={updateEmail}
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" id="password--margin">Password</label>
             <input
               name="password"
-              type="password"
-              placeholder="Password"
+              type="password" 
               value={password}
               onChange={updatePassword}
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" id="button1">Login</button>
           <button type="submit">Demo Login</button>
+          <div id="register__link">
+            <p>Need an account?</p>
+            <NavLink to="/sign-up">Register</NavLink>
+          </div>
         </form>
       </div>
     </div>

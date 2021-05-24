@@ -11,13 +11,12 @@ import './Navbar.css'
 const NavBar = () => {
   const dispatch = useDispatch();
   const usersServers = useSelector((state) => {
-    return state.usersServers.list;
+    return state.allUsersServers.list;
   });
 
   useEffect(() => {
     dispatch(getUsersServers());
   }, [dispatch]);
-
 
   return (
     <nav className="navbar">
@@ -27,7 +26,7 @@ const NavBar = () => {
 
       <ContextMenu id="contextmenu">
         <ul className="server-list">
-          {usersServers?.map((userServer) => (
+          {/* {usersServers?.map((userServer) => (
             <li className="user_server-div">
               <NavLink key={userServer.name} to={`/servers/${usersServers.id}`}>
                 <div className="user_server-icon">
@@ -38,7 +37,7 @@ const NavBar = () => {
                 </div>
               </NavLink>
             </li>
-          ))}
+          ))} */}
         </ul>
       </ContextMenu>
       <li className="create-button">

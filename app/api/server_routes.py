@@ -1,14 +1,14 @@
 from flask import Blueprint, jsonify, session, request
-from flask_login import current_user,
-from app.models import db, User, Servers
+from flask_login import current_user
+from app.models import db, User, Server
 
 server_routes = Blueprint("server", __name__)
 
-@bp.route("/users/:id", methods=["GET"])
+@server_routes.route("/", methods=["GET"])
 def getServers():
     '''
     get user's servers 
     '''
     if current_user_is_authenticated:
-      servers = Servers.query.filter(Servers.user_id == User.id)
+      servers = Server.query.all()
       return servers

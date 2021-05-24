@@ -1,5 +1,5 @@
 
-const LOAD = "user-servers/LOAD";
+const LOAD = "servers/LOAD";
 
 const load = (list) => ({
   type: LOAD,
@@ -7,9 +7,10 @@ const load = (list) => ({
 });
 
 export const getUsersServers = () => async (dispatch) => {
-  const response = await fetch("/api/spots");
+  const response = await fetch("/api/servers/");
 
   if (response.ok) {
+      console.log("OK")
     const usersServers = await response.json();
     dispatch(load(usersServers));
   }
@@ -24,10 +25,10 @@ const serversReducer = (state = initialState, action) => {
     case LOAD: {
       const allUsersServers = [];
       action.list.forEach((server) => {
-        usersServers[server.id] = spot;
+        allUsersServers[server.id] = server;
       });
       return {
-        usersServers,
+        allUsersServers,
         ...state,
         list: action.list,
       };
@@ -36,3 +37,5 @@ const serversReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default serversReducer

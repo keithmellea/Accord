@@ -26,9 +26,22 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoLogin = async (e) => {
+    const email = 'demo@aa.io';
+    const password = 'password';
+    e.preventDefault();
+    setErrors([]);
+    const data = await dispatch(login(email, password));
+    if (data.errors) {
+      setErrors(data.errors);
+    }
+  }
+
   if (user) {
     return <Redirect to="/" />;
   }
+
+  
 
   return (
     <div id="login__background">
@@ -61,7 +74,7 @@ const LoginForm = () => {
             />
           </div>
           <button type="submit" id="button1">Login</button>
-          <button type="submit">Demo Login</button>
+          <button type="submit" onClick={demoLogin}>Demo Login</button>
           <div id="register__link">
             <p>Need an account?</p>
             <NavLink to="/sign-up">Register</NavLink>

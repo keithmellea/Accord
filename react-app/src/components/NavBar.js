@@ -1,12 +1,60 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsersServers } from "../../store/spots";
+import { NavLink, useParams } from "react-router-dom";
+
+import './Navbar.css'
+
+const UserServerList = () => {
+  const dispatch = useDispatch();
+  const usersServers = useSelector((state) => {
+    return state.usersServers.list;
+  })
+}
+
+useEffect(() => {
+  dispatch(getUsersServers());
+}, [dispatch]);
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className="navbar">
+      <ul className="server-list">
+        {usersServers?.map((userServer) => (
+          <li className="user_server-div">
+            <NavLink key={userServer.name} to={`/servers/${usersServers.id}`}>
+              <div className="user_server-icon">
+                <img className="user_server-img" src={userServer?.photo}></img>
+              </div>
+            </NavLink>
+          </li>
+        ))}
+        <li className="create-button">
+          <NavLink to={"/servers/create"}>
+            <div className="create-server-icon">
+              <img className="create-server-img">{/* PLUS SIGN HERE */}</img>
+            </div>
+          </NavLink>
+        </li>
+        <li className="explore-button">
+          <NavLink to={"/servers/"}>
+            <div className="explore-servers-icon">
+              <img className="explore-servers-img">
+                {/* COMPASS ICON HERE */}
+                </img>
+            </div>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+{
+  /* <li>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
@@ -28,10 +76,7 @@ const NavBar = () => {
         </li>
         <li>
           <LogoutButton />
-        </li>
-      </ul>
-    </nav>
-  );
+        </li> */
 }
 
 export default NavBar;

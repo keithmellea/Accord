@@ -1,18 +1,18 @@
-from werkzeug.security import generate_password_hash
-from app.models import db, User
+from app.models import db, Category
 from faker import Faker
 
 faker = Faker()
 # Adds a demo user, you can add other users here if you want
-def seed_users():
+def seed_categories():
 
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password')
+    gaming = Category(title='Gaming')
+    study = Category(title='Study')
     for i in range(0, 20):
-        another = User(username=faker.name(), email = faker.email(), password='password')
+        another = Category(title=faker.word())
         db.session.add(another)
+    db.session.add(gaming)
+    db.session.add(study)
 
-    db.session.add(demo)
 
     db.session.commit()
 
@@ -20,6 +20,6 @@ def seed_users():
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
-def undo_users():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+def undo_categories():
+    db.session.execute('TRUNCATE categories RESTART IDENTITY CASCADE;')
     db.session.commit()

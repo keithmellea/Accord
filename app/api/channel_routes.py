@@ -11,18 +11,21 @@ from app.forms import ChannelForm
 
 channel_routes = Blueprint('channels', __name__)
 
-@channel_routes.route('/channels')
+@channel_routes.route('/')
 def channels():
     '''
-    render all channels
+    GET all channels
     '''
     # channels = Channel.query.all()
     # return {"channels": [channel]}
     return
 
 
-@channel_routes.route('/channels', methods=["POST"])
+@channel_routes.route('/', methods=["POST"])
 def function():
+    '''
+    create a channel
+    '''
     form = ChannelForm()
     print("request: ", request.get_json())
 
@@ -45,7 +48,7 @@ def function():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@channel_routes.route('/channels/<int:id>', methods=["DELETE"])
+@channel_routes.route('/<int:id>', methods=["DELETE"])
 def delete_channel(id):
     '''
     Deletes a channel

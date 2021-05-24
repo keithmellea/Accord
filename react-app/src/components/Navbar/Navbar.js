@@ -3,7 +3,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsersServers } from "../../store/spots";
+import { getUsersServers } from "../../store/servers";
 
 import './Navbar.css'
 

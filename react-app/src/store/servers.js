@@ -1,14 +1,17 @@
-import { csrfFetch } from "./csrf";
-
 
 const LOAD = "user-servers/LOAD";
 
-export const getServers = () => async (dispatch) => {
+const load = (list) => ({
+  type: LOAD,
+  list,
+});
+
+export const getUsersServers = () => async (dispatch) => {
   const response = await fetch("/api/spots");
 
   if (response.ok) {
     const usersServers = await response.json();
-    dispatch(load(spots));
+    dispatch(load(usersServers));
   }
 };
 

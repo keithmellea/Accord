@@ -31,10 +31,10 @@
     font-size: 14px;
 }
 
-::placeholder {
+/* ::placeholder {
    color: #C7C8CA;
    opacity: .5;
-}
+} */
 
 #top_level_chat input {
     width: 382px;

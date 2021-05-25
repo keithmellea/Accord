@@ -1,0 +1,47 @@
+.server-page {
+    display: grid;
+    grid-template-columns: 52px 80px 120px 2fr 2fr 2fr 2fr 2fr 2fr 1.75fr 2.25fr;
+    grid-template-rows: 40px 200px 200px 200px 200px 200px 200px;
+    grid-template-areas:
+    ". name name channel-name channel-name channel-name channel-name channel-name options options options"
+    "channels channels channels chat chat chat chat chat chat chat chat"
+    "channels channels channels chat chat chat chat chat chat chat chat"
+    "channels channels channels chat chat chat chat chat chat chat chat"
+    "channels channels channels chat chat chat chat chat chat chat chat"
+    "channels channels channels chat chat chat chat chat chat chat chat"
+    "profile profile profile-options chat chat chat chat chat chat chat chat"
+}
+
+.name {
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #2b3352;
+    grid-area: name;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
+    transition: background-color ease 0.1s;
+}
+
+.name:hover {
+    background-color: #3b4770;
+}
+
+.text-channels-div {
+background-color: #2b3352;
+grid-area: channels;
+}
+
+.chat-div {
+background-color: grey;
+grid-area: chat;
+}
+
+/* .members-div {
+background-color: black;
+} */
+
+/* #272f4b; */
+/* #222941; */

@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Discover from "./components/Discover"
 import { authenticate } from "./store/session";
+import Channel from './components/Channel';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -45,6 +46,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} >
           <Discover />
         </ProtectedRoute>
+        <Route path="/channels" exact={true}>
+          <Channel />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

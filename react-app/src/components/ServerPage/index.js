@@ -12,25 +12,43 @@ const ServerPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const servers = useSelector((state) => {
+    return state.servers.list.servers;
+  }); 
  
   useEffect(() => {
     dispatch(getUsersServers());
   }, [dispatch]);
 
-  
-  const servers = useSelector((state) => {
-    return state.servers.list.servers;
-  });
-
-
+  if (!servers) {
+    return null;
+  } else {
+    const server = servers[id];
     return (
-    <div className="server-page"> 
-        <div className="name">{`Yama`}</div>
-        <div className="text-channels-div"></div>
-        <div className="chat-div"></div>
+      <div className="server-page">
+        <div className="name">{`${server.server_name}`}</div>
+        <div className="categories">
+          {/* {categories?.map((category) => (
+            <li className="channel">
+              {`${category.title}`}
+              <ul className="text-channels">
+                {channels?.map((channel) => (
+          <li className="channel">
+            {`${channel.title}`}
+          </li>))} 
+              </ul>
+            </li>
+          ))} */}
+        </div>
+        <div className="chat-div">
+          HelllooooooooooooooooHellloooooooooooooooo Hellloooooooooooooooo
+          Hellloooooooooooooooo Hellloooooooooooooooo Hellloooooooooooooooo
+          Hellloooooooooooooooo Hellloooooooooooooooo
+        </div>
         <div className="members-div"></div>
-    </div>
-    )
+      </div>
+    );
+}
 }
 
 export default ServerPage;

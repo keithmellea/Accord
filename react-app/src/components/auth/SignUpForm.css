@@ -1,0 +1,112 @@
+#signup__background {
+   /* width: 100%;
+   height: 100%; */
+   /* Set rules to fill background */
+   min-height: 100%;
+    
+   /* Set up proportionate scaling */
+   width: 100%;
+   height: auto;
+    
+   /* Set up positioning */
+   position: fixed;
+   top: 0;
+   left: 0;
+   background-image: url("../../images/discord.jpg");
+   background-size: cover;
+ 
+   display:flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ #signup__container {
+    width: 480px;
+    height: 528px;
+    background-color: #36393F;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+    padding: 32px;
+    box-sizing: border-box;
+ }
+ 
+ #signup__title {
+    color: white;
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+    text-align: center;
+ }
+ 
+ #signup__title--subtitle {
+    color:#A5A7AB;
+    margin: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+ }
+ 
+ #signup__form input, label {
+    display: block
+ }
+ 
+ #signup__form label {
+    font-size: 12px;
+    color: #A5A7AB;
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-top: 12px;
+ }
+ 
+ #signup__form input {
+    width: 382px;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #222428;
+    background-color: #303339;
+    outline: white;
+    caret-color: white;
+    color: #C7C8CA;
+    font-size: 16px;
+    padding-left: 10px;
+    transition: border .2s;
+ }
+ 
+ #signup__form input:hover {
+    border: 1px solid black;
+ }
+ 
+ #signup__form input:focus {
+    border: 1px solid #00B0F4;
+ }
+
+ #password--margin {
+    margin-top:12px;
+ }
+ 
+ #signup__form button {
+    display: block;
+    width: 395px;
+    height: 40px;
+    margin: 0;
+    border-radius: 3px;
+    background-color: #7289DA;
+    color: white;
+    transition: background-color .17s ;
+    transition-timing-function: ease;
+    border-style: none;
+    margin-top:16px;
+ }
+ 
+ #signup__form button:hover {
+    background-color: #5C6FB1;
+ }
+ 
+ #login__link {
+    text-decoration: none;
+    color: #02ACED;
+    font-size: 14px;
+ }
+
+ #signup__form #demo__login {
+   margin-bottom: 8px;
+ }

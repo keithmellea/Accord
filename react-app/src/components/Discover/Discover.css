@@ -1,0 +1,34 @@
+html {
+   width:100%;
+   height: 100%;
+}
+
+body {
+   margin: 0px;
+   width:100%;
+   height: 100%;
+}
+#root {
+   margin: 0px;
+   width:100%;
+   height: 100%;
+   display: flex;
+}
+#discover--container {
+   width:100%;
+   height:100%;
+}
+
+#discover {
+   background-color: #36393F;
+   width: 100%;
+   height: 100%;
+   /* margin-left: 200px; */
+   display: flex;
+   justify-content: center;
+}
+
+#discover--svg {
+   background-image: url("../../images/3e0acf6d69894a5d20deb7c513cd1412.svg");
+
+}

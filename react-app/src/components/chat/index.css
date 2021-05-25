@@ -18,13 +18,13 @@
 #Chat_user {
     margin-left: 10px;
     font-weight: bold;
-    padding-bottom: 15px;
-    color: whitesmoke;
+    padding-bottom: 5px;
+    color: white;
 }
 
 #Chat_message {
     display:inline-block;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     margin-left: 10px;
     color: white;
     opacity: .9;
@@ -36,8 +36,13 @@
    opacity: .5;
 }
 
+
+#bar {
+    margin-bottom: 5px;
+}
+
 #top_level_chat input {
-    width: 382px;
+    width: 1336px;
     height: 22px;
     border-radius: 3px;
     border: 1px solid #222428;

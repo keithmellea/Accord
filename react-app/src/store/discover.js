@@ -10,8 +10,8 @@ const initialState = {};
 export const getServers = () => async (dispatch) => {
    const response = await fetch('/api/home/')
    const servers = await response.json();
-   console.log("TESTING THE OUTPUT OF SERVERS", servers)
-   console.log("TESTING ", servers.servers)
+   // console.log("TESTING THE OUTPUT OF SERVERS", servers)
+   // console.log("TESTING ", servers.servers)
    if(servers.errors) {
       return;
    }

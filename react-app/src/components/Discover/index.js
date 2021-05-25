@@ -8,11 +8,13 @@ function Discover() {
    const dispatch = useDispatch()
 
    // const [servers, setServers] = useState([]);
-   const servers = useSelector(state => state.servers)
-
+   const servers = useSelector(state => state.discover.servers)
+   console.log(servers)
    useEffect(() => {
       dispatch(getServers())
-   })
+   },[dispatch])
+
+   if(!servers) return null;
 
    return (
       <div id="discover--container">
@@ -22,9 +24,14 @@ function Discover() {
          <div id="discover">
             <div id="discover__svg--container">
                <div id="discover--svg"></div>
-               {
-                  <div></div>
-               }
+               {servers.map((server)=> (
+                  <div className="server__container">
+                     <div className="server__container--img">
+                        <img src={server.img_url}></img>
+                     </div>
+                     <div className="server__container--title">{server.name}</div>
+                  </div>
+               ))}
             </div>
          </div>
       </div>

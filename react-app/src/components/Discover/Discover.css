@@ -48,3 +48,20 @@ body {
    width:400px;
    background-repeat: no-repeat; */
 }
+
+.server__container {
+   width: 282px;
+   height: 320px;
+   border-radius: 8px;
+   margin:15px;
+   background-color: #292B2F;
+  
+}
+
+.server__container--img img{
+   border-top-left-radius: 8px;
+   border-top-right-radius: 8px;
+   width: 282px;
+   height: 143px;
+   object-fit: cover;
+}

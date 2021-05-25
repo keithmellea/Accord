@@ -3,22 +3,63 @@ color: black
 }
 
 .server-list {
-    position: fixed;
+    display: flex;
+    margin: 0px;
+    flex-direction: column;
+    width:72px;
     left: 0;
-    padding: 10px;
     background-color: #202225;
-    
+    list-style: none;
+    padding: 0;
+    height: 100%;
+}
+
+.server-list li {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0px;
 }
 
 .user_server-img {
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
     border-radius: 20px;
     transition: border-radius 0.2s;
 }
 
 .user_server-img:hover {
     border-radius: 12px;
+}
+
+#discord__img__container {
+    border-radius: 25px;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393F;
+}
+
+#discord__img {
+    height: 24px;
+    width: 35px;
+    content:url("../../images/icon_clyde_white_RGB.svg");
+}
+
+#home__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+#home__border {
+    height:2px;
+    width: 32px;
+    background-color: #36393F;
+    margin: 4px 0px;
+    border-radius: 3px;
 }
 /* 
 .title-bubble {

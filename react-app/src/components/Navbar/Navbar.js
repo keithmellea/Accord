@@ -11,49 +11,49 @@ import './Navbar.css'
 const NavBar = () => {
   const dispatch = useDispatch();
   const usersServers = useSelector((state) => {
-    return state.allUsersServers.list;
+    return state.servers.list.servers;
   });
 
   useEffect(() => {
     dispatch(getUsersServers());
   }, [dispatch]);
 
+  console.log(usersServers)
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
         <div className="servers"></div>
       </ContextMenuTrigger>
 
-      <ContextMenu id="contextmenu">
-        <ul className="server-list">
-          {/* {usersServers?.map((userServer) => (
-            <li className="user_server-div">
-              <NavLink key={userServer.name} to={`/servers/${usersServers.id}`}>
-                <div className="user_server-icon">
-                  <img
-                    className="user_server-img"
-                    src={userServer?.photo}
-                  ></img>
-                </div>
-              </NavLink>
-            </li>
-          ))} */}
-        </ul>
-      </ContextMenu>
-      <li className="create-button">
-        <NavLink to={"/servers/create"}>
-          <div className="create-server-icon">
-            <img className="create-server-img">{/* PLUS SIGN HERE */}</img>
-          </div>
-        </NavLink>
-      </li>
-      <li className="explore-button">
-        <NavLink to={"/servers/"}>
-          <div className="explore-servers-icon">
-            <img className="explore-servers-img">{/* COMPASS ICON HERE */}</img>
-          </div>
-        </NavLink>
-      </li>
+      <ul className="server-list">
+        {usersServers?.map((server) => (
+          <li className="user_server-div">
+            {console.log(server)}
+            <NavLink key={server.server_name} to={`/servers/${server.id}`}>
+              <div className="title-bubble">
+              <span className="title-bubble-text">{`${server.name}`}</span>
+              </div>
+              <img className="user_server-img" src={server?.img_url}></img>
+            </NavLink>
+          </li>
+        ))}
+        <li className="create-button">
+          <NavLink to={"/servers/create"}>
+            <div className="create-server-icon">
+              <img className="create-server-img">{/* PLUS SIGN HERE */}</img>
+            </div>
+          </NavLink>
+        </li>
+        <li className="explore-button">
+          <NavLink to={"/servers/"}>
+            <div className="explore-servers-icon">
+              <img className="explore-servers-img">
+                {/* COMPASS ICON HERE */}
+              </img>
+            </div>
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 }

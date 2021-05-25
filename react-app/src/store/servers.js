@@ -7,7 +7,11 @@ const load = (list) => ({
 });
 
 export const getUsersServers = () => async (dispatch) => {
-  const response = await fetch("/api/servers/");
+  const response = await fetch("/api/servers/", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   if (response.ok) {
       console.log("OK")
@@ -23,12 +27,7 @@ const initialState = {
 const serversReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
-      const allUsersServers = [];
-      action.list.forEach((server) => {
-        allUsersServers[server.id] = server;
-      });
       return {
-        allUsersServers,
         ...state,
         list: action.list,
       };

@@ -18,3 +18,10 @@ class Server(db.Model):
         secondary=user_server,
         back_populates="servers"
     )
+
+    def to_dict(self):
+        return {
+        "id": self.id,
+        "name": self.server_name,
+        "img_url": self.img_url
+        }

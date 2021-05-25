@@ -9,6 +9,5 @@ def getServers():
     '''
     get user's servers 
     '''
-    if current_user_is_authenticated:
-      servers = Server.query.all()
-      return servers
+    servers = Server.query.all()
+    return {"servers": [server.to_dict() for server in servers]}

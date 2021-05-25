@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import Chat from './components/Chat'
+import Chat from './components/chat/Chat'
 
 function App() {
   const user = useSelector(state => state.session.user)

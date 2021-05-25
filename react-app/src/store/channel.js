@@ -1,4 +1,4 @@
-
+//TODO- update the reducer function
 const GET_CHANNEL = "channel/GET_CHANNEL"
 const REMOVE_CHANNEL = "channel/REMOVE_CHANNEL"
 const ADD_CHANNEL = "channel/ADD_CHANNEL"
@@ -32,7 +32,7 @@ export const allChannels = () => async (dispatch) => {
         }
     });
     const data = await response.json();
-    console.log("data: ", data)
+    console.log("All Channels: ", data)
     // if (data.errors) {
     //     console.log("errors: ", data.errors)
     //     return
@@ -42,7 +42,7 @@ export const allChannels = () => async (dispatch) => {
 
 //GET all channels based on server id
 export const getChannelsServer = (server_id) => async (dispatch) => {
-    const response = await fetch(`/api/channels/${server_id}`)
+    const response = await fetch(`/api/channels/server/${server_id}`)
     const data = await response.json();
     console.log("get channel on server data: ", data)
     // if (data.errors) {
@@ -54,7 +54,7 @@ export const getChannelsServer = (server_id) => async (dispatch) => {
 
 //GET all channels based on category id
 export const getChannelsCategory = (category_id) => async (dispatch) => {
-    const response = await fetch(`/api/channels/${category_id}`)
+    const response = await fetch(`/api/channels/category/${category_id}`)
     const data = await response.json();
     console.log("get channel on category data: ", data)
     // if (data.errors) {
@@ -77,7 +77,7 @@ export const addChannel = (title) => async (dispatch) => {
         }),
     })
     const data = await res.json();
-    console.log('Add Channel Data: ', data)
+    console.log('Created New Channel: ', data)
     if (data.errors){
         return data;
     }
@@ -110,7 +110,6 @@ export const deleteChannel = (id) => async (dispatch) => {
     console.log("Channel is deleted", data);
     return ;
 }
-
 
 
 const channelReducer = (state={}, action) => {

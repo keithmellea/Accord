@@ -1,13 +1,8 @@
+#Todo: how to get the server id and the category id?
+
 from flask import Blueprint, session, request
 from app.forms import ChannelForm
 from app.models import Channel, db
-
-#Todo- make a form for creating a channel
-#todo-make sure to set up the blueprint on the app module to query
-
-#todo- get request for all channels
-#tod0- post request for channel
-#todo- delete channel based on id
 
 channel_routes = Blueprint('channels', __name__)
 
@@ -19,7 +14,8 @@ def channels():
     channels = Channel.query.all()
     return {"channels": [channel.to_dict() for channel in channels]}
 
-@channel_routes.route('/<id>')
+
+@channel_routes.route('/server/<id>')
 def channels_serverId(id):
     '''
     GET all channels based on server id
@@ -28,30 +24,23 @@ def channels_serverId(id):
     return {"channels": [channel.to_dict() for channel in channels]}
 
 
-@channel_routes.route('/<id>')
+@channel_routes.route('/category/<id>')
 def channels_categoryId(id):
     '''
     GET all channels based on category id
     '''
     channels = Channel.query.filter(Channel.category_id == id).all()
-    print("-----CHANNELS: ", channels)
     return {"channels": [channel.to_dict() for channel in channels]}
 
 
 @channel_routes.route('/', methods=["POST"])
 def post_channel():
     '''
-    create a channel
+    CREATE a channel
     '''
-    #how to get the server id and the category id?
     form = ChannelForm()
-    print("request: ", request.get_json())
-
+    #Be Careful: Category_id and server_id is hardcoded
     form['csrf_token'].data = request.cookies['csrf_token']
-    form.data['category_id'] = 1
-    form.data['server_id'] = 1
-     #form.data['category_id'], #form.data
-    #form.data['server_id']
     if form.validate_on_submit():
         channel = Channel(
             title=form.data['title'],
@@ -67,20 +56,20 @@ def post_channel():
 @channel_routes.route('/<id>', methods=["DELETE"])
 def delete_channel(id):
     '''
-    Deletes a channel
+    DELETE a channel
     '''
     channel = Channel.query.get(id)
     db.session.delete(channel)
     db.session.commit()
-    return {}
+    return channel.to_dict()
+
 
 @channel_routes.route('/<id>', methods=["PUT"])
 def edit_channel(id):
     '''
-    Rename a channel
+    EDIT a channel
     '''
     form = ChannelForm()
-
     channel = Channel.query.get(id)
     channel.title = form.data['title']
     db.session.commit()

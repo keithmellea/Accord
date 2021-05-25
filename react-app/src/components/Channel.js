@@ -1,3 +1,6 @@
+//todo- get the server id
+//todo- get the category id
+//todo- use the useSelector to grab data from Channel Reducer
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { allChannels, getChannelsServer, addChannel, deleteChannel, editChannel, getChannelsCategory } from "../store/channel"
@@ -5,10 +8,7 @@ import { allChannels, getChannelsServer, addChannel, deleteChannel, editChannel,
 const Channel = () => {
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState("");
-    //todo- get the server id
-    //todo- get the category id
     const dispatch = useDispatch();
-    // const channels = useSelector(state => state.)
 
     useEffect(() => {
         dispatch(allChannels())
@@ -20,7 +20,8 @@ const Channel = () => {
     }
 
     const dispatchDeleteChannel = async () => {
-        let id = 32;
+        //Bewarned: make sure to change id to a new channel after deleting prev channel to avoid 500 error
+        let id = 31;
         await dispatch(deleteChannel(id))
     }
 
@@ -30,8 +31,8 @@ const Channel = () => {
     }
 
     const dispatchChannelsCategoryId = async () => {
-        let server_id = 1;
-        await dispatch(getChannelsServer(server_id))
+        let category_id = 9;
+        await dispatch(getChannelsCategory(category_id))
     }
 
     const dispatchEditChannel = async () => {
@@ -62,6 +63,7 @@ const Channel = () => {
             </form>
             <button onClick={dispatchDeleteChannel}>Delete a Channel</button>
             <button onClick={dispatchChannelsServerId}>Get all channels based on ServerId</button>
+            <button onClick={dispatchChannelsCategoryId}>Get all channels based on CategoryId</button>
             <div>
                 <label>Rename a channel</label>
                 <input

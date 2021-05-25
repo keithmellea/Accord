@@ -21,6 +21,7 @@ class Server(db.Model):
 
     def to_dict(self):
         return {
-          "server_name": self.server_name,
-          "img_url": self.img_url
+        "id": self.id,
+        "name": self.server_name,
+        "img_url": self.img_url
         }

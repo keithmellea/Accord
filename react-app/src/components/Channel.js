@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {fetch_channels, addChannel} from "../store/channel"
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { allChannels, getChannelsServer, addChannel, deleteChannel, editChannel, getChannelsCategory } from "../store/channel"
 
 const Channel = () => {
     const [errors, setErrors] = useState([]);
@@ -11,12 +11,32 @@ const Channel = () => {
     // const channels = useSelector(state => state.)
 
     useEffect(() => {
-        dispatch(fetch_channels())
+        dispatch(allChannels())
     }, [dispatch])
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         await dispatch(addChannel(title)) //channel form
+    }
+
+    const dispatchDeleteChannel = async () => {
+        let id = 32;
+        await dispatch(deleteChannel(id))
+    }
+
+    const dispatchChannelsServerId = async () => {
+        let server_id = 1;
+        await dispatch(getChannelsServer(server_id))
+    }
+
+    const dispatchChannelsCategoryId = async () => {
+        let server_id = 1;
+        await dispatch(getChannelsServer(server_id))
+    }
+
+    const dispatchEditChannel = async () => {
+        let id = 1;
+        await dispatch(editChannel(id, title));
     }
 
     return (
@@ -40,6 +60,19 @@ const Channel = () => {
                     <button type="submit">Create Channel</button>
                 </div>
             </form>
+            <button onClick={dispatchDeleteChannel}>Delete a Channel</button>
+            <button onClick={dispatchChannelsServerId}>Get all channels based on ServerId</button>
+            <div>
+                <label>Rename a channel</label>
+                <input
+                name="title"
+                type="text"
+                placeholder="Enter New Title Here..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                />
+                <button onClick={dispatchEditChannel}>Submit</button>
+            </div>
         </div>
     );
 }

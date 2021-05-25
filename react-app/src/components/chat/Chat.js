@@ -37,13 +37,17 @@ const Chat = () => {
         <div id="top_level" >
             <div >
                 {messages.map((message, ind) => (
-                    <div>
-                        <div id="Chat_user"key={ind}>{`${message.user}`}</div>
-                        <div id="Chat_message"key={ind}>{` ${message.msg} `}</div>
+                    <div id="messageComponent">
+                        {/* <span class="dot"></span> */}
+                        <div id="Chat_user" key={ind}>{`${message.user}`}</div>
+                        <div id="another">
+                            <div id="Chat_message" key={ind}>{` ${message.msg} `}</div>
+                        </div>
                     </div>
                 ))}
             </div>
-            <form id="top_level_chat"onSubmit={sendChat}>
+
+            <form id="top_level_chat" onSubmit={sendChat}>
                 <input
                     placeholder="Message"
                     value={chatInput}

@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request
 from app.forms import ChannelForm
-#import channels models, db
+from app.models import Channel, db
 
 #Todo- make a form for creating a channel
 #todo-make sure to set up the blueprint on the app module to query
@@ -16,45 +16,46 @@ def channels():
     '''
     GET all channels
     '''
-    # channels = Channel.query.all()
-    # return {"channels": [channel]}
-    return
+    channels = Channel.query.all()
+    return {"channels": [channel.to_dict() for channel in channels]}
 
 
 @channel_routes.route('/', methods=["POST"])
-def function():
+def post_channel():
     '''
     create a channel
     '''
+    #how to get the server id and the category id?
     form = ChannelForm()
     print("request: ", request.get_json())
 
     form['csrf_token'].data = request.cookies['csrf_token']
+    form.data['category_id'] = 1
+    form.data['server_id'] = 1
+     #form.data['category_id'], #form.data
+    #form.data['server_id']
 
     if form.validate_on_submit():
-        print("form: ", form)
 
         channel = Channel(
             title=form.data['title'],
-            #catergory_id
-            #server_id
+            category_id=1,
+            server_id=1
         )
 
         db.session.add(channel)
         db.session.commit()
         return channel.to_dict()
-
-        return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@channel_routes.route('/<int:id>', methods=["DELETE"])
-def delete_channel(id):
-    '''
-    Deletes a channel
-    '''
-    print("Delete channel route")
-    channel = Channel.query.get(id)
-    db.session.delete(channel)
-    db.session.commit()
-    return
+# @channel_routes.route('/<int:id>', methods=["DELETE"])
+# def delete_channel(id):
+#     '''
+#     Deletes a channel
+#     '''
+#     print("Delete channel route")
+#     channel = Channel.query.get(id)
+#     db.session.delete(channel)
+#     db.session.commit()
+#     return

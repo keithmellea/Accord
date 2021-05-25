@@ -32,18 +32,37 @@ export const fetch_channels = () => async (dispatch) => {
         }
     });
     const data = await response.json();
-    print("data: ", data)
-    if (data.errors) {
-        print("errors: ", data.errors)
-        return
+    console.log("data: ", data)
+    // if (data.errors) {
+    //     console.log("errors: ", data.errors)
+    //     return
+    // }
+    // dispatch(get_channel(data))
+}
+
+export const addChannel = (title) => async (dispatch) => {
+    // console.log('title: ', title)
+    const res = await fetch('/api/channels/', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title,
+        }),
+    })
+    const data = await res.json();
+    console.log('Add Channel Data: ', data)
+    if (data.errors){
+        return data;
     }
-    dispatch(get_channel(data))
+    // dispatch(ADD_CHANNEL(data));
+    // return {};
 }
 
 
 
-
-export default channelReducer = (state={}, action) => {
+const channelReducer = (state={}, action) => {
     let newState;
 
     switch (action.type) {
@@ -62,3 +81,5 @@ export default channelReducer = (state={}, action) => {
             return ;
     }
 }
+
+export default channelReducer;

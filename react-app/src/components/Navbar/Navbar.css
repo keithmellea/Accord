@@ -9,7 +9,6 @@ color: black
     width:72px;
     left: 0;
     background-color: #202225;
-    display: flex;
     list-style: none;
     padding: 0;
     height: 100%;
@@ -30,6 +29,38 @@ color: black
 
 .user_server-img:hover {
     border-radius: 12px;
+}
+
+#discord__img__container {
+    border-radius: 25px;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393F;
+}
+
+#discord__img {
+    margin-top:2px;
+    height: 24px;
+    width: 35px;
+    content:url("../../images/icon_clyde_white_RGB.svg");
+}
+
+#home__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+#home__border {
+    height:2px;
+    width: 32px;
+    background-color: #36393F;
+    margin: 4px 0px;
+    border-radius: 3px;
 }
 /* 
 .title-bubble {

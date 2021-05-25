@@ -26,6 +26,14 @@ const NavBar = () => {
       </ContextMenuTrigger>
 
       <ul className="server-list">
+        <div id="home__container">
+          <li className="user_server-div" id="discord__img__container">
+            <NavLink to ="/">
+              <img className="user_server-img" id="discord__img"></img>
+            </NavLink>
+          </li>
+          <div id="home__border"></div>
+        </div>
         {usersServers?.map((server) => (
           <li className="user_server-div">
             {/* {console.log(server)} */}

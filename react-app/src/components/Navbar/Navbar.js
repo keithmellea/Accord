@@ -18,7 +18,7 @@ const NavBar = () => {
     dispatch(getUsersServers());
   }, [dispatch]);
 
-  console.log(usersServers)
+  // console.log(usersServers)
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
@@ -26,9 +26,17 @@ const NavBar = () => {
       </ContextMenuTrigger>
 
       <ul className="server-list">
+        <div id="home__container">
+            <NavLink to ="/">
+          <li className="user_server-div" id="discord__img__container">
+              <img className="user_server-img" id="discord__img"></img>
+          </li>
+            </NavLink>
+          <div id="home__border"></div>
+        </div>
         {usersServers?.map((server) => (
           <li className="user_server-div">
-            {console.log(server)}
+            {/* {console.log(server)} */}
             <NavLink key={server.server_name} to={`/servers/${server.id}`}>
               {/* <div className="title-bubble">
               <span className="title-bubble-text">{`${server.name}`}</span>

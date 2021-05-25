@@ -11,7 +11,7 @@ export const getServers = () => async (dispatch) => {
    const response = await fetch('/api/home/')
    const servers = await response.json();
    console.log("TESTING THE OUTPUT OF SERVERS", servers)
-   console.log("TESTING ", servers)
+   console.log("TESTING ", servers.servers)
    if(servers.errors) {
       return;
    }
@@ -23,9 +23,7 @@ export default function reducer(state=initialState, action) {
    let newState = {...state}
    switch (action.type) {
       case GRAB_SERVERS:
-         action.servers.forEach((server) => {
-            newState.all[server.id] = server;
-         })
+         newState["servers"] = action.servers.servers
          return newState;
       default:
          return state;

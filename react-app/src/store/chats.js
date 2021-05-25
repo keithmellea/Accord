@@ -6,15 +6,15 @@ const showChat = (list) => ({
     list,
 })
 
-const addChat = (Content) => ({
+const addChat = (content) => ({
     type: ADD_CHAT,
     payload: content
 })
 
 //thinking about doing the GET requests in the chat component
-export const postChat = (content) => async (dispatch) => {
-    const res = await fetch('/api/chat', {
-        method:'POST',
+export const chatPost = (content) => async (dispatch) => {
+    const res = await fetch('/api/chat/message', {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -23,7 +23,8 @@ export const postChat = (content) => async (dispatch) => {
         })
     });
     const data = await res.json();
-    if(data.errors) {
+    console.log('This is a new message ', data )
+    if (data.errors) {
         return data;
     }
     dispatch(addChat(data))
@@ -32,3 +33,14 @@ export const postChat = (content) => async (dispatch) => {
 
 let initialState = { list: null };
 
+export default function chatReducer(state = initialState, action) {
+
+    switch(action.type) {
+
+        case ADD_CHAT:
+            return {list: action.payload}
+        default:
+            return state;
+    }
+
+}

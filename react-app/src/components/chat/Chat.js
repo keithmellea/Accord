@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
+import { chatPost } from "../../store/chats"
 import './index.css';
 let socket;
 
@@ -8,6 +9,8 @@ const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const user = useSelector(state => state.session.user)
+    const [messages_two, setMessages_two] = useState("");
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // open socket connection
@@ -27,12 +30,17 @@ const Chat = () => {
         setChatInput(e.target.value)
     };
 
-    const sendChat = (e) => {
+    const sendChat = async(e) => {
         e.preventDefault()
         socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
+        await dispatch(chatPost(chatInput))
     }
 
+    // const chaat = async(e) => {
+    //     e.preventDefault()
+    //     await dispatch(postChat(value))
+    // }
     return (user && (
         <div id="top_level" >
             <div >
@@ -47,13 +55,13 @@ const Chat = () => {
                 ))}
             </div>
 
-            <form id="top_level_chat" onSubmit={sendChat}>
+            <form id="top_level_chat" method="POST" onSubmit={sendChat}>
                 <input
                     placeholder="Message"
                     value={chatInput}
                     onChange={updateChatInput}
                 />
-                {/* <button type="submit">Send</button> */}
+                <button type="submit">Send</button>
             </form>
         </div>
     )

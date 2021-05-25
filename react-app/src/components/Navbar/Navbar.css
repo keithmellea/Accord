@@ -1,0 +1,44 @@
+* {
+color: black
+}
+
+.server-list {
+    position: fixed;
+    left: 0;
+    padding: 10px;
+    background-color: #202225;
+    
+}
+
+.user_server-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    transition: border-radius 0.2s;
+}
+
+.user_server-img:hover {
+    border-radius: 12px;
+}
+/* 
+.title-bubble {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.title-bubble .title-bubble-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.title-bubble:hover .title-bubble-text {
+    visibility: visible;
+} */

@@ -17,18 +17,34 @@ body {
 #discover--container {
    width:100%;
    height:100%;
+   display: flex;
+}
+
+#discover__sidebar {
+   width: 240px;
+   height: 100%;
+   background-color: #2F3136;
+}
+#discover__sidebar--title {
+   font-size: 24px;
+   margin:0px;
+   margin-top:17px;
+   margin-left:14px;
+   color:white;
 }
 
 #discover {
    background-color: #36393F;
    width: 100%;
    height: 100%;
-   /* margin-left: 200px; */
-   display: flex;
-   justify-content: center;
+   display: grid;
+   
 }
+#discover__svg--container {
 
+}
 #discover--svg {
-   background-image: url("../../images/3e0acf6d69894a5d20deb7c513cd1412.svg");
-
+   /* background-image: url("../../images/3e0acf6d69894a5d20deb7c513cd1412.svg");
+   width:400px;
+   background-repeat: no-repeat; */
 }

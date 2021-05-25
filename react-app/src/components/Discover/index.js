@@ -8,7 +8,7 @@ function Discover() {
    const dispatch = useDispatch()
 
    // const [servers, setServers] = useState([]);
-   // const servers = useSelector(state => )
+   const servers = useSelector(state => state.servers)
 
    useEffect(() => {
       dispatch(getServers())
@@ -16,9 +16,15 @@ function Discover() {
 
    return (
       <div id="discover--container">
+         <div id="discover__sidebar">
+            <h1 id="discover__sidebar--title">Discover</h1>
+         </div>
          <div id="discover">
-            <div id="discover--svg">
-
+            <div id="discover__svg--container">
+               <div id="discover--svg"></div>
+               {
+                  <div></div>
+               }
             </div>
          </div>
       </div>

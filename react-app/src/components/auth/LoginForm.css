@@ -108,6 +108,10 @@ form input, label {
    color: #60646B;
 }
 
+#register__link p {
+   color: #6C7076;
+}
+
 #register__link a {
    text-decoration: none;
    color: #02ACED;

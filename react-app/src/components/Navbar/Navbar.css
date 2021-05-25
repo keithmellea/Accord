@@ -42,7 +42,6 @@ color: black
 }
 
 #discord__img {
-    margin-top:2px;
     height: 24px;
     width: 35px;
     content:url("../../images/icon_clyde_white_RGB.svg");

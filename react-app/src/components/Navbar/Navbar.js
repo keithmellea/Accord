@@ -27,11 +27,11 @@ const NavBar = () => {
 
       <ul className="server-list">
         <div id="home__container">
-          <li className="user_server-div" id="discord__img__container">
             <NavLink to ="/">
+          <li className="user_server-div" id="discord__img__container">
               <img className="user_server-img" id="discord__img"></img>
-            </NavLink>
           </li>
+            </NavLink>
           <div id="home__border"></div>
         </div>
         {usersServers?.map((server) => (

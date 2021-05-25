@@ -3,16 +3,27 @@ color: black
 }
 
 .server-list {
-    position: fixed;
+    display: flex;
+    margin: 0px;
+    flex-direction: column;
+    width:72px;
     left: 0;
-    padding: 10px;
     background-color: #202225;
-    
+    display: flex;
+    list-style: none;
+    padding: 0;
+    height: 100%;
+}
+
+.server-list li {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0px;
 }
 
 .user_server-img {
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
     border-radius: 20px;
     transition: border-radius 0.2s;
 }

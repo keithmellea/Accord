@@ -30,9 +30,9 @@ const NavBar = () => {
           <li className="user_server-div">
             {console.log(server)}
             <NavLink key={server.server_name} to={`/servers/${server.id}`}>
-              <div className="title-bubble">
+              {/* <div className="title-bubble">
               <span className="title-bubble-text">{`${server.name}`}</span>
-              </div>
+              </div> */}
               <img className="user_server-img" src={server?.img_url}></img>
             </NavLink>
           </li>

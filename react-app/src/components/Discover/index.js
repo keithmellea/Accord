@@ -24,6 +24,8 @@ function Discover() {
          <div id="discover">
             <div id="discover__svg--container">
                <div id="discover--svg"></div>
+            </div>
+            <div id="discover__servers">
                {servers.map((server)=> (
                   <div className="server__container">
                      <div className="server__container--img">

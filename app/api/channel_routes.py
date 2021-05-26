@@ -1,4 +1,4 @@
-#Todo: how to get the server id and the category id?
+#Todo: how to get the server id and the category id from the frontend?
 
 from flask import Blueprint, session, request
 from app.forms import ChannelForm

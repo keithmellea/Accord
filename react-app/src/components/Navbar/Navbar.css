@@ -2,6 +2,18 @@
 color: black
 }
 
+.navbar {
+    /* top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 934px; */
+}
+
+.navbar::-webkit-scrollbar {
+    display: none;
+}
+
 .server-list {
     display: flex;
     margin: 0px;
@@ -42,8 +54,8 @@ color: black
 }
 
 #discord__img {
-    height: 24px;
-    width: 35px;
+    height: 20px;
+    width: 40px;
     content:url("../../images/icon_clyde_white_RGB.svg");
 }
 

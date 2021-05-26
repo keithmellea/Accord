@@ -12,3 +12,6 @@ def getServers():
     servers = Server.query.all()
     return {"servers": [server.to_dict() for server in servers]}
 
+# @server_routes("/server/:id")
+# def server_page():
+#     server = Server.query

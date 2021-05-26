@@ -8,3 +8,10 @@ class Category(db.Model):
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
     channels = db.relationship("Channel", back_populates="category")
+
+
+    def to_dict(self):
+        return {
+        "id": self.id,
+        "title": self.title,
+       }

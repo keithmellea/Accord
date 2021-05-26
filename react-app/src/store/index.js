@@ -2,6 +2,7 @@ import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session"
 import channel from "./channel"
+import category from "./category"
 
 import discover from "./discover"
 import servers from "./servers"
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     discover,
     servers,
     channel,
+    category,
 });
 
 

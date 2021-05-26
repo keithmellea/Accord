@@ -8,25 +8,33 @@ let socket;
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
-    const [channel, setChannel] = useState(2)
+    const [channel, setChannel] = useState()
+    const [show, setShow] = useState(false)
     const user = useSelector(state => state.session.user)
     // const [messages_two, setMessages_two] = useState("");
     const dispatch = useDispatch();
-
+    const chats = useSelector(state => state.chats)
+    console.log(chats)
+    if (Object.keys(chats).length) {
+        console.log("this works")
+        
+    }
     useEffect(() => {
         // open socket connection
         // create websocket
         socket = io();
-        dispatch(chatForChannel());
 
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
         })
+        console.log("first milestone")
+
         // when component unmounts, disconnect
         return (() => {
             socket.disconnect()
         })
-    }, [dispatch])
+
+    }, [channel, chats])
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
@@ -34,7 +42,15 @@ const Chat = () => {
 
     const updateChannel = (e) => {
         setChannel(e.target.value)
+
     }
+    // const userComponents = chats.map((chat) => {
+    //     return (
+    //         <li key={chat.id}>
+    //             <div>{chat.content}</div>
+    //         </li>
+    //     );
+    // });
 
     const sendChat = async (e) => {
         e.preventDefault()
@@ -47,9 +63,9 @@ const Chat = () => {
         console.log("This is a test")
         await dispatch(chatForChannel(channel))
     }
-    // const chaat = async(e) => {
-    //     e.preventDefault()
-    //     await dispatch(postChat(value))
+
+    // if (!chats) {
+    //     return null
     // }
     return (user && (
         <div id="top_level" >
@@ -63,14 +79,14 @@ const Chat = () => {
                         </div>
                     </div>
                 ))}
-            </div>
-            <div>
                 <input
+                    setShow={true}
                     placeholder="Select Channel"
                     value={channel}
                     onChange={updateChannel}
                 />
                 <button onClick={messagesForChannel}> Channel {channel}</button>
+
             </div>
 
             <form id="top_level_chat" method="POST" onSubmit={sendChat}>

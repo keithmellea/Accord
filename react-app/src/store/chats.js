@@ -3,7 +3,7 @@ const ADD_CHAT = "chats/ADD_CHAT"
 
 const showChat = (list) => ({
     type: SHOW_CHAT,
-    list,
+    payload: list
 })
 
 const addChat = (content) => ({
@@ -20,11 +20,9 @@ export const chatForChannel = (channel_id) => async (dispatch) => {
     });
     if(res.ok) {
         const data = await res.json();
-        console.log("Chat for Channel: ", data)
-        const other = Object.values(data);
-        console.log("Another Test:", other )
-        dispatch(showChat(data))
-        return
+        console.log(data)
+        // const other = Object.values(data);
+        console.log(dispatch(showChat(data)))
     }
 }
 
@@ -42,7 +40,6 @@ export const chatPost = (content) => async (dispatch) => {
         })
     });
     const data = await res.json();
-    console.log('This is a new message ', data )
     if (data.errors) {
         return data;
     }
@@ -50,16 +47,20 @@ export const chatPost = (content) => async (dispatch) => {
     return {};
 }
 
-let initialState = { list: null };
+// let initialState = { list: null };
 
-export default function chatReducer(state = initialState, action) {
-
+export default function chatReducer(state = {}, action) {
+    let newState;
     switch(action.type) {
         case SHOW_CHAT:
-            return {
-                ...state,
-                list: action.list
-            }
+            // newState = {...state};
+            // console.log(action.payload)
+            // action.payload["chats"].forEach(chat => {
+
+            //     newState[chat.id] = chat;
+            // });
+            // console.log(newState)
+            return action.payload;
         case ADD_CHAT:
             return {list: action.payload}
         default:

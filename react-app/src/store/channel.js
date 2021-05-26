@@ -30,7 +30,7 @@ export const allChannels = () => async (dispatch) => {
     return ;
 }
 
-//GET all channels based on server id
+//GET all channels based on server id.
 export const getChannelsServer = (server_id) => async (dispatch) => {
     const response = await fetch(`/api/channels/server/${server_id}`)
     const data = await response.json();
@@ -65,7 +65,7 @@ export const addChannel = (title) => async (dispatch) => {
     return ;
 }
 
-//PUT: rename a channel
+//PUT: rename a specific channel
 export const editChannel = (id, title) => async (dispatch) => {
     const res = await fetch(`/api/channels/${id}`, {
         method: "PUT",

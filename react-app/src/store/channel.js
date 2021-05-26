@@ -1,6 +1,4 @@
-//TODO- update the reducer function
 const GET_CHANNEL = "channel/GET_CHANNEL"
-const REMOVE_CHANNEL = "channel/REMOVE_CHANNEL"
 const ADD_CHANNEL = "channel/ADD_CHANNEL"
 const DELETE_CHANNEL = "channel/DELETE_CHANNEL"
 

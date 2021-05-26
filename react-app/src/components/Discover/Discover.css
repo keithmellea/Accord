@@ -1,6 +1,6 @@
-/* #root {
-   display: inline-block
-} */
+#root {
+   display: flex;
+}
 
 body {
    margin: 0px;
@@ -8,19 +8,24 @@ body {
 
 #discover--container {
    display: flex;
+   width:100%;
 }
 
 #discover__sidebar {
-   width: 240px;
+   /* width: 240px; */
+   padding-right:120px;
+   /* left: 100px; */
+   /* padding:60px; */
    /* height: 100%; */
    background-color: #2F3136;
+   /* position:static; */
 }
 
 #discover__sidebar--title {
    font-size: 24px;
    margin:0px;
-   /* margin-top:17px;
-   margin-left:14px; */
+   margin-top:16px;
+   margin-left:15px;
    color:white;
 }
 
@@ -72,10 +77,15 @@ body {
    background-color: #292B2F;
 }
 
-.server__container--img img{
+.server__container--img img {
    border-top-left-radius: 8px;
    border-top-right-radius: 8px;
    width: 282px;
    height: 143px;
    object-fit: cover;
+}
+
+.server__container--title {
+   color: white;
+   font-size: 16px;
 }

@@ -1,3 +1,4 @@
+
 .server-page {
     display: grid;
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -9,7 +10,7 @@
     "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat"
-    "profile profile profile-options chat chat chat chat chat chat chat chat"
+    "profile profile profile-options chat chat chat chat chat chat chat chat";
 }
 
 .name {
@@ -36,13 +37,9 @@ height: 894px;
 }
 
 .chat-div {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
 background-color: grey;
 grid-area: chat;
 height: 894px;
-width: 1500px;
 }
 
 /* .members-div {

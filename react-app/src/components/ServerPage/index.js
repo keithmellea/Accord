@@ -4,6 +4,7 @@ import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
+import { getChannelsServer } from "../../store/channel";
 
 import './ServerPage.css';
 
@@ -16,8 +17,13 @@ const ServerPage = () => {
     return state.servers.list.servers;
   }); 
  
+   const channels = useSelector((state) => {
+     return state.channels;
+   }); 
+
   useEffect(() => {
     dispatch(getUsersServers());
+    dispatch(getChannelsServer());
   }, [dispatch]);
 
   if (!servers) {

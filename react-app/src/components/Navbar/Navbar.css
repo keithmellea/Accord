@@ -54,8 +54,8 @@ color: black
 }
 
 #discord__img {
-    height: 24px;
-    width: 35px;
+    height: 20px;
+    width: 40px;
     content:url("../../images/icon_clyde_white_RGB.svg");
 }
 

@@ -14,6 +14,12 @@ from .api.server_routes import server_routes
 from .api.category_routes import category_routes
 from .api.user_server_routes import user_server_routes
 
+from .api.chat_routes import chat_routes
+# import your socketio object (with the other imports at the
+# top of the file)
+# in this example, the file from the previous step is named socket.py
+from .socket import socketio
+
 from .seeds import seed_commands
 
 from .config import Config
@@ -36,6 +42,8 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+
+app.register_blueprint(chat_routes, url_prefix='/api/chat')
 app.register_blueprint(channel_routes, url_prefix='/api/channels')
 app.register_blueprint(home_routes, url_prefix='/api/home')
 app.register_blueprint(server_routes, url_prefix='/api/servers')
@@ -43,6 +51,9 @@ app.register_blueprint(category_routes, url_prefix="/api/categories")
 app.register_blueprint(user_server_routes, url_prefix='/api/usersservers')
 db.init_app(app)
 Migrate(app, db)
+# initialize the app with the socket instance
+# you could include this line right after Migrate(app, db)
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -81,3 +92,7 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+# at the bottom of the file, use this to run the app
+if __name__ == '__main__':
+    socketio.run(app)

@@ -13,6 +13,10 @@ function Discover() {
       dispatch(getServers())
    },[dispatch])
 
+   const joinServer = (e) => {
+      e.preventDefault();
+   }
+
    if(!servers) return null;
 
    return (
@@ -34,8 +38,8 @@ function Discover() {
                         <img src={server.img_url}></img>
                      </div>
                      <div className="server__container--title">{server.name}</div>
-                     <form>
-                     <button class="server__container--button">Join</button>
+                     <form onSubmit={joinServer} id="join__form">
+                        <button class="server__container--button">Join</button>
                      </form>
                   </div>
                ))}

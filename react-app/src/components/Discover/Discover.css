@@ -101,4 +101,22 @@ body {
    border-radius: 4px;
    border: 1px solid #242424;
    padding: 3px 10px;
+   transition: border .2s;
+   /* transition: background-color .1s; */
 }
+
+.server__container--button:hover {
+   border-color: black;
+}
+
+.server__container--button:active {
+   background-color: #494c53;
+}
+
+/* #login__form input:hover {
+   border: 1px solid black;
+}
+
+#login__form input:focus {
+   border: 1px solid #00B0F4;
+} */

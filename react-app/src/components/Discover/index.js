@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {getServers} from "../../store/discover";
 import { useDispatch, useSelector } from 'react-redux'
 import './Discover.css'
-import NavBar from "../Navbar/Navbar"
-
 function Discover() {
 
    const dispatch = useDispatch()

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {getServers} from "../../store/discover";
 import { useDispatch, useSelector } from 'react-redux'
 import './Discover.css'
+import NavBar from "../Navbar/Navbar"
 
 function Discover() {
 
@@ -18,13 +19,16 @@ function Discover() {
 
    return (
       <div id="discover--container">
+         <NavBar />
          <div id="discover__sidebar">
             <h1 id="discover__sidebar--title">Discover</h1>
          </div>
          <div id="discover">
             <div id="discover__svg--container">
+               {/* <h1>Hello</h1> */}
                <div id="discover--svg"></div>
             </div>
+
             <div id="discover__servers">
                {servers.map((server)=> (
                   <div className="server__container">

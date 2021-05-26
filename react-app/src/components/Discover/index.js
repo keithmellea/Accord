@@ -25,7 +25,7 @@ function Discover() {
          </div>
          <div id="discover">
             <div id="discover__svg--container">
-               {/* <h1>Hello</h1> */}
+               <h1 id="discover__svg--title">Servers</h1>
                <div id="discover--svg"></div>
             </div>
 

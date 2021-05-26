@@ -46,9 +46,15 @@ body {
    justify-content: center;
 }
 
+#discover__svg--title {
+   position: absolute;
+   top: 130px;
+   color: white;
+}
+
 #discover--svg {
    background-image: url("../../images/3e0acf6d69894a5d20deb7c513cd1412.svg");
-   width: 1000px;
+   width: 1064px;
    height: 332px;
    margin: 15px 30px; 
    border-radius: 8px;

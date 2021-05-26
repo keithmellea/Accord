@@ -3,11 +3,11 @@
   height: 100%; */
   /* Set rules to fill background */
   min-height: 100%;
-	
+
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-	
+
   /* Set up positioning */
   position: fixed;
   top: 0;
@@ -116,4 +116,10 @@ form input, label {
    text-decoration: none;
    color: #02ACED;
    margin-left: 5px;
+}
+
+/*Login Btn and Demo User Btn */
+#button1,
+#button2 {
+   cursor:pointer;
 }

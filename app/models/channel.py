@@ -18,3 +18,12 @@ class Channel(db.Model):
 
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+
+
+    def to_dict(self):
+        return {
+        "id": self.id,
+        "title": self.title,
+        "category_id": self.category_id,
+        "server_id": self.server_id,
+       }

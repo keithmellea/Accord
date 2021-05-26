@@ -8,6 +8,10 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.channel_routes import channel_routes
+from .api.home_routes import home_routes
+from .api.server_routes import server_routes
+from .api.user_server_routes import user_server_routes
 
 from .api.chat_routes import chat_routes
 # import your socketio object (with the other imports at the
@@ -39,6 +43,10 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 
 app.register_blueprint(chat_routes, url_prefix='/api/chat')
+app.register_blueprint(channel_routes, url_prefix='/api/channels')
+app.register_blueprint(home_routes, url_prefix='/api/home')
+app.register_blueprint(server_routes, url_prefix='/api/servers')
+app.register_blueprint(user_server_routes, url_prefix='/api/usersservers')
 db.init_app(app)
 Migrate(app, db)
 # initialize the app with the socket instance

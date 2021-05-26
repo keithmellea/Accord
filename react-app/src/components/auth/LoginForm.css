@@ -108,8 +108,18 @@ form input, label {
    color: #60646B;
 }
 
+#register__link p {
+   color: #6C7076;
+}
+
 #register__link a {
    text-decoration: none;
    color: #02ACED;
    margin-left: 5px;
+}
+
+/*Login Btn and Demo User Btn */
+#button1,
+#button2 {
+   cursor:pointer;
 }

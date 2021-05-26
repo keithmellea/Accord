@@ -34,6 +34,11 @@ const NavBar = () => {
         <li>
           <LogoutButton />
         </li>
+        <li>
+          <NavLink to="/channels" exact={true}>
+            Channels
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

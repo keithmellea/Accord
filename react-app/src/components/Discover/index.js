@@ -34,6 +34,9 @@ function Discover() {
                         <img src={server.img_url}></img>
                      </div>
                      <div className="server__container--title">{server.name}</div>
+                     <form>
+                     <button class="server__container--button">Join</button>
+                     </form>
                   </div>
                ))}
             </div>

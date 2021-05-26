@@ -1,21 +1,27 @@
-#server-page-container {
-    display:flex
+/* #root {
+    overflow-y: hidden;
 }
+
+#html::-webkit-scrollbar {
+    display: none;
+}
+#server-page-container {
+    display:flex;
+    overflow-y: hidden scroll;
+} */
 
 .server-page {
     display: grid;
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     /* sizing for navbar may be off due to grid size being larger
     than the chat and server name bar */
-    grid-template-rows: 50px 200px 200px 200px 200px 200px 200px;
+    grid-template-rows: 50px 200px 200px 200px 200px;
     grid-template-areas:
     "name name name channel-name channel-name channel-name channel-name channel-name channel-name options options"
     "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat"
-    "channels channels channels chat chat chat chat chat chat chat chat"
-    "channels channels channels chat chat chat chat chat chat chat chat"
-    "profile profile profile-options chat chat chat chat chat chat chat chat";
+    "channels channels channels chat chat chat chat chat chat chat chat";
 }
 
 .name {
@@ -40,9 +46,15 @@
 .categories {
     background-color: #2F3136;
     grid-area: channels;
-    height: 894px;
+    height: 100%;
     padding-top: 20px;
+    overflow-y: hidden scroll;
 }
+/* 
+.categories::-webkit-scrollbar {
+    background-color: #2F3136;
+    width: 5px;
+} */
 
 .categories li {
     list-style-image: url("../../images/1247106.png");
@@ -56,8 +68,10 @@
 .chat-div {
     background-color: #32353a;
     grid-area: chat;
-    height: 894px;
+    width: 100%;
+    height: 100%;
     color: #dcddde;
+    overflow-y: hidden scroll;
 }
 
 .channel {
@@ -73,6 +87,14 @@ li.channel {
 .text-channels {
     padding-left: 25px;
     padding-bottom: 10px;
+}
+
+.text-channels:hover {
+    background-color: #393c42;
+}
+
+li.channel:hover {
+    color: white;
 }
 .channel-name {
     display: inline-block;
@@ -100,9 +122,29 @@ li.channel {
     border-bottom: 1px solid rgb(16, 16, 16);
     box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
 }
-/* .members-div {
-background-color: black;
+
+.chat-div {
+    overflow-y: scroll;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.chat-div::-webkit-scrollbar {
+
+    background-color: #32353a;
+}
+/* #top_level_chat {
+    position: relative;
 } */
 
-/* #272f4b; */
-/* #222941; */
+#top_level {
+    height: 90%;
+    grid-area: chat;
+    width: 1500px;
+}
+#top_level_chat {
+    position: fixed;
+    bottom: 0;
+    left: 3;
+    
+}

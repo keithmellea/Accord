@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
 import { getChannelsServer } from "../../store/channel";
 import { allCategories } from "../../store/category"
+import Chat from '../Chat/Chat'
 
 import './ServerPage.css';
 
@@ -87,9 +88,7 @@ const ServerPage = () => {
           </div>
         </div>
         <div className="chat-div">
-          HelllooooooooooooooooHellloooooooooooooooo Hellloooooooooooooooo
-          Hellloooooooooooooooo Hellloooooooooooooooo Hellloooooooooooooooo
-          Hellloooooooooooooooo Hellloooooooooooooooo
+          <Chat />
         </div>
         <div className="channel-name">
           <img className="hash" height="24" width="24"></img>

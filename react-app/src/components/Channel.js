@@ -21,7 +21,7 @@ const Channel = () => {
 
     const dispatchDeleteChannel = async () => {
         //Bewarned: make sure to change id to a new channel after deleting prev channel to avoid 500 error
-        let id = 31;
+        let id = 36;
         await dispatch(deleteChannel(id))
     }
 

@@ -41,7 +41,7 @@ const LoginForm = () => {
     return <Redirect to="/" />;
   }
 
-  
+
 
   return (
     <div id="login__background">
@@ -68,13 +68,13 @@ const LoginForm = () => {
             <label htmlFor="password" id="password--margin">Password</label>
             <input
               name="password"
-              type="password" 
+              type="password"
               value={password}
               onChange={updatePassword}
             />
           </div>
           <button type="submit" id="button1">Login</button>
-          <button type="submit" onClick={demoLogin}>Demo Login</button>
+          <button type="submit" id="button2" onClick={demoLogin}>Demo Login</button>
           <div id="register__link">
             <p>Need an account?</p>
             <NavLink to="/sign-up">Register</NavLink>

@@ -6,11 +6,15 @@ import channel from "./channel"
 import discover from "./discover"
 import servers from "./servers"
 
+//--------testing user servers--------//
+import user_server from "./user_server";
+
 const rootReducer = combineReducers({
     session,
     discover,
     servers,
     channel,
+    user_server,
 });
 
 

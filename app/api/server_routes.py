@@ -7,7 +7,7 @@ server_routes = Blueprint("server", __name__)
 @server_routes.route("/", methods=["GET"])
 def getServers():
     '''
-    get user's servers 
+    get user's servers
     '''
     servers = Server.query.all()
     return {"servers": [server.to_dict() for server in servers]}

@@ -1,7 +1,12 @@
+#server-page-container {
+    display:flex
+}
 
 .server-page {
     display: grid;
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* sizing for navbar may be off due to grid size being larger
+    than the chat and server name bar */
     grid-template-rows: 40px 200px 200px 200px 200px 200px 200px;
     grid-template-areas:
     "name name name channel-name channel-name channel-name channel-name channel-name options options options"

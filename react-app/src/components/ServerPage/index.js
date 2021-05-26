@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
 import { getChannelsServer } from "../../store/channel";
-
 import './ServerPage.css';
 
 const ServerPage = () => {

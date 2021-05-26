@@ -7,7 +7,7 @@
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     /* sizing for navbar may be off due to grid size being larger
     than the chat and server name bar */
-    grid-template-rows: 40px 200px 200px 200px 200px 200px 200px;
+    grid-template-rows: 50px 200px 200px 200px 200px 200px 200px;
     grid-template-areas:
     "name name name channel-name channel-name channel-name channel-name channel-name channel-name options options"
     "channels channels channels chat chat chat chat chat chat chat chat"
@@ -20,7 +20,7 @@
 
 .name {
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 15px;
     background-color: #2b3352;
     grid-area: name;
     color: #dcddde;
@@ -30,6 +30,7 @@
     box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
     transition: background-color ease 0.1s;
     color: #dcddde;
+    background-color: #2e3236;
 }
 
 .name:hover {
@@ -40,22 +41,64 @@
     background-color: #2F3136;
     grid-area: channels;
     height: 894px;
+    padding-top: 20px;
+}
+
+.categories li {
+    list-style-image: url("../../images/1247106.png");
+            
+}
+
+#category {
+    padding-left: 15px;
 }
 
 .chat-div {
-    background-color: #36393F;
+    background-color: #32353a;
     grid-area: chat;
     height: 894px;
     color: #dcddde;
 }
 
 .channel {
-    color: lightgray;   
+    color: #8e9296;  
+    font-size: 12px; 
+    font-weight: 500;
 }
 
+li.channel {
+    font-size: 14px;
+}
+
+.text-channels {
+    padding-left: 25px;
+    padding-bottom: 10px;
+}
 .channel-name {
-    background-color: #36393F;
+    display: inline-block;
+    background-color: #32353a;
     grid-area: channel-name;
+    border-bottom: 1px solid rgb(16, 16, 16);
+    box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.channel-text {
+    margin-bottom: 30px;
+    color: #dcddde;
+    padding-left: 10px;
+}
+
+.hash {
+    content:url("../../images/hash.png");
+}
+
+.options {
+    grid-area: options;
+    background-color: #32353a;
+    border-bottom: 1px solid rgb(16, 16, 16);
+    box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
 }
 /* .members-div {
 background-color: black;

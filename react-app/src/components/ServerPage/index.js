@@ -73,19 +73,16 @@ const ServerPage = () => {
             </li>))}
             </div> */}
             {serverCats.map((category) => (
-              <li className="channel">
-                {`${category.title}`}
+              <div id="category" className="channel">
+                {`${category.title.toUpperCase()}`}
                 <ul className="text-channels">
                   {channels?.map((channel) =>
                     channel.category_id === category.id ? (
-                      <li className="channel">
-                        {" "}
-                        {`${channel.title}`}
-                      </li>
+                      <li className="channel"> {`${channel.title}`}</li>
                     ) : null
                   )}
                 </ul>
-              </li>
+              </div>
             ))}
           </div>
         </div>
@@ -94,8 +91,12 @@ const ServerPage = () => {
           Hellloooooooooooooooo Hellloooooooooooooooo Hellloooooooooooooooo
           Hellloooooooooooooooo Hellloooooooooooooooo
         </div>
-        <div className="channel-name">channel</div>
+        <div className="channel-name">
+          <img className="hash" height="24" width="24"></img>
+          <span className="channel-text">channel</span>
+        </div>
         <div className="members-div"></div>
+        <div className="options"></div>
       </div>
     );
 }

@@ -1,5 +1,3 @@
-#Todo: how to get the server id and the category id from the frontend?
-
 from flask import Blueprint, session, request
 from app.forms import ChannelForm
 from app.models import Channel, db
@@ -39,7 +37,6 @@ def post_channel():
     CREATE a channel
     '''
     form = ChannelForm()
-    #Be Careful: Category_id and server_id is hardcoded
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         channel = Channel(

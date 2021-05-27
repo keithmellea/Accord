@@ -2,15 +2,20 @@
 color: black
 }
 
+/* html,body {
+    height:100%;
+} */
+
+/* #root {
+    height:100%;
+} */
+
 .navbar {
-    /* top: 0;
-    bottom: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 934px; */
-    height: 100%;
-    position: sticky;
+    background-color: #202225;
     top:0px;
+    height: 100vh;
+    position: sticky;
+    overflow-y: scroll;
 }
 
 .navbar::-webkit-scrollbar {
@@ -22,10 +27,10 @@ color: black
     margin: 0px;
     flex-direction: column;
     width:72px;
-    left: 0;
-    background-color: #202225;
+    /* left: 0; */
     list-style: none;
     padding: 0;
+    /* padding-bottom: 100px; */
     height: 100%;
 }
 

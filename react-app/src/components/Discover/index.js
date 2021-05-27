@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {getServers, joinServer} from "../../store/discover";
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from "react-router-dom";
 import './Discover.css'
 
 function Discover() {
 
    const dispatch = useDispatch()
+
+   let history = useHistory();
 
    const [serverId, setServerId] = useState(null)
 
@@ -20,6 +23,7 @@ function Discover() {
    const joinServerSubmit = (e) => {
       e.preventDefault();
       dispatch(joinServer(serverId))
+      history.push(`/servers/${serverId}`)
    }
 
    if(!servers) return null;

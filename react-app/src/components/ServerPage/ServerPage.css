@@ -1,14 +1,14 @@
-/* #root {
+ #root {
     overflow-y: hidden;
 }
 
-#html::-webkit-scrollbar {
+/* #html::-webkit-scrollbar {
     display: none;
 }
 #server-page-container {
     display:flex;
     overflow-y: hidden scroll;
-} */
+}  */
 
 .server-page {
     display: grid;
@@ -96,6 +96,7 @@ li.channel {
 li.channel:hover {
     color: white;
 }
+
 .channel-name {
     display: inline-block;
     background-color: #32353a;
@@ -130,7 +131,6 @@ li.channel:hover {
 }
 
 .chat-div::-webkit-scrollbar {
-
     background-color: #32353a;
 }
 /* #top_level_chat {
@@ -141,10 +141,11 @@ li.channel:hover {
     height: 90%;
     grid-area: chat;
     width: 1500px;
+    overflow-wrap: normal;
 }
+
 #top_level_chat {
     position: fixed;
     bottom: 0;
     left: 3;
-    
 }

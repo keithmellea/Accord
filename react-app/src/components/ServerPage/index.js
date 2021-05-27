@@ -4,11 +4,17 @@ import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
+<<<<<<< HEAD
+import { getChannelsServer } from "../../store/channel";
+import { allCategories } from "../../store/category";
+import Chat from '../Chat/Chat';
+=======
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
 import { allCategories } from "../../store/category"
 import { allUsersByServerId } from "../../store/user_server"
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
+>>>>>>> main
 
 import './ServerPage.css';
 

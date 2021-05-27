@@ -8,9 +8,9 @@ const load = (list) => ({
 });
 
 
-const add_server = (data) => ({
-  type: LOAD,
-  list: data,
+const add_server = (server) => ({
+  type: ADD_SERVER,
+  server
 });
 
 
@@ -29,7 +29,8 @@ export const getUsersServers = () => async (dispatch) => {
 };
 
 //POST a new server
-export const addChannel = (img_url, server_name) => async (dispatch) => {
+export const addServer = (img_url, server_name) => async (dispatch) => {
+  console.log(img_url, server_name)
   const res = await fetch('/api/servers/', {
       method: "POST",
       headers: {
@@ -41,6 +42,7 @@ export const addChannel = (img_url, server_name) => async (dispatch) => {
       }),
   })
   const data = await res.json();
+  console.log("THIS IS THE SERVEER WE ARE TRYING TO CRAETE", data)
   dispatch(add_server(data));
   return ;
 }
@@ -62,7 +64,7 @@ const serversReducer = (state = initialState, action) => {
     case ADD_SERVER: {
       return {
         ...state,
-        list: action.list
+        list: action.server
       }
     }
 

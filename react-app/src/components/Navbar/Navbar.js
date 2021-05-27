@@ -41,8 +41,12 @@ const NavBar = () => {
         <div className="servers"></div>
       </ContextMenuTrigger>
       {/* <button onClick={handleOpen}>Test Modal</button> */}
-      <Modal  open={open} onClose={handleClose}>
-        <h1>burh</h1>
+      <Modal  
+        open={open} 
+        onClose={handleClose}>
+        <div id="modal">
+          <h1>TEST</h1>
+        </div>
       </Modal>
       <ul className="server-list">
         <div id="home__container">

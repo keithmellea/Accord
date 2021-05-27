@@ -7,9 +7,9 @@ faker = Faker()
 def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
-                password='password')
+                profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
     for i in range(0, 20):
-        another = User(username=faker.name(), email = faker.email(), password='password')
+        another = User(username=faker.name(), email = faker.email(), profile_picture=faker.image_url(), password='password')
         db.session.add(another)
 
     db.session.add(demo)

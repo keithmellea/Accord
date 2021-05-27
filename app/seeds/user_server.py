@@ -6,9 +6,9 @@ faker = Faker()
 def seed_useserv():
 
     userone = User(username='Demo2', email='demo2@aa.io',
-                password='password')
+                profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
     usertwo = User(username='Demo3', email='demo3@aa.io',
-                password='password')
+                profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
 
     usertree = User.query.get(2)
     serverone = Server(server_name="Test", img_url=faker.image_url())

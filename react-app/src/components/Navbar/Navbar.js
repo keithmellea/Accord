@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 // import LogoutButton from '../auth/LogoutButton';
 import { useEffect } from "react";
@@ -6,17 +6,33 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
 import { ContextMenuTrigger } from "react-contextmenu";
 import { allServersByUserId } from "../../store/user_server"
+import Modal from '@material-ui/core/Modal';
 import './Navbar.css'
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id)
   const usersServers = useSelector((state) => {return state.user_server.server;});
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getUsersServers());
     dispatch(allServersByUserId(userId))
   }, [dispatch]);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const modalBody = (
+    <div>
+
+    </div>
+  );
 
   // console.log(usersServers)
   return (
@@ -24,7 +40,10 @@ const NavBar = () => {
       <ContextMenuTrigger id="contextmenu">
         <div className="servers"></div>
       </ContextMenuTrigger>
-
+      {/* <button onClick={handleOpen}>Test Modal</button> */}
+      <Modal  open={open} onClose={handleClose}>
+        <h1>burh</h1>
+      </Modal>
       <ul className="server-list">
         <div id="home__container">
             <NavLink to ="/">
@@ -45,8 +64,8 @@ const NavBar = () => {
             </NavLink>
           </li>
         ))}
-        <NavLink to={"/servers/create"}>
-          <li className="create-button">
+        {/* <NavLink to={"/servers/create"}> */}
+          <li className="create-button"onClick={handleOpen}>
               <div className="create-server-icon">
                 {/* <img className="create-server-img">PLUS SIGN HERE</img> */}
                 <svg id="Component_1_3" data-name="Component 1 – 3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -55,7 +74,7 @@ const NavBar = () => {
                 </svg>
               </div>
           </li>
-        </NavLink>
+        {/* </NavLink> */}
         <NavLink to={"/"}>
           <li className="explore-button">
               <div className="explore-servers-icon">

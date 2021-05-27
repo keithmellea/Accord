@@ -11,14 +11,17 @@ const Chat = () => {
     const [channel, setChannel] = useState()
     const [show, setShow] = useState(false)
     const user = useSelector(state => state.session.user)
-    // const [messages_two, setMessages_two] = useState("");
     const dispatch = useDispatch();
-    const chats = useSelector(state => state.chats)
+    let chats = useSelector(state => state.chats)
     console.log(chats)
-    if (Object.keys(chats).length) {
-        console.log("this works")
-        
-    }
+    // if (Object.keys(chats).length > 0) {
+
+    //     chats.chats.map(msg => {
+    //         console.log(msg.content)
+    //     })
+    // }
+    console.log(messages)
+    console.log(user)
     useEffect(() => {
         // open socket connection
         // create websocket
@@ -36,6 +39,8 @@ const Chat = () => {
 
     }, [channel, chats])
 
+
+
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
     };
@@ -44,13 +49,9 @@ const Chat = () => {
         setChannel(e.target.value)
 
     }
-    // const userComponents = chats.map((chat) => {
-    //     return (
-    //         <li key={chat.id}>
-    //             <div>{chat.content}</div>
-    //         </li>
-    //     );
-    // });
+
+
+
 
     const sendChat = async (e) => {
         e.preventDefault()
@@ -59,9 +60,11 @@ const Chat = () => {
         await dispatch(chatPost(chatInput))
     }
 
+
     const messagesForChannel = async () => {
         console.log("This is a test")
         await dispatch(chatForChannel(channel))
+        setShow(true)
     }
 
     // if (!chats) {
@@ -69,6 +72,14 @@ const Chat = () => {
     // }
     return (user && (
         <div id="top_level" >
+            {show ? chats.chats.map((msg) => {
+                return (
+                    <div id="previousMessages" key={msg.id}>
+                        <div id="Chat_user">{user.username}</div>
+                        <div id="Chat_message">{msg.content}</div>
+                    </div>
+                );
+            }) : <div></div>}
             <div >
                 {messages.map((message, ind) => (
                     <div id="messageComponent">
@@ -80,13 +91,11 @@ const Chat = () => {
                     </div>
                 ))}
                 <input
-                    setShow={true}
                     placeholder="Select Channel"
                     value={channel}
                     onChange={updateChannel}
                 />
                 <button onClick={messagesForChannel}> Channel {channel}</button>
-
             </div>
 
             <form id="top_level_chat" method="POST" onSubmit={sendChat}>

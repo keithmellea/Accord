@@ -29,7 +29,7 @@ export const getUsersServers = () => async (dispatch) => {
 };
 
 //POST a new server
-export const addChannel = (img_url, server_name) => async (dispatch) => {
+export const addServer = (img_url, server_name) => async (dispatch) => {
   const res = await fetch('/api/servers/', {
       method: "POST",
       headers: {

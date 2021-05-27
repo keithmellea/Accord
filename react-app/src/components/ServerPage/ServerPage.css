@@ -12,16 +12,16 @@
 
 .server-page {
     display: grid;
-    grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 130px 125px;
     /* sizing for navbar may be off due to grid size being larger
     than the chat and server name bar */
     grid-template-rows: 50px 200px 200px 200px 200px;
     grid-template-areas:
     "name name name channel-name channel-name channel-name channel-name channel-name channel-name options options"
-    "channels channels channels chat chat chat chat chat chat chat chat"
-    "channels channels channels chat chat chat chat chat chat chat chat"
-    "channels channels channels chat chat chat chat chat chat chat chat"
-    "channels channels channels chat chat chat chat chat chat chat chat";
+    "channels channels channels chat chat chat chat chat chat users users"
+    "channels channels channels chat chat chat chat chat chat users users"
+    "channels channels channels chat chat chat chat chat chat users users"
+    "channels channels channels chat chat chat chat chat chat users users";
 }
 
 .name {
@@ -148,4 +148,9 @@ li.channel:hover {
     position: fixed;
     bottom: 0;
     left: 3;
+}
+
+.members-div {
+    grid-area: users;
+    background-color: #32353a;
 }

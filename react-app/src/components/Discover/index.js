@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import {getServers, joinServer} from "../../store/discover";
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import UserBar from "../UserBar"
+import Navbar from "../Navbar/Navbar"
 import './Discover.css'
 
 function Discover() {
@@ -30,16 +32,17 @@ function Discover() {
 
    return (
       <div id="discover--container">
-         {/* <NavBar /> */}
+         {/* <Navbar /> */}
          <div id="discover__sidebar">
             <h1 id="discover__sidebar--title">Discover</h1>
          </div>
+         <UserBar />
          <div id="discover">
             <div id="discover__svg--container">
                <h1 id="discover__svg--title">Servers</h1>
                <div id="discover--svg"></div>
             </div>
-
+            <div></div>
             <div id="discover__servers">
                {servers.map((server)=> (
                   <form key={server.id} onSubmit={joinServerSubmit} id="join__form">

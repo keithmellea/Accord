@@ -8,9 +8,7 @@ function UserBar(){
 
    return (
       <div id="userbar__container">
-         <div id="userbar">
-            <div>{user.username}</div>
-         </div>
+         <div id="userbar">{user.username}</div>
       </div>
    )
 }

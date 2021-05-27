@@ -1,10 +1,16 @@
 #userbar__container {
    /* height: 100vh; */
+   width:237px;
    position: fixed;
    bottom: 0px;
    left: 72px;
+   height: 52px;
+   background-color: #292B2F;
+   display: flex;
+   align-items: center;
 }
 
 #userbar {
-
+   color: white;
+   margin-left: 5px;
 }

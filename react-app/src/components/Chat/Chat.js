@@ -79,7 +79,7 @@ const Chat = () => {
                         <div id="Chat_message">{msg.content}</div>
                     </div>
                 );
-            }) : <div>No New Messages</div>}
+            }) : <div></div>}
             <div >
                 {messages.map((message, ind) => (
                     <div id="messageComponent">

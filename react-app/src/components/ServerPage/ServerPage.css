@@ -1,8 +1,6 @@
- 
-/* overflow hidden on parent elements remove the navbars sticky position :'[ */
- /* #root {
+ #root {
     overflow-y: hidden;
-} */
+}
 
 /* #html::-webkit-scrollbar {
     display: none;
@@ -17,13 +15,15 @@
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     /* sizing for navbar may be off due to grid size being larger
     than the chat and server name bar */
-    grid-template-rows: 50px 200px 200px 200px 200px;
+    grid-template-rows: 50px 200px 200px 200px 200px 100px;
     grid-template-areas:
     "name name name channel-name channel-name channel-name channel-name channel-name channel-name options options"
     "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat"
+    "channels channels channels chat chat chat chat chat chat chat chat"
     "channels channels channels chat chat chat chat chat chat chat chat";
+
 }
 
 .name {

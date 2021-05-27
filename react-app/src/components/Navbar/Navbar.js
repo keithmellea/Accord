@@ -13,6 +13,8 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id)
   const usersServers = useSelector((state) => {return state.user_server.server;});
+
+  // use state for modal
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -20,6 +22,8 @@ const NavBar = () => {
     dispatch(allServersByUserId(userId))
   }, [dispatch]);
 
+
+  // functions to handle opening and closing modal
   const handleOpen = () => {
     setOpen(true);
   };
@@ -28,7 +32,6 @@ const NavBar = () => {
     setOpen(false);
   };
 
-  // console.log(usersServers)
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
@@ -72,7 +75,8 @@ const NavBar = () => {
           </li>
         ))}
         {/* <NavLink to={"/servers/create"}> */}
-          <li className="create-button"onClick={handleOpen}>
+          
+          <li className="create-button" onClick={handleOpen}>
               <div className="create-server-icon">
                 {/* <img className="create-server-img">PLUS SIGN HERE</img> */}
                 <svg id="Component_1_3" data-name="Component 1 – 3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">

@@ -8,11 +8,13 @@ import { getChannelsServer, editChannel, deleteChannel } from "../../store/chann
 import { allCategories } from "../../store/category"
 import { allUsersByServerId } from "../../store/user_server"
 import Chat from '../Chat/Chat'
+import Modal from "@material-ui/core/Modal";
 
 import './ServerPage.css';
 
 const ServerPage = () => {
 
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -66,8 +68,39 @@ const ServerPage = () => {
     const serverCats = serverCategories();
     console.log("server categories", serverCategories());
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
     return (
       <div className="server-page">
+
+        <Modal 
+        open={open} 
+        onClose={handleClose}>
+          <div id="modal">
+            <h1>Edit/Delete Channel</h1>
+            <form>
+              <label for="channel-name" className="edit-label">
+                Edit Channel
+              </label>
+              <input
+                type="text"
+                name="channel_name"
+                className="form_input"
+                required
+              ></input>
+              <button type="submit" id="form_button">
+                Edit Channel
+              </button>
+            </form>
+          </div>
+        </Modal>
+
         <div className="name">{`${server.server_name}`}</div>
         <div className="categories">
           <div>
@@ -88,9 +121,11 @@ const ServerPage = () => {
                           {`${channel.title}`}
                           <button
                             type="button"
-                            onClick={editChannel}
+                            onClick={handleOpen}
                             className="edit-channel"
-                          >⚙</button>
+                          >
+                            ⚙
+                          </button>
                         </li>
                       </NavLink>
                     ) : null
@@ -110,7 +145,7 @@ const ServerPage = () => {
         <div className="members-div">
           {usersByServer?.map((user) => (
             <li className="user">{`${user.username}`}</li>
-           ))}
+          ))}
         </div>
         <div className="options"></div>
       </div>

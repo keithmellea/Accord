@@ -27,12 +27,12 @@ const ServerPage = () => {
 
   const servers = useSelector((state) => {
     return state.servers.list.servers;
-  }); 
- 
+  });
+
    const channels = useSelector((state) => {
-  console.log("CHANNELS", Object.values(state.channel)); 
+  console.log("CHANNELS", Object.values(state.channel));
     return Object.values(state.channel);
-   }); 
+   });
 
    const categories = useSelector((state) => {
      console.log("CATEGORIES", Object.values(state.category));

@@ -4,14 +4,23 @@ import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
+<<<<<<< HEAD
 import { getChannelsServer } from "../../store/channel";
 import { allCategories } from "../../store/category";
 import Chat from '../Chat/Chat';
+=======
+import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
+import { allCategories } from "../../store/category"
+import { allUsersByServerId } from "../../store/user_server"
+import Chat from '../Chat/Chat'
+import Modal from "@material-ui/core/Modal";
+>>>>>>> main
 
 import './ServerPage.css';
 
 const ServerPage = () => {
 
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -19,6 +28,7 @@ const ServerPage = () => {
     dispatch(getUsersServers());
     dispatch(getChannelsServer(id));
     dispatch(allCategories());
+    dispatch(allUsersByServerId(id));
   }, [dispatch]);
 
   const servers = useSelector((state) => {
@@ -35,10 +45,17 @@ const ServerPage = () => {
      return Object.values(state.category);
    })
 
+   const usersByServer = useSelector((state) => {
+     console.log("USERS BY SERVER", state.user_server["user"])
+     return state.user_server["user"]
+   })
+
   if (!servers || !channels) {
     return null;
   } else {
     const server = servers[id];
+
+ console.log("USER", usersByServer);
 
     const serverCategories = () => {
       let serverCats = [];
@@ -47,12 +64,6 @@ const ServerPage = () => {
         let channel = channels[i];
         for (let j = 0; j < categories.length; j++) {
           let category = categories[j];
-          console.log(
-            "channel =",
-            channel.category_id,
-            "channel =",
-            category.id
-          );
           if (channel.category_id === category.id) {
             serverCats.push(category);
           }
@@ -63,8 +74,39 @@ const ServerPage = () => {
     const serverCats = serverCategories();
     console.log("server categories", serverCategories());
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
     return (
       <div className="server-page">
+
+        <Modal 
+        open={open} 
+        onClose={handleClose}>
+          <div id="modal">
+            <h1>Edit/Delete Channel</h1>
+            <form>
+              <label for="channel-name" className="edit-label">
+                Edit Channel
+              </label>
+              <input
+                type="text"
+                name="channel_name"
+                className="form_input"
+                required
+              ></input>
+              <button type="submit" id="form_button">
+                Edit Channel
+              </button>
+            </form>
+          </div>
+        </Modal>
+
         <div className="name">{`${server.server_name}`}</div>
         <div className="categories">
           <div>
@@ -79,7 +121,19 @@ const ServerPage = () => {
                 <ul className="text-channels">
                   {channels?.map((channel) =>
                     channel.category_id === category.id ? (
-                      <li className="channel"> {`${channel.title}`}</li>
+                      <NavLink to={`/servers/${channel.id}`}>
+                        <li className="channel">
+                          {" "}
+                          {`${channel.title}`}
+                          <button
+                            type="button"
+                            onClick={handleOpen}
+                            className="edit-channel"
+                          >
+                            ⚙
+                          </button>
+                        </li>
+                      </NavLink>
                     ) : null
                   )}
                 </ul>
@@ -94,7 +148,11 @@ const ServerPage = () => {
           <img className="hash" height="24" width="24"></img>
           <span className="channel-text">channel</span>
         </div>
-        <div className="members-div"></div>
+        <div className="members-div">
+          {usersByServer?.map((user) => (
+            <li className="user">{`${user.username}`}</li>
+          ))}
+        </div>
         <div className="options"></div>
       </div>
     );

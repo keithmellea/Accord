@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
   servers = db.relationship(
         "Server",
         secondary=user_server,
-        primaryjoin=(user_server.c.user_id == id),
+        # primaryjoin=(user_server.c.user_id == id),
         back_populates="users"
   )
 

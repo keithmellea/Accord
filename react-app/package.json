@@ -7,6 +7,7 @@
     "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
     "@babel/helper-define-map": "^7.13.12",
     "@babel/helper-regex": "^7.10.5",
+    "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",

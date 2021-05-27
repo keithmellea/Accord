@@ -30,16 +30,8 @@ color: black
 }
 
 ::-webkit-scrollbar-corner {
-    background-color: 36393F;
+    background-color: #36393F;
 }
-
-/* html,body {
-    height:100%;
-} */
-
-/* #root {
-    height:100%;
-} */
 
 .navbar {
     background-color: #202225;
@@ -63,18 +55,19 @@ color: black
     padding: 0;
     /* padding-bottom: 100px; */
     height: 100%;
+    align-items: center;
 }
 
 .server-list li {
-    display: flex;
     justify-content: center;
+    display: flex;
     margin: 4px 0px;
 }
 
 .user_server-img {
     height: 48px;
     width: 48px;
-    border-radius: 20px;
+    border-radius: 25px;
     transition: border-radius 0.2s;
 }
 
@@ -112,6 +105,109 @@ color: black
     margin: 4px 0px;
     border-radius: 3px;
 }
+
+.create-button {
+    width: 48px;
+    height: 48px;
+    background-color: #36393F;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-radius .2s, background-color .2s;
+}
+
+.create-button:hover {
+    border-radius: 12px;
+    background-color: #3BA55C;
+}
+
+.create-button svg {
+    margin-top: 3px;
+    border-radius: 25px;
+}
+
+.explore-button {
+    width: 48px;
+    height: 48px;
+    background-color: #36393F;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-radius .2s, background-color .2s;
+}
+
+.explore-button:hover {
+    border-radius: 12px;
+    background-color: #3BA55C;
+}
+
+.explore-button svg {
+    margin-top: 3px;
+    border-radius: 25px;
+}
+
+#modal {
+    width: 400px;
+    height: 280px;
+    background-color: white;
+    margin: auto;
+    margin-top: 21vh;
+    border-radius: 5px;
+    outline: none;
+    /* padding: 10px; */
+}
+
+#modal h1 {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 0px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+#modal form {
+    margin-left: 15px;
+}
+
+.form_label {
+    width:300px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    color: #4F5660;
+}
+
+.form_input {
+    width: 360px;
+    transition: outline-color .3s;
+}
+
+.form_input:focus {
+    outline-color: #3F8CE7;
+}
+
+#form_button {
+    width: 368px;
+    margin-top: 20px;
+    background-color: #747F8D;
+    color: white;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color .1s;
+}
+
+#form_button:hover {
+    background-color: #68727F;
+}
+
 /* 
 .title-bubble {
     position: relative;

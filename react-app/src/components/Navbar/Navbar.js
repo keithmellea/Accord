@@ -28,18 +28,13 @@ const NavBar = () => {
     setOpen(false);
   };
 
-  const modalBody = (
-    <div>
-
-    </div>
-  );
-
   // console.log(usersServers)
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
         <div className="servers"></div>
       </ContextMenuTrigger>
+
       <Modal  
         open={open} 
         onClose={handleClose}
@@ -55,6 +50,7 @@ const NavBar = () => {
           </form>
         </div>
       </Modal>
+
       <ul className="server-list">
         <div id="home__container">
             <NavLink to ="/">

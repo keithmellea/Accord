@@ -35,8 +35,8 @@ const NavBar = () => {
         <div className="servers"></div>
       </ContextMenuTrigger>
 
-      <Modal  
-        open={open} 
+      <Modal
+        open={open}
         onClose={handleClose}
         >
         <div id="modal">

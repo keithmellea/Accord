@@ -34,6 +34,8 @@ export const joinServer = (server_id) => async (dispatch) => {
    if(id.errors) {
       return;
    }
+
+   dispatch(join(id))
 }
 
 export default function reducer(state=initialState, action) {
@@ -44,6 +46,7 @@ export default function reducer(state=initialState, action) {
          return newState;
       case JOIN_SERVER:
          newState["joined_server"] = action.server_id
+         return newState;
       default:
          return state;
    }

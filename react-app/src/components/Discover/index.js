@@ -11,7 +11,7 @@ function Discover() {
 
    const servers = useSelector(state => state.discover.servers)
    const user = useSelector(state => state.session.user);
-   console.log("THIS IS THE SERVER ID", serverId)
+   // console.log("THIS IS THE SERVER ID", serverId)
 
    useEffect(() => {
       dispatch(getServers())
@@ -38,7 +38,7 @@ function Discover() {
 
             <div id="discover__servers">
                {servers.map((server)=> (
-                  <form onSubmit={joinServerSubmit} id="join__form">
+                  <form key={server.id} onSubmit={joinServerSubmit} id="join__form">
                      <input type="hidden" name="user_id" value={user.id}></input>
                      <input type="hidden" name="server_id" value={server.id}></input>
                      <div className="server__container">
@@ -46,7 +46,7 @@ function Discover() {
                            <img src={server.img_url}></img>
                         </div>
                         <div className="server__container--title">{server.name}</div>
-                        <button type="submit" onClick={() => setServerId(server.id)}class="server__container--button">Join</button>
+                        <button type="submit" onClick={() => setServerId(server.id)} className="server__container--button">Join</button>
                      </div>
                   </form>
                ))}

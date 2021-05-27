@@ -14,7 +14,7 @@ export const getUsersServers = () => async (dispatch) => {
   });
 
   if (response.ok) {
-      console.log("OK")
+      // console.log("OK")
     const usersServers = await response.json();
     dispatch(load(usersServers));
   }

@@ -12,6 +12,7 @@ import { authenticate } from "./store/session";
 import Chat from './components/Chat/Chat'
 import ServerPage from "./components/ServerPage"
 import Channel from './components/Channel';
+// import UserBar from './components/UserBar'
 
 function App() {
   const user = useSelector(state => state.session.user)

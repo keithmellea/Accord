@@ -2,7 +2,6 @@
 color: black
 }
 
-<<<<<<< HEAD
 #root {
     display: flex;
     /* overflow-x: hidden; */
@@ -49,16 +48,6 @@ color: black
     width:72px;
     position: sticky;
 }
-=======
- .navbar {
-    /* top: 0;
-    bottom: 0;
-    overflow-y: scroll;
-    overflow-x: hidden; */
-    /* overflow-y: scroll;
-    overflow-x: hidden; */
-} 
->>>>>>> main
 
 .navbar::-webkit-scrollbar {
     display: none;

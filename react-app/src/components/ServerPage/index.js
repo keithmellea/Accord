@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
 import { getChannelsServer } from "../../store/channel";
-import { allCategories } from "../../store/category"
-import Chat from '../Chat/Chat'
+import { allCategories } from "../../store/category";
+import Chat from '../Chat/Chat';
 
 import './ServerPage.css';
 

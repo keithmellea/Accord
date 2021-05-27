@@ -9,7 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Discover from "./components/Discover"
 import { authenticate } from "./store/session";
-import Chat from './components/chat/Chat'
+import Chat from './components/Chat/Chat'
 import ServerPage from "./components/ServerPage"
 import Channel from './components/Channel';
 

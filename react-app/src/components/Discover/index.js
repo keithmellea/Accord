@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
-import {getServers} from "../../store/discover";
+import {getServers, joinServer} from "../../store/discover";
 import { useDispatch, useSelector } from 'react-redux'
 import './Discover.css'
+
 function Discover() {
 
    const dispatch = useDispatch()
 
-   // const [servers, setServers] = useState([]);
+   const [serverId, setServerId] = useState(null)
+
    const servers = useSelector(state => state.discover.servers)
-   console.log(servers)
+   const user = useSelector(state => state.session.user);
+   console.log("THIS IS THE SERVER ID", serverId)
+
    useEffect(() => {
       dispatch(getServers())
    },[dispatch])
 
-   const joinServer = (e) => {
+   const joinServerSubmit = (e) => {
       e.preventDefault();
+      dispatch(joinServer(serverId))
    }
 
    if(!servers) return null;
@@ -33,15 +38,17 @@ function Discover() {
 
             <div id="discover__servers">
                {servers.map((server)=> (
-                  <div className="server__container">
-                     <div className="server__container--img">
-                        <img src={server.img_url}></img>
+                  <form onSubmit={joinServerSubmit} id="join__form">
+                     <input type="hidden" name="user_id" value={user.id}></input>
+                     <input type="hidden" name="server_id" value={server.id}></input>
+                     <div className="server__container">
+                        <div className="server__container--img">
+                           <img src={server.img_url}></img>
+                        </div>
+                        <div className="server__container--title">{server.name}</div>
+                        <button type="submit" onClick={() => setServerId(server.id)}class="server__container--button">Join</button>
                      </div>
-                     <div className="server__container--title">{server.name}</div>
-                     <form onSubmit={joinServer} id="join__form">
-                        <button class="server__container--button">Join</button>
-                     </form>
-                  </div>
+                  </form>
                ))}
             </div>
          </div>

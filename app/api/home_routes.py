@@ -1,6 +1,7 @@
-from flask import Blueprint, session
-from app.models import Server, db, user_server
-
+from flask import Blueprint, session, request
+from app.models import Server, db, user_server, User
+from app.forms import JoinServerForm
+#import user from flask login
 home_routes = Blueprint('home', __name__)
 
 @home_routes.route('/')
@@ -9,5 +10,10 @@ def servers():
    # print('TESTING THE QUERY WITH SERVERS', user_server)
    return {"servers": [server.to_dict() for server in servers]}
 
-# @home_route.route('/', methods=['POST'])
-# def createUserServer(userId, serverId):
+@home_routes.route('/<server_id>', methods=['POST'])
+def createUserServer(server_id): 
+   # form = JoinServerForm()
+   # data = form.data
+   print("TESTING TO SEE FORM DATA", server_id)
+   return "hi"
+   

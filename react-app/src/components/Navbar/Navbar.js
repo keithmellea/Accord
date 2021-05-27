@@ -5,17 +5,17 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
 import { ContextMenuTrigger } from "react-contextmenu";
-
+import { allServersByUserId } from "../../store/user_server"
 import './Navbar.css'
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const usersServers = useSelector((state) => {
-    return state.servers.list.servers;
-  });
+  const userId = useSelector((state) => state.session.user.id)
+  const usersServers = useSelector((state) => {return state.user_server.server;});
 
   useEffect(() => {
     dispatch(getUsersServers());
+    dispatch(allServersByUserId(userId))
   }, [dispatch]);
 
   // console.log(usersServers)

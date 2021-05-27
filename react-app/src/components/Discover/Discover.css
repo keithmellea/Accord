@@ -12,13 +12,11 @@ body {
 }
 
 #discover__sidebar {
-   /* width: 240px; */
-   padding-right:120px;
-   /* left: 100px; */
-   /* padding:60px; */
-   /* height: 100%; */
+   padding-right: 120px;
    background-color: #2F3136;
-   /* position:static; */
+   top: 0px;
+   position: sticky;
+   height: 100vh;
 }
 
 #discover__sidebar--title {

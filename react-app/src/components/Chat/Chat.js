@@ -57,7 +57,7 @@ const Chat = () => {
         e.preventDefault()
         socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
-        await dispatch(chatPost(chatInput))
+        await dispatch(chatPost(channel, chatInput))
     }
 
 

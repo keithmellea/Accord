@@ -29,8 +29,8 @@ export const chatForChannel = (channel_id) => async (dispatch) => {
 
 
 
-export const chatPost = (content) => async (dispatch) => {
-    const res = await fetch('/api/chat/', {
+export const chatPost = (id, content) => async (dispatch) => {
+    const res = await fetch(`/api/chat/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

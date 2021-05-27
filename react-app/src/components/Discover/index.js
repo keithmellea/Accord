@@ -32,7 +32,7 @@ function Discover() {
 
    return (
       <div id="discover--container">
-         <Navbar />
+         {/* <Navbar /> */}
          <div id="discover__sidebar">
             <h1 id="discover__sidebar--title">Discover</h1>
          </div>

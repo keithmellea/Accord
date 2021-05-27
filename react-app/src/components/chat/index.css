@@ -10,7 +10,10 @@
 /* #messageComponent {
     display:flex;
 } */
+/* #previousMessages > div {
+    color: white;
 
+} */
 #another {
     display: inline-block;
 }

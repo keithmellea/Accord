@@ -1,6 +1,7 @@
 from flask import Blueprint, session, request
 from app.models import Server, db, user_server, User
 from app.forms import JoinServerForm
+from flask_login import current_user
 #import user from flask login
 home_routes = Blueprint('home', __name__)
 
@@ -14,6 +15,14 @@ def servers():
 def createUserServer(server_id): 
    # form = JoinServerForm()
    # data = form.data
-   print("TESTING TO SEE FORM DATA", server_id)
-   return "hi"
+   user = User.query.get(current_user.id)
+   server = Server.query.get(server_id)
+   # server = Server.query.filter_by(id=server_id).first()
+   print("THIS APPRENTLY IS THE CURRENT USER", user.id)
+   print("TESTING TO SEE FORM DATA", server.id)
+   user.servers.append(server)
+
+   db.session.add(user)
+   db.session.commit()
+   return
    

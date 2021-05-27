@@ -16,7 +16,7 @@ class Server(db.Model):
     users = db.relationship(
         "User",
         secondary=user_server,
-        secondaryjoin=(user_server.c.server_id == id),
+        # secondaryjoin=(user_server.c.server_id == id),
         back_populates="servers"
     )
 

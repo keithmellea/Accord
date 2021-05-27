@@ -4,8 +4,9 @@ import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
-import { getChannelsServer } from "../../store/channel";
+import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
 import { allCategories } from "../../store/category"
+import { allUsersByServerId } from "../../store/user_server"
 import Chat from '../Chat/Chat'
 
 import './ServerPage.css';
@@ -19,6 +20,7 @@ const ServerPage = () => {
     dispatch(getUsersServers());
     dispatch(getChannelsServer(id));
     dispatch(allCategories());
+    dispatch(allUsersByServerId(id));
   }, [dispatch]);
 
   const servers = useSelector((state) => {
@@ -35,10 +37,17 @@ const ServerPage = () => {
      return Object.values(state.category);
    })
 
+   const usersByServer = useSelector((state) => {
+     console.log("USERS BY SERVER", state.user_server["user"])
+     return state.user_server["user"]
+   })
+
   if (!servers || !channels) {
     return null;
   } else {
     const server = servers[id];
+
+ console.log("USER", usersByServer);
 
     const serverCategories = () => {
       let serverCats = [];
@@ -47,12 +56,6 @@ const ServerPage = () => {
         let channel = channels[i];
         for (let j = 0; j < categories.length; j++) {
           let category = categories[j];
-          console.log(
-            "channel =",
-            channel.category_id,
-            "channel =",
-            category.id
-          );
           if (channel.category_id === category.id) {
             serverCats.push(category);
           }
@@ -79,7 +82,17 @@ const ServerPage = () => {
                 <ul className="text-channels">
                   {channels?.map((channel) =>
                     channel.category_id === category.id ? (
-                      <li className="channel"> {`${channel.title}`}</li>
+                      <NavLink to={`/servers/${channel.id}`}>
+                        <li className="channel">
+                          {" "}
+                          {`${channel.title}`}
+                          <button
+                            type="button"
+                            onClick={editChannel}
+                            className="edit-channel"
+                          >⚙</button>
+                        </li>
+                      </NavLink>
                     ) : null
                   )}
                 </ul>
@@ -94,7 +107,11 @@ const ServerPage = () => {
           <img className="hash" height="24" width="24"></img>
           <span className="channel-text">channel</span>
         </div>
-        <div className="members-div"></div>
+        <div className="members-div">
+          {usersByServer?.map((user) => (
+            <li className="user">{`${user.username}`}</li>
+           ))}
+        </div>
         <div className="options"></div>
       </div>
     );

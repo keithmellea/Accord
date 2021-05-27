@@ -149,18 +149,63 @@ color: black
 }
 
 #modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 280px;
     background-color: white;
     margin: auto;
-    margin-top: 30vh;
+    margin-top: 21vh;
+    border-radius: 5px;
+    outline: none;
+    /* padding: 10px; */
 }
 
 #modal h1 {
-    color: black
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 0px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+#modal form {
+    margin-left: 15px;
+}
+
+.form_label {
+    width:300px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    color: #4F5660;
+}
+
+.form_input {
+    width: 360px;
+    transition: outline-color .3s;
+}
+
+.form_input:focus {
+    outline-color: #3F8CE7;
+}
+
+#form_button {
+    width: 368px;
+    margin-top: 20px;
+    background-color: #747F8D;
+    color: white;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color .1s;
+}
+
+#form_button:hover {
+    background-color: #68727F;
 }
 
 /* 

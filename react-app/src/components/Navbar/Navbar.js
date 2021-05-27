@@ -40,12 +40,19 @@ const NavBar = () => {
       <ContextMenuTrigger id="contextmenu">
         <div className="servers"></div>
       </ContextMenuTrigger>
-      {/* <button onClick={handleOpen}>Test Modal</button> */}
       <Modal  
         open={open} 
-        onClose={handleClose}>
+        onClose={handleClose}
+        >
         <div id="modal">
-          <h1>TEST</h1>
+          <h1>Create a server</h1>
+          <form>
+            <label for="image_url" className="form_label">Image Url</label>
+            <input type="text" name="image_url" className="form_input" required></input>
+            <label for="server_name" className="form_label">Server Name</label>
+            <input type="text" name="server_name" className="form_input" required></input>
+            <button type="submit" id="form_button">Create a Server</button>
+          </form>
         </div>
       </Modal>
       <ul className="server-list">

@@ -1,8 +1,3 @@
-#root {
-   display: flex;
-   /* overflow-x: hidden; */
-}
-
 body {
    margin: 0px;
 }
@@ -29,7 +24,7 @@ body {
 }
 
 #discover {
-   /* overflow-x: hidden; */
+   overflow-x: hidden;
    background-color: #36393F;
    width: 100%;
    height: 100%;

@@ -1,0 +1,10 @@
+#userbar__container {
+   /* height: 100vh; */
+   position: fixed;
+   bottom: 0px;
+   left: 72px;
+}
+
+#userbar {
+
+}

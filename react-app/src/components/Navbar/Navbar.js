@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
-import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
+// import LogoutButton from '../auth/LogoutButton';
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersServers } from "../../store/servers";
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import { ContextMenuTrigger } from "react-contextmenu";
 
 import './Navbar.css'
 
@@ -35,13 +35,13 @@ const NavBar = () => {
           <div id="home__border"></div>
         </div>
         {usersServers?.map((server) => (
-          <li className="user_server-div">
+          <li key={server.server_name}className="user_server-div">
             {/* {console.log(server)} */}
-            <NavLink key={server.server_name} to={`/servers/${server.id}`}>
+            <NavLink to={`/servers/${server.id}`}>
               {/* <div className="title-bubble">
               <span className="title-bubble-text">{`${server.name}`}</span>
               </div> */}
-              <img className="user_server-img" src={server?.img_url}></img>
+              <img className="user_server-img" alt="" src={server?.img_url}></img>
             </NavLink>
           </li>
         ))}

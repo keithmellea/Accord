@@ -1,6 +1,8 @@
- #root {
+ 
+/* overflow hidden on parent elements remove the navbars sticky position :'[ */
+ /* #root {
     overflow-y: hidden;
-}
+} */
 
 /* #html::-webkit-scrollbar {
     display: none;

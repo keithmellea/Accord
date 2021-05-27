@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { allChannels, getChannelsServer, addChannel, deleteChannel, editChannel, getChannelsCategory } from "../store/channel"
-import {allUserServer} from "../store/user_server"
+import {allServersByUserId, allUsersByServerId} from "../store/user_server"
 
 const Channel = () => {
     const [errors, setErrors] = useState([]);
@@ -42,7 +42,11 @@ const Channel = () => {
     }
     //----------------user server thunk actions--------------------//
     const dispatchAllUserServer = async () => {
-        await dispatch(allUserServer())
+        await dispatch(allServersByUserId(23))
+    }
+
+    const dispatchAllServerUser = async () => {
+        await dispatch(allUsersByServerId(13))
     }
 
     return (
@@ -81,7 +85,10 @@ const Channel = () => {
                 <button onClick={dispatchEditChannel}>Submit</button>
             </div>
             <div>
-                <button onClick={dispatchAllUserServer}>Click to render all users in a server</button>
+                <button onClick={dispatchAllUserServer}>Click to render all servers from a user</button>
+            </div>
+            <div>
+                <button onClick={dispatchAllServerUser}>Click to render all users from a server</button>
             </div>
         </div>
     );

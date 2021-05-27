@@ -32,6 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+    <main>
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -58,6 +59,7 @@ function App() {
           <Channel />
         </Route>
       </Switch>
+    </main>
     </BrowserRouter>
   );
 }

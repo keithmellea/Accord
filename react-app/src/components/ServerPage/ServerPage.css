@@ -1,5 +1,5 @@
-
- /* #root {
+/*
+ #root {
     overflow: hidden;
 } */
 
@@ -26,8 +26,10 @@
 }
 
 .name {
-    padding-left: 10px;
-    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    /* padding-left: 10px; */
+    /* padding-top: 15px; */
     background-color: #2b3352;
     grid-area: name;
     color: #dcddde;
@@ -41,7 +43,19 @@
 }
 
 .name:hover {
-    background-color: #3b4770;
+    background-color: #34373C;
+}
+
+#delete-server {
+    background-color: #2e3236;
+    border: 1px solid black;
+    margin-left: 160px;
+    color: #dcddde;
+    transition: border-color .2s;
+}
+
+#delete-server:hover {
+    border-color: #3b4770;
 }
 
 .categories {
@@ -50,6 +64,10 @@
     height: 100%;
     padding-top: 20px;
     overflow-y: hidden scroll;
+    /* position: fixed;
+    left: 72px;
+    top: 50px;
+    width: 15%; */
 }
 /*
 .categories::-webkit-scrollbar {
@@ -143,6 +161,8 @@ li.channel {
     overflow-y: scroll;
     position: relative;
     overflow-x: hidden;
+    /* left: 32px;
+    top: 50px; */
 }
 
 .chat-div::-webkit-scrollbar {

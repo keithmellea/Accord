@@ -7,7 +7,7 @@ const get_category = (data) => ({
 
 //GET all categories
 export const allCategories = () => async (dispatch) => {
-  const response = await fetch("/api/categories", {
+  const response = await fetch("/api/categories/", {
     headers: {
       "Content-Type": "application/json",
     },

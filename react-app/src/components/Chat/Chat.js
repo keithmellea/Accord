@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
 import { chatPost, chatForChannel } from "../../store/chats"
 import './index.css';
@@ -16,10 +15,8 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     let chats = useSelector(state => state.chats)
-    const {channelId} = useParams()
-    console.log("this is the channels object", chats)
+    console.log(chats)
 
-    console.log("this is the id", channelId)
     useEffect(() => {
 
         socket = io();
@@ -69,7 +66,7 @@ const Chat = () => {
         socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
         setMessagePosted(true)
-        await dispatch(chatPost(channelId, chatInput))
+        await dispatch(chatPost(channel, chatInput))
     }
 
 
@@ -77,17 +74,15 @@ const Chat = () => {
     const place = () => {
         if (chats)
             return show ? chats.map((msg) => {
-                if (messagePosted) {
-                    return false
-                } else {
-                    return (
-                        <div id="previousMessages" key={msg.id}>
-                            <div id="Chat_user">{user.username}</div>
-                            <div id="Chat_message">{msg.content}</div>
-                        </div>
-                    );
 
-                }
+                return (
+                    <div id="previousMessages" key={msg.id}>
+                        <div id="Chat_user">{user.username}</div>
+                        <div id="Chat_message">{msg.content}</div>
+                    </div>
+                );
+
+
             }) : <div></div>
     }
 
@@ -103,8 +98,7 @@ const Chat = () => {
 
     const messagesForChannel = async () => {
         console.log("This is a test")
-        await dispatch(chatForChannel(channelId))
-        console.log("THIS IS THE CHATFORCHANNEL", await dispatch(chatForChannel(channelId)))
+        await dispatch(chatForChannel(channel))
         setShow(true)
     }
     console.log("Chats", chats)
@@ -117,13 +111,13 @@ const Chat = () => {
             <div >
                 {messages.map((message, ind) => (
                     <div id="messageComponent">
+                        <div id="RecentMessage">Most Recent Message From you</div>
                         <div id="Chat_user" key={ind}>{`${message.user}`}</div>
                         <div id="another">
                             <div id="Chat_message" key={ind}>{` ${message.msg} `}</div>
                         </div>
                     </div>
                 ))}
-                {messagesForChannel}
                 <input
                     placeholder="Select Channel"
                     value={channel}

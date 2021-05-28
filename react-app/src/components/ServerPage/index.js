@@ -18,29 +18,36 @@ const ServerPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const test = useParams();
+  const serverId = id
+
+  // console.log("server id: ", serverId)
+  // console.log("-------USE PARAMS-------: ", test)
+
   useEffect(() => {
+    // console.log("---------------------USE EFFECT server ID-----------: ", id)
     dispatch(getUsersServers());
     dispatch(getChannelsServer(id));
     dispatch(allCategories());
     dispatch(allUsersByServerId(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const servers = useSelector((state) => {
     return state.servers.list.servers;
   });
 
    const channels = useSelector((state) => {
-  console.log("CHANNELS", Object.values(state.channel));
+  // console.log("CHANNELS", Object.values(state.channel));
     return Object.values(state.channel);
    });
 
    const categories = useSelector((state) => {
-     console.log("CATEGORIES", Object.values(state.category));
+    //  console.log("CATEGORIES", Object.values(state.category));
      return Object.values(state.category);
    })
 
    const usersByServer = useSelector((state) => {
-     console.log("USERS BY SERVER", state.user_server["user"])
+    //  console.log("USERS BY SERVER", state.user_server["user"])
      return state.user_server["user"]
    })
 
@@ -49,12 +56,12 @@ const ServerPage = () => {
   } else {
     const server = servers[id];
 
- console.log("USER", usersByServer);
+//  console.log("USER", usersByServer);
 
     const serverCategories = () => {
       let serverCats = [];
       for (let i = 0; i < channels.length; i++) {
-        console.log("channels in loop", channels);
+        // console.log("channels in loop", channels);
         let channel = channels[i];
         for (let j = 0; j < categories.length; j++) {
           let category = categories[j];
@@ -66,7 +73,7 @@ const ServerPage = () => {
         return serverCats;
     };
     const serverCats = serverCategories();
-    console.log("server categories", serverCategories());
+    // console.log("server categories", serverCategories());
 
   const handleOpen = () => {
     setOpen(true);
@@ -79,8 +86,8 @@ const ServerPage = () => {
     return (
       <div className="server-page">
 
-        <Modal 
-        open={open} 
+        <Modal
+        open={open}
         onClose={handleClose}>
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
@@ -101,7 +108,7 @@ const ServerPage = () => {
           </div>
         </Modal>
 
-        <div className="name">{`${server.server_name}`}</div>
+        <div className="name">{`${server?.server_name}`}</div>
         <div className="categories">
           <div>
             {/* {channels?.map((channel) => (
@@ -115,7 +122,7 @@ const ServerPage = () => {
                 <ul className="text-channels">
                   {channels?.map((channel) =>
                     channel.category_id === category.id ? (
-                      <NavLink to={`/servers/${channel.id}`}>
+                      <NavLink to={`/channels/${channel.id}`}>
                         <li className="channel">
                           {" "}
                           {`${channel.title}`}

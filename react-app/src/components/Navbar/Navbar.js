@@ -1,25 +1,30 @@
 import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 // import LogoutButton from '../auth/LogoutButton';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsersServers } from "../../store/servers";
 import { ContextMenuTrigger } from "react-contextmenu";
-import { allServersByUserId } from "../../store/user_server"
+import { getUsersServers } from "../../store/servers";
+import { allServersByUserId } from "../../store/user_server";
+// import {joinServer} from "../../store/discover";
+import { addServer } from "../../store/servers";
 import Modal from '@material-ui/core/Modal';
 import './Navbar.css'
 
 const NavBar = () => {
+
+  let history = useHistory()
+
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user)
+  const userId = useSelector((state) => state.session.user?.id)
   const usersServers = useSelector((state) => {return state.user_server.server;});
+
+  // use state for modal
   const [open, setOpen] = useState(false);
+  const [server_name, setServerName] = useState('');
+  const [img_url, setServerImg] = useState('');
 
-  useEffect(() => {
-    dispatch(getUsersServers());
-    dispatch(allServersByUserId(userId))
-  }, [dispatch]);
-
+  // functions to handle opening and closing modal
   const handleOpen = () => {
     setOpen(true);
   };
@@ -28,7 +33,23 @@ const NavBar = () => {
     setOpen(false);
   };
 
-  // console.log(usersServers)
+  const createServer = (e) => {
+    e.preventDefault();
+    console.log(server_name)
+    console.log(img_url)
+    dispatch(addServer(img_url, server_name))
+    setOpen(false)
+  }
+
+  useEffect(() => {
+    dispatch(getUsersServers());
+    dispatch(allServersByUserId(userId))
+  }, [dispatch]);
+
+  // function redirect() {
+  //   setOpen(false)
+  // }
+
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
@@ -41,11 +62,11 @@ const NavBar = () => {
         >
         <div id="modal">
           <h1>Create a server</h1>
-          <form>
-            <label for="image_url" className="form_label">Image Url</label>
-            <input type="text" name="image_url" className="form_input" required></input>
-            <label for="server_name" className="form_label">Server Name</label>
-            <input type="text" name="server_name" className="form_input" required></input>
+          <form onSubmit={createServer}>
+            <label className="form_label">Image Url</label>
+            <input type="text" name="image_url" className="form_input" onChange={e => setServerImg(e.target.value)} required></input>
+            <label className="form_label">Server Name</label>
+            <input type="text" name="server_name" className="form_input" onChange={e => setServerName(e.target.value)} required></input>
             <button type="submit" id="form_button">Create a Server</button>
           </form>
         </div>
@@ -72,7 +93,8 @@ const NavBar = () => {
           </li>
         ))}
         {/* <NavLink to={"/servers/create"}> */}
-          <li className="create-button"onClick={handleOpen}>
+
+          <li className="create-button" onClick={handleOpen}>
               <div className="create-server-icon">
                 {/* <img className="create-server-img">PLUS SIGN HERE</img> */}
                 <svg id="Component_1_3" data-name="Component 1 – 3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">

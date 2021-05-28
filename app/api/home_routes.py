@@ -13,13 +13,12 @@ def servers():
 
 @home_routes.route('/<server_id>', methods=['POST'])
 def createUserServer(server_id): 
-   # form = JoinServerForm()
-   # data = form.data
+   '''
+   joining a server
+   '''
    user = User.query.get(current_user.id)
    server = Server.query.get(server_id)
-   # server = Server.query.filter_by(id=server_id).first()
-   # print("THIS APPRENTLY IS THE CURRENT USER", user.id)
-   # print("TESTING TO SEE FORM DATA", server.id)
+
    user.servers.append(server)
 
    db.session.add(user)

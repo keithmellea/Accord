@@ -5,12 +5,12 @@ faker = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_serv():
 
-    gaming = Server(server_name="Gaming", img_url="url")
-    study = Server(server_name="Study", img_url="url")
+    gaming = Server(server_name="Gaming", img_url="url", owner_id=1)
+    study = Server(server_name="Study", img_url="url", owner_id=1)
     db.session.add(gaming)
     db.session.add(study)
     for i in range(0, 10):
-        another = Server(server_name=faker.word(), img_url=faker.image_url())
+        another = Server(server_name=faker.word(), img_url=faker.image_url(), owner_id=1)
         db.session.add(another)
     db.session.commit()
 

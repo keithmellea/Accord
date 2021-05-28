@@ -7,6 +7,7 @@ import { getUsersServers } from "../../store/servers";
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
 import { allCategories } from "../../store/category"
 import { allUsersByServerId } from "../../store/user_server"
+import  UserBar from '../UserBar'
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
 
@@ -78,7 +79,6 @@ const ServerPage = () => {
 
     return (
       <div className="server-page">
-
         <Modal 
         open={open} 
         onClose={handleClose}>
@@ -102,11 +102,16 @@ const ServerPage = () => {
         </Modal>
 
         <div className="name">
-          {`${server?.name}`}
-          <NavLink to={`/servers/${id}/delete`}>
-            <button>delete</button>
-          </NavLink>
+          <div>{`${server?.name}`}</div>
+          <button id="delete-server">
+            <NavLink to={`/servers/${id}/delete`}>
+              delete
+            </NavLink>
+          </button>
         </div>
+
+        <UserBar />
+
         <div className="categories">
           <div>
             {/* {channels?.map((channel) => (

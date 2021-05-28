@@ -17,15 +17,15 @@
 
 } */
 #messageComponent {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 10px;
 }
 
-#RecentMessage > div {
+/* #RecentMessage > div {
     padding-bottom: 15px;
     padding-top: 15px;
     color: red;
-}
+} */
 
 #another {
     display: inline-block;
@@ -50,6 +50,10 @@
 ::placeholder {
    color: #C7C8CA;
    opacity: .5;
+}
+
+#channelTest {
+    padding-bottom: 10px;
 }
 
 

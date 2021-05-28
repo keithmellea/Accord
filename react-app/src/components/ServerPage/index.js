@@ -3,59 +3,74 @@ import { NavLink, useParams } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsersServers } from "../../store/servers";
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
 import { allCategories } from "../../store/category"
 import { allUsersByServerId } from "../../store/user_server"
 import  UserBar from '../UserBar'
+import { allServersByUserId } from "../../store/user_server";
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
 
 import './ServerPage.css';
+//SOLUTION: when the user clicks on another server you want to clean out the redux store cats
 
 const ServerPage = () => {
-
+  const [channelName, setChannelName] = useState('');
   const [open, setOpen] = useState(false);
+  const userId = useSelector((state) => state.session.user?.id);
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  // console.log("server id: ", serverId)
+  // console.log("-------USE PARAMS-------: ", test)
+
   useEffect(() => {
-    dispatch(getUsersServers());
     dispatch(getChannelsServer(id));
     dispatch(allCategories());
     dispatch(allUsersByServerId(id));
+    dispatch(allServersByUserId(userId));
   }, [dispatch]);
 
+
   const servers = useSelector((state) => {
-    return state.servers.list.servers;
+    return Object.values(state.servers.list);
   });
 
    const channels = useSelector((state) => {
-  console.log("CHANNELS", Object.values(state.channel));
+  // console.log("CHANNELS", Object.values(state.channel));
     return Object.values(state.channel);
    });
 
+   //---------This will always render all the cats no matter what or what server you click-----
    const categories = useSelector((state) => {
-     console.log("CATEGORIES", Object.values(state.category));
+    //  console.log("CATEGORIES", Object.values(state.category));
      return Object.values(state.category);
    })
 
    const usersByServer = useSelector((state) => {
-     console.log("USERS BY SERVER", state.user_server["user"])
+    //  console.log("USERS BY SERVER", state.user_server["user"])
      return state.user_server["user"]
    })
 
-  if (!servers || !channels) {
+    const serverId = channels[0]?.server_id;
+    const serverArr = servers? servers[0] : null
+    const server = serverArr? serverArr[serverId - 1] : null
+    console.log(server);
+
+  if (!server || !channels) {
+
     return null;
+
   } else {
   const server = servers[id];
-  console.log("TESTING TO SEE THE CURRENT SERVER",server)
-  console.log("USER", usersByServer);
 
+
+//SOLUTION: has to do with this
+//how can we clean out the cats from the previous version
+//this will get all the catagories that belongs to a specific server
     const serverCategories = () => {
       let serverCats = [];
       for (let i = 0; i < channels.length; i++) {
-        console.log("channels in loop", channels);
         let channel = channels[i];
         for (let j = 0; j < categories.length; j++) {
           let category = categories[j];
@@ -67,7 +82,7 @@ const ServerPage = () => {
         return serverCats;
     };
     const serverCats = serverCategories();
-    console.log("server categories", serverCategories());
+    console.log("-----------------server categories", serverCategories());
 
   const handleOpen = () => {
     setOpen(true);
@@ -94,7 +109,11 @@ const ServerPage = () => {
                 className="form_input"
                 required
               ></input>
-              <button type="submit" id="form_button">
+              <button
+                type="submit"
+                id="form_button"
+                onClick={(channel) => editChannel(channel)}
+              >
                 Edit Channel
               </button>
             </form>
@@ -125,7 +144,7 @@ const ServerPage = () => {
                 <ul className="text-channels">
                   {channels?.map((channel) =>
                     channel.category_id === category.id ? (
-                      <NavLink to={`/servers/${channel.id}`}>
+                      <NavLink to={`/channels/${channel.id}`}>
                         <li className="channel">
                           {" "}
                           {`${channel.title}`}
@@ -149,8 +168,8 @@ const ServerPage = () => {
           <Chat />
         </div>
         <div className="channel-name">
-          <img className="hash" height="24" width="24"></img>
-          <span className="channel-text">channel</span>
+          {/* <img className="hash" height="24" width="24"></img> */}
+          <span className="channel-text"># channel</span>
         </div>
         <div className="members-div">
           {usersByServer?.map((user) => (

@@ -64,6 +64,10 @@ function App() {
         <Route path="/channels" exact={true}>
           <Channel />
         </Route>
+        {/* <ProtectedRoute path="/servers/:serverId/channels/:channelId" exact={true}> */}
+        <ProtectedRoute path="/channels/:channelId" exact={true}>
+          <ServerPage />
+        </ProtectedRoute>
       </Switch>
     </main>
     </BrowserRouter>

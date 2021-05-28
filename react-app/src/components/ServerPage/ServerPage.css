@@ -1,7 +1,7 @@
-
+/* 
  #root {
     overflow: hidden;
-}
+} */
 
 /* #html::-webkit-scrollbar {
     display: none;
@@ -51,6 +51,10 @@
     height: 80%;
     padding-top: 20px;
     overflow-y: hidden scroll;
+    position: fixed;
+    left: 72px;
+    top: 50px;
+    width: 15%;
 }
 /*
 .categories::-webkit-scrollbar {
@@ -142,8 +146,10 @@ li.channel {
 
 .chat-div {
     overflow-y: scroll;
-    position: relative;
+    position: fixed;
     overflow-x: hidden;
+    left: 32px;
+    top: 50px;
 }
 
 .chat-div::-webkit-scrollbar {

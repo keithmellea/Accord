@@ -14,18 +14,23 @@ def getServers():
     return {"servers": [server.to_dict() for server in servers]}
 
 
-@channel_routes.route('/', methods=["POST"])
+@server_routes.route('/', methods=["POST"])
 def post_channel():
     '''
     CREATE a server
     '''
     form = ServerForm()
+    user = User.query.get(current_user.id)
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("WE ARE TRYING TO GET THE USER ID", user.id)
     if form.validate_on_submit():
         server = Server(
             server_name=form.data['server_name'],
-            img_url=form.data['img_url']
+            img_url=form.data['img_url'],
+            owner_id=current_user.id
         )
+        user.servers.append(server)
+        db.session.add(user)
         db.session.add(server)
         db.session.commit()
         return server.to_dict()

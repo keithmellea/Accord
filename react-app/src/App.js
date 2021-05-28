@@ -11,7 +11,6 @@ import Discover from "./components/Discover"
 import { authenticate } from "./store/session";
 import Chat from './components/Chat/Chat'
 import ServerPage from "./components/ServerPage"
-import Channel from './components/Channel';
 // import UserBar from './components/UserBar'
 
 function App() {
@@ -60,9 +59,6 @@ function App() {
         <ProtectedRoute path="/channels/:channelId" exact={true}>
           <ServerPage />
         </ProtectedRoute>
-        <Route path="/channels" exact={true}>
-          <Channel />
-        </Route>
       </Switch>
     </main>
     </BrowserRouter>

@@ -16,7 +16,6 @@ function Discover() {
 
    const servers = useSelector(state => state.discover.servers)
    const user = useSelector(state => state.session.user);
-   // console.log("THIS IS THE SERVER ID", serverId)
 
    useEffect(() => {
       dispatch(getServers())

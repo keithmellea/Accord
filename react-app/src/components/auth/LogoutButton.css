@@ -1,0 +1,14 @@
+#logout {
+   margin-left: 120px;
+   background-color: #36393F;
+   outline: none;
+   border: 1px solid rgb(32, 32, 32);
+   color: white;
+   padding: 4px 6px;
+   /* border-radius: 8px; */
+   transition: background-color .2s;
+}
+
+#logout:hover {
+   background-color: #40444B;
+}

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 744edf9d45d9
+Revision ID: 55a648fed71b
 Revises: 
-Create Date: 2021-05-27 15:11:10.635101
+Create Date: 2021-05-28 08:40:30.917141
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '744edf9d45d9'
+revision = '55a648fed71b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,14 +25,6 @@ def upgrade():
     sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('servers',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('server_name', sa.String(length=15), nullable=False),
-    sa.Column('img_url', sa.Text(), nullable=False),
-    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -42,6 +34,16 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
+    )
+    op.create_table('servers',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('server_name', sa.String(length=15), nullable=False),
+    sa.Column('img_url', sa.Text(), nullable=False),
+    sa.Column('owner_id', sa.Integer(), nullable=True),
+    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('channels',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -78,7 +80,7 @@ def downgrade():
     op.drop_table('chats')
     op.drop_table('usersServers')
     op.drop_table('channels')
-    op.drop_table('users')
     op.drop_table('servers')
+    op.drop_table('users')
     op.drop_table('categories')
     # ### end Alembic commands ###

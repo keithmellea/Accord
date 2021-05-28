@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
 import { allCategories } from "../../store/category"
 import { allUsersByServerId } from "../../store/user_server"
+import  UserBar from '../UserBar'
 import { allServersByUserId } from "../../store/user_server";
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
@@ -61,6 +62,7 @@ const ServerPage = () => {
     return null;
 
   } else {
+  const server = servers[id];
 
 
 //SOLUTION: has to do with this
@@ -92,9 +94,8 @@ const ServerPage = () => {
 
     return (
       <div className="server-page">
-
-        <Modal
-        open={open}
+        <Modal 
+        open={open} 
         onClose={handleClose}>
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
@@ -119,7 +120,17 @@ const ServerPage = () => {
           </div>
         </Modal>
 
-        <div className="name">{`${server.name}`}</div>
+        <div className="name">
+          <div>{`${server?.name}`}</div>
+          <button id="delete-server">
+            <NavLink to={`/servers/${id}/delete`}>
+              delete
+            </NavLink>
+          </button>
+        </div>
+
+        <UserBar />
+
         <div className="categories">
           <div>
             {/* {channels?.map((channel) => (

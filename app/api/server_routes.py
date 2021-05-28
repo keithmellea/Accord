@@ -14,7 +14,7 @@ def getServers():
     return {"servers": [server.to_dict() for server in servers]}
 
 
-@channel_routes.route('/', methods=["POST"])
+@server_routes.route('/', methods=["POST"])
 def post_channel():
     '''
     CREATE a server

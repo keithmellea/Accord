@@ -3,9 +3,9 @@
     font-family: Helvetica Neue ,Helvetica ,Arial ,sans-serif;
 }
 
-html {
-    /* background-color: #36393F; */
-}
+/* html {
+    background-color: #36393F;
+} */
 
 main {
     width: calc(100vw - 81px)

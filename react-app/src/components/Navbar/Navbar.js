@@ -11,7 +11,7 @@ import './Navbar.css'
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id)
+  const userId = useSelector((state) => state.session.user)
   const usersServers = useSelector((state) => {return state.user_server.server;});
   const [open, setOpen] = useState(false);
 
@@ -35,8 +35,8 @@ const NavBar = () => {
         <div className="servers"></div>
       </ContextMenuTrigger>
 
-      <Modal  
-        open={open} 
+      <Modal
+        open={open}
         onClose={handleClose}
         >
         <div id="modal">

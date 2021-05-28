@@ -20,14 +20,10 @@ export const chatForChannel = (channel_id) => async (dispatch) => {
     });
     if(res.ok) {
         const data = await res.json();
-        console.log(data)
         // const other = Object.values(data);
-        console.log(dispatch(showChat(data)))
+        dispatch(showChat(data))
     }
 }
-
-
-
 
 export const chatPost = (id, content) => async (dispatch) => {
     const res = await fetch(`/api/chat/${id}`, {
@@ -43,26 +39,22 @@ export const chatPost = (id, content) => async (dispatch) => {
     if (data.errors) {
         return data;
     }
+    console.log("this is the thunk data", data)
     dispatch(addChat(data))
     return {};
 }
 
-// let initialState = { list: null };
-
-export default function chatReducer(state = {}, action) {
+export default function chatReducer(state = [], action) {
     let newState;
     switch(action.type) {
         case SHOW_CHAT:
-            // newState = {...state};
             // console.log(action.payload)
-            // action.payload["chats"].forEach(chat => {
-
-            //     newState[chat.id] = chat;
-            // });
+            newState = action.payload.chats;
             // console.log(newState)
-            return action.payload;
+            return newState;
         case ADD_CHAT:
-            return {list: action.payload}
+            newState = [...state, action.payload];
+            return newState;
         default:
             return state;
     }

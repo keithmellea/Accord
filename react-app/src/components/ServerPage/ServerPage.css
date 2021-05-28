@@ -1,6 +1,6 @@
- #root {
+ /* #root { */
     /* overflow-y: hidden; */
-}
+/* } */
 
 /* #html::-webkit-scrollbar {
     display: none;
@@ -162,7 +162,7 @@ li.channel:hover {
     padding-top: 20px;
     padding-left: 20px;
     list-style-type: none;
-    color: #8e9296;  
+    color: #8e9296;
 }
 
 .edit-channel {

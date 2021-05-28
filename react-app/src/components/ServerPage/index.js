@@ -11,6 +11,7 @@ import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
 
 import './ServerPage.css';
+//SOLUTION: when the user clicks on another server you want to clean out the redux store cats
 
 const ServerPage = () => {
   const [channelName, setChannelName] = useState('');
@@ -39,6 +40,7 @@ const ServerPage = () => {
     return Object.values(state.channel);
    });
 
+   //---------This will always render all the cats no matter what or what server you click-----
    const categories = useSelector((state) => {
     //  console.log("CATEGORIES", Object.values(state.category));
      return Object.values(state.category);
@@ -53,13 +55,17 @@ const ServerPage = () => {
     const serverArr = servers? servers[0] : null
     const server = serverArr? serverArr[serverId - 1] : null
     console.log(server);
-    
+
   if (!server || !channels) {
 
     return null;
 
   } else {
 
+
+//SOLUTION: has to do with this
+//how can we clean out the cats from the previous version
+//this will get all the catagories that belongs to a specific server
     const serverCategories = () => {
       let serverCats = [];
       for (let i = 0; i < channels.length; i++) {
@@ -74,6 +80,7 @@ const ServerPage = () => {
         return serverCats;
     };
     const serverCats = serverCategories();
+    console.log("-----------------server categories", serverCategories());
 
   const handleOpen = () => {
     setOpen(true);

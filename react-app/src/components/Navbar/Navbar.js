@@ -11,7 +11,7 @@ import './Navbar.css'
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id)
+  const userId = useSelector((state) => state.session.user?.id)
   const usersServers = useSelector((state) => {return state.user_server.server;});
   const [open, setOpen] = useState(false);
 

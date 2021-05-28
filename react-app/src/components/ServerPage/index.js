@@ -63,7 +63,6 @@ const ServerPage = () => {
 
   } else {
 
-  const server = servers[id];
   //SOLUTION: has to do with this
   //how can we clean out the cats from the previous version
   //this will get all the catagories that belongs to a specific server

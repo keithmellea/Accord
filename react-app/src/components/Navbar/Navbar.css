@@ -83,6 +83,12 @@ color: black
     justify-content: center;
     align-items: center;
     background-color: #36393F;
+    transition: background-color .2s, border-radius 0.2s;
+}
+
+#discord__img__container:hover {
+    background-color: #5865F2;
+    border-radius: 12px;
 }
 
 #discord__img {

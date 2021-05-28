@@ -11,7 +11,8 @@ import Discover from "./components/Discover"
 import { authenticate } from "./store/session";
 import Chat from './components/Chat/Chat'
 import ServerPage from "./components/ServerPage"
-import Channel from './components/Channel';
+// import Channel from './components/Channel';
+import Delete from './components/Delete';
 // import UserBar from './components/UserBar'
 
 function App() {
@@ -56,13 +57,17 @@ function App() {
         <ProtectedRoute path="/servers/:id" exact={true}>
           <ServerPage />
         </ProtectedRoute>
+        <ProtectedRoute path="/servers/:id/delete" exact={true}>
+          <h1>delete page</h1>
+          <Delete />
+        </ProtectedRoute>
+        <Route path="/channels" exact={true}>
+          {/* <Channel /> */}
+        </Route>
         {/* <ProtectedRoute path="/servers/:serverId/channels/:channelId" exact={true}> */}
         <ProtectedRoute path="/channels/:channelId" exact={true}>
           <ServerPage />
         </ProtectedRoute>
-        <Route path="/channels" exact={true}>
-          <Channel />
-        </Route>
       </Switch>
     </main>
     </BrowserRouter>

@@ -13,7 +13,7 @@ class Channel(db.Model):
     server = db.relationship("Server", back_populates="channels")
 
     #references for data going out
-    chats = db.relationship("Chat", back_populates="channel")
+    chats = db.relationship("Chat", cascade="all, delete", back_populates="channel")
 
 
     created_on = db.Column(db.DateTime, server_default=db.func.now())

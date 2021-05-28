@@ -51,19 +51,13 @@ export const addServer = (img_url, server_name) => async (dispatch) => {
   return ;
 }
 
-export const deleteServer = (serverId) => async (dispatch) => {
-  const res = await fetch(`/api/servers/${serverId}`, {
+export const deleteServer = (id) => async (dispatch) => {
+  const res = await fetch(`/api/servers/${id}`, {
     method: "DELETE",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        serverId,
-    }),
   })
-
+  console.log('THIS IS THE SERVER ID', id)
   const data = await res.json();
-  console.log(data)
+  console.log("THIS IS THE DATA FROM DELETION", data)
   dispatch(delete_server(data))
   return;
 }
@@ -89,9 +83,9 @@ const serversReducer = (state = initialState, action) => {
     }
 
     case DELETE_SERVER: {
+      delete state[action.server.id]
       return {
         ...state,
-        list: action.server
       }
     }
 

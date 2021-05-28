@@ -13,7 +13,8 @@ function Delete() {
 
    const deleteServ = (e) => {
       e.preventDefault();
-      dispatch(deleteServer(id))
+      console.log("CHECKING ID FOR USEPARAMS", id)
+      dispatch(deleteServer(Number(id)))
    }
 
    const servers = useSelector((state) => {
@@ -29,8 +30,6 @@ function Delete() {
 
    const server = servers[id]
 
-   console.log("THIS SHOULD BE THE PARAMS ID", id)
-   console.log("THIS SHOULD BE THE SERVER", server)
 
    return(
       <div>

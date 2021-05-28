@@ -18,6 +18,8 @@ export const allCategories = () => async (dispatch) => {
   return;
 };
 
+
+
 const categoryReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {

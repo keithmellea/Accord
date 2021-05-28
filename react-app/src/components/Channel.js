@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { allChannels, getChannelsServer, addChannel, deleteChannel, editChannel, getChannelsCategory } from "../store/channel"
 import {allServersByUserId, allUsersByServerId} from "../store/user_server"
+//THIS CHANNEL COMPONENT IS USED ONLY FOR TESTING PURPOSES
 
 const Channel = () => {
     const [errors, setErrors] = useState([]);

@@ -38,6 +38,7 @@ def post_channel():
     '''
     form = ChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    #IMPORTANT- revise category_id and server_id more dynamically
     if form.validate_on_submit():
         channel = Channel(
             title=form.data['title'],

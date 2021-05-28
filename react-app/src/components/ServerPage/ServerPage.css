@@ -1,6 +1,7 @@
- /* #root { */
-    /* overflow-y: hidden; */
-/* } */
+
+ #root {
+    overflow: hidden;
+}
 
 /* #html::-webkit-scrollbar {
     display: none;
@@ -58,8 +59,8 @@
 } */
 
 .categories li {
-    list-style-image: url("../../images/1247106.png");
-
+    /* list-style-image: url("../../images/1247106.png"); */
+    list-style-type: none;
 }
 
 #category {
@@ -83,19 +84,33 @@
 
 li.channel {
     font-size: 14px;
+    width: 50px;
 }
 
 .text-channels {
-    padding-left: 25px;
-    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
 
-.text-channels:hover {
-    background-color: #393c42;
-}
-
-li.channel:hover {
+.li.channel:hover {
+    background-color: #6f7580;
     color: white;
+}
+
+#channel { 
+    /* list-style-image: url("../../images/1247106.png"); */
+    color: #8e9296;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px;
+}
+
+#channel:hover {
+    background-color: #6f7580;
+    color: white;
+    width: 100%;
+    padding-right: 30px;
+
 }
 
 .channel-name {
@@ -167,4 +182,12 @@ li.channel:hover {
 
 .edit-channel {
     position: absolute;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
+    font-size: 16px;
+    left: 300px;
 }

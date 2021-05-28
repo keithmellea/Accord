@@ -9,6 +9,10 @@ def seed_useserv():
                 profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
     usertwo = User(username='Demo3', email='demo3@aa.io',
                 profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
+    userthree = User(username='Demo4', email='demo4@aa.io',
+                profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
+    userfour = User(username='Demo5', email='demo5@aa.io',
+                profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
 
     usertree = User.query.get(2)
     serverone = Server(server_name="Test", img_url=faker.image_url())
@@ -19,6 +23,8 @@ def seed_useserv():
     # serverone.users.append(userone)
 
     usertwo.servers.append(serverone)
+    userthree.servers.append(serverone)
+    userfour.servers.append(serverone)
     # serverone.users.append(usertwo)
 
 

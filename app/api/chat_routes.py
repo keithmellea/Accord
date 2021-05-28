@@ -19,17 +19,17 @@ def chat_channel(id):
     return {"chats": [chat.to_dict() for chat in chats]}
 
 
-@chat_routes.route("/", methods=['POST'])
+@chat_routes.route("/<int:id>", methods=['POST'])
 #For now, any user can post to the whole chat as a whole
-def chatPost():
+def chatPost(id):
     form = ChatForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    form.data['channel_id'] = 1
+    form.data['channel_id'] = id
 
     if form.validate_on_submit():
         chat = Chat(
             content = form.data['content'],
-            channel_id = 1
+            channel_id = id
         )
         db.session.add(chat)
         db.session.commit()

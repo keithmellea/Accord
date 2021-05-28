@@ -28,11 +28,11 @@ const NavBar = () => {
   const handleOpen = () => {
     setOpen(true);
   };
-  
+
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const createServer = (e) => {
     e.preventDefault();
     console.log(server_name)
@@ -45,7 +45,7 @@ const NavBar = () => {
     dispatch(getUsersServers());
     dispatch(allServersByUserId(userId))
   }, [dispatch]);
-  
+
   // function redirect() {
   //   setOpen(false)
   // }
@@ -93,7 +93,7 @@ const NavBar = () => {
           </li>
         ))}
         {/* <NavLink to={"/servers/create"}> */}
-          
+
           <li className="create-button" onClick={handleOpen}>
               <div className="create-server-icon">
                 {/* <img className="create-server-img">PLUS SIGN HERE</img> */}

@@ -1,3 +1,4 @@
+
  #root {
     overflow: hidden;
 }
@@ -176,7 +177,7 @@ li.channel {
     padding-top: 20px;
     padding-left: 20px;
     list-style-type: none;
-    color: #8e9296;  
+    color: #8e9296;
 }
 
 .edit-channel {

@@ -4,13 +4,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { allChannels, getChannelsServer, addChannel, deleteChannel, editChannel, getChannelsCategory } from "../store/channel"
-import {allServersByUserId, allUsersByServerId} from "../store/user_server"
+import { allServersByUserId, allUsersByServerId } from "../store/user_server"
 //THIS CHANNEL COMPONENT IS USED ONLY FOR TESTING PURPOSES
+import { NavLink, useParams } from "react-router-dom";
 
 const Channel = () => {
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState("");
     const dispatch = useDispatch();
+    const { id } = useParams();
 
     useEffect(() => {
         dispatch(allChannels())
@@ -77,11 +79,11 @@ const Channel = () => {
             <div>
                 <label>Rename a channel</label>
                 <input
-                name="title"
-                type="text"
-                placeholder="Enter New Title Here..."
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                    name="title"
+                    type="text"
+                    placeholder="Enter New Title Here..."
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <button onClick={dispatchEditChannel}>Submit</button>
             </div>

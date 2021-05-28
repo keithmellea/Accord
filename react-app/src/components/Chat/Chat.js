@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
 import { chatPost, chatForChannel } from "../../store/chats"
 import './index.css';
@@ -15,8 +16,10 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     let chats = useSelector(state => state.chats)
-    console.log(chats)
+    const {channelId} = useParams()
+    console.log("this is the channels object", chats)
 
+    console.log("this is the id", channelId)
     useEffect(() => {
 
         socket = io();
@@ -66,7 +69,7 @@ const Chat = () => {
         socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
         setMessagePosted(true)
-        await dispatch(chatPost(channel, chatInput))
+        await dispatch(chatPost(channelId, chatInput))
     }
 
 
@@ -100,7 +103,7 @@ const Chat = () => {
 
     const messagesForChannel = async () => {
         console.log("This is a test")
-        await dispatch(chatForChannel(channel))
+        await dispatch(chatForChannel(channelId))
         setShow(true)
     }
     console.log("Chats", chats)
@@ -119,12 +122,13 @@ const Chat = () => {
                         </div>
                     </div>
                 ))}
-                <input
+                {messagesForChannel}
+                {/* <input
                     placeholder="Select Channel"
                     value={channel}
                     onChange={updateChannel}
                 />
-                <button onClick={messagesForChannel}> Channel {channel}</button>
+                <button onClick={messagesForChannel}> Channel {channel}</button> */}
             </div>
 
             <form id="top_level_chat" method="POST" onSubmit={sendChat}>

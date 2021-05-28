@@ -18,8 +18,8 @@ const ServerPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const test = useParams();
-  const serverId = id
+  // const test = useParams();
+  // const serverId = id
 
   // console.log("server id: ", serverId)
   // console.log("-------USE PARAMS-------: ", test)
@@ -36,27 +36,28 @@ const ServerPage = () => {
     return state.servers.list.servers;
   });
 
-   const channels = useSelector((state) => {
-  // console.log("CHANNELS", Object.values(state.channel));
+  const channels = useSelector((state) => {
+    console.log("CHANNELS", Object.values(state.channel));
+
     return Object.values(state.channel);
-   });
+  });
 
-   const categories = useSelector((state) => {
+  const categories = useSelector((state) => {
     //  console.log("CATEGORIES", Object.values(state.category));
-     return Object.values(state.category);
-   })
+    return Object.values(state.category);
+  })
 
-   const usersByServer = useSelector((state) => {
+  const usersByServer = useSelector((state) => {
     //  console.log("USERS BY SERVER", state.user_server["user"])
-     return state.user_server["user"]
-   })
+    return state.user_server["user"]
+  })
 
   if (!servers || !channels) {
     return null;
   } else {
     const server = servers[id];
 
-//  console.log("USER", usersByServer);
+    //  console.log("USER", usersByServer);
 
     const serverCategories = () => {
       let serverCats = [];
@@ -70,25 +71,25 @@ const ServerPage = () => {
           }
         }
       }
-        return serverCats;
+      return serverCats;
     };
     const serverCats = serverCategories();
     // console.log("server categories", serverCategories());
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+    const handleOpen = () => {
+      setOpen(true);
+    };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     return (
       <div className="server-page">
 
         <Modal
-        open={open}
-        onClose={handleClose}>
+          open={open}
+          onClose={handleClose}>
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
             <form>
@@ -157,7 +158,7 @@ const ServerPage = () => {
         <div className="options"></div>
       </div>
     );
-}
+  }
 }
 
 export default ServerPage;

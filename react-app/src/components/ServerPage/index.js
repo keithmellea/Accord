@@ -19,9 +19,6 @@ const ServerPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const test = useParams();
-  const serverId = id
-
   // console.log("server id: ", serverId)
   // console.log("-------USE PARAMS-------: ", test)
 
@@ -52,9 +49,11 @@ const ServerPage = () => {
      return state.user_server["user"]
    })
 
+    const serverId = channels[0]?.server_id;
     const serverArr = servers? servers[0] : null
-    const server = serverArr? serverArr[id - 1] : null
-
+    const server = serverArr? serverArr[serverId - 1] : null
+    console.log(server);
+    
   if (!server || !channels) {
 
     return null;

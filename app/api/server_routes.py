@@ -36,8 +36,8 @@ def post_channel():
         return server.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@server_routes.route('/<id>/delete', methods=["DELETE"])
-def post_channel():
+@server_routes.route('/<id>', methods=["DELETE"])
+def delete_server():
     '''
     Delete a server
     '''

@@ -8,7 +8,6 @@ const load = (list) => ({
   list,
 });
 
-
 const add_server = (server) => ({
   type: ADD_SERVER,
   server
@@ -18,7 +17,6 @@ const delete_server = (server) => ({
   type: DELETE_SERVER,
   server
 })
-
 
 export const getUsersServers = () => async (dispatch) => {
   const response = await fetch("/api/servers/", {
@@ -54,7 +52,7 @@ export const addServer = (img_url, server_name) => async (dispatch) => {
 }
 
 export const deleteServer = (serverId) => async (dispatch) => {
-  const res = await fetch(`/api/servers/${serverId}/delete`, {
+  const res = await fetch(`/api/servers/${serverId}`, {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json'
@@ -63,8 +61,9 @@ export const deleteServer = (serverId) => async (dispatch) => {
         serverId,
     }),
   })
+
   const data = await res.json();
-  console.log("WHAT IS THIS EVEN", data)
+  console.log(data)
   dispatch(delete_server(data))
   return;
 }

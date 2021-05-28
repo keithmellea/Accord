@@ -51,10 +51,10 @@
     height: 80%;
     padding-top: 20px;
     overflow-y: hidden scroll;
-    position: fixed;
+    /* position: fixed;
     left: 72px;
     top: 50px;
-    width: 15%;
+    width: 15%; */
 }
 /*
 .categories::-webkit-scrollbar {
@@ -146,10 +146,10 @@ li.channel {
 
 .chat-div {
     overflow-y: scroll;
-    position: fixed;
+    position: relative;
     overflow-x: hidden;
-    left: 32px;
-    top: 50px;
+    /* left: 32px;
+    top: 50px; */
 }
 
 .chat-div::-webkit-scrollbar {

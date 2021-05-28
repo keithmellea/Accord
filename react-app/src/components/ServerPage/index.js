@@ -62,7 +62,6 @@ const ServerPage = () => {
     return null;
 
   } else {
-  const server = servers[id];
 
 
 //SOLUTION: has to do with this

@@ -5,6 +5,8 @@
     border-radius: 3px;
     display:inline-block;
     height: 800px;
+    padding-bottom:20px;
+
 }
 
 /* #messageComponent {
@@ -45,8 +47,9 @@
 }
 
 #top_level_chat input {
-    width: 1336px;
+    width: 1275px;
     height: 22px;
+    position: relative;
     border-radius: 3px;
     border: 1px solid #222428;
     background-color: #707070;

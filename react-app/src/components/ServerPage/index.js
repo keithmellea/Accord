@@ -47,9 +47,9 @@ const ServerPage = () => {
   if (!servers || !channels) {
     return null;
   } else {
-    const server = servers[id];
-
- console.log("USER", usersByServer);
+  const server = servers[id];
+  console.log("TESTING TO SEE THE CURRENT SERVER",server)
+  console.log("USER", usersByServer);
 
     const serverCategories = () => {
       let serverCats = [];
@@ -101,7 +101,12 @@ const ServerPage = () => {
           </div>
         </Modal>
 
-        <div className="name">{`${server.server_name}`}</div>
+        <div className="name">
+          {`${server?.name}`}
+          <NavLink to={`/servers/${id}/delete`}>
+            <button>delete</button>
+          </NavLink>
+        </div>
         <div className="categories">
           <div>
             {/* {channels?.map((channel) => (

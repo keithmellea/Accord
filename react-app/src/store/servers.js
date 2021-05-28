@@ -1,6 +1,7 @@
 
 const LOAD = "servers/LOAD";
 const ADD_SERVER = "servers/ADD_SERVER"
+const DELETE_SERVER = "servers/DELETE_SERVER"
 
 const load = (list) => ({
   type: LOAD,
@@ -12,6 +13,11 @@ const add_server = (server) => ({
   type: ADD_SERVER,
   server
 });
+
+const delete_server = (server) => ({
+  type: DELETE_SERVER,
+  server
+})
 
 
 export const getUsersServers = () => async (dispatch) => {
@@ -47,6 +53,21 @@ export const addServer = (img_url, server_name) => async (dispatch) => {
   return ;
 }
 
+export const deleteServer = (serverId) => async (dispatch) => {
+  const res = await fetch(`/api/servers/${serverId}/delete`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        serverId,
+    }),
+  })
+  const data = await res.json();
+  console.log("WHAT IS THIS EVEN", data)
+  dispatch(delete_server(data))
+  return;
+}
 
 const initialState = {
   list: []
@@ -62,6 +83,13 @@ const serversReducer = (state = initialState, action) => {
     }
 
     case ADD_SERVER: {
+      return {
+        ...state,
+        list: action.server
+      }
+    }
+
+    case DELETE_SERVER: {
       return {
         ...state,
         list: action.server

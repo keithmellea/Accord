@@ -35,3 +35,14 @@ def post_channel():
         db.session.commit()
         return server.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@server_routes.route('/<id>/delete', methods=["DELETE"])
+def post_channel():
+    '''
+    Delete a server
+    '''
+    server = Server.query.get(id)
+    db.session.delete(server)
+    db.session.commit()
+    print("TRYING TO SEE IF I GET THE ID", id)
+    return {"success": "server was succesfully deleted"}

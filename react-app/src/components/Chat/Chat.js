@@ -104,6 +104,7 @@ const Chat = () => {
     const messagesForChannel = async () => {
         console.log("This is a test")
         await dispatch(chatForChannel(channelId))
+        console.log("THIS IS THE CHATFORCHANNEL", await dispatch(chatForChannel(channelId)))
         setShow(true)
     }
     console.log("Chats", chats)
@@ -123,12 +124,12 @@ const Chat = () => {
                     </div>
                 ))}
                 {messagesForChannel}
-                {/* <input
+                <input
                     placeholder="Select Channel"
                     value={channel}
                     onChange={updateChannel}
                 />
-                <button onClick={messagesForChannel}> Channel {channel}</button> */}
+                <button onClick={messagesForChannel}> Channel {channel}</button>
             </div>
 
             <form id="top_level_chat" method="POST" onSubmit={sendChat}>

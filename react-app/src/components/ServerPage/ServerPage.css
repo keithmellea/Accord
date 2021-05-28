@@ -1,6 +1,5 @@
-
  #root {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* #html::-webkit-scrollbar {
@@ -27,8 +26,10 @@
 }
 
 .name {
-    padding-left: 10px;
-    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    /* padding-left: 10px; */
+    /* padding-top: 15px; */
     background-color: #2b3352;
     grid-area: name;
     color: #dcddde;
@@ -42,7 +43,19 @@
 }
 
 .name:hover {
-    background-color: #3b4770;
+    background-color: #34373C;
+}
+
+#delete-server {
+    background-color: #2e3236;
+    border: 1px solid black;
+    margin-left: 160px;
+    color: #dcddde;
+    transition: border-color .2s;
+}
+
+#delete-server:hover {
+    border-color: #3b4770;
 }
 
 .categories {

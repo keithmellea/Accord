@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 // import LogoutButton from '../auth/LogoutButton';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsersServers } from "../../store/servers";
 import { ContextMenuTrigger } from "react-contextmenu";
+import { getUsersServers } from "../../store/servers";
 import { allServersByUserId } from "../../store/user_server";
+// import {joinServer} from "../../store/discover";
 import { addServer } from "../../store/servers";
 import Modal from '@material-ui/core/Modal';
 import './Navbar.css'
 
 const NavBar = () => {
+
+  let history = useHistory()
+
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user?.id)
   const usersServers = useSelector((state) => {return state.user_server.server;});
@@ -20,27 +24,31 @@ const NavBar = () => {
   const [server_name, setServerName] = useState('');
   const [img_url, setServerImg] = useState('');
 
-  useEffect(() => {
-    dispatch(getUsersServers());
-    dispatch(allServersByUserId(userId))
-  }, [dispatch]);
-
-
   // functions to handle opening and closing modal
   const handleOpen = () => {
     setOpen(true);
   };
-
+  
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   const createServer = (e) => {
     e.preventDefault();
     console.log(server_name)
     console.log(img_url)
     dispatch(addServer(img_url, server_name))
+    setOpen(false)
   }
+
+  useEffect(() => {
+    dispatch(getUsersServers());
+    dispatch(allServersByUserId(userId))
+  }, [dispatch]);
+  
+  // function redirect() {
+  //   setOpen(false)
+  // }
 
   return (
     <nav className="navbar">

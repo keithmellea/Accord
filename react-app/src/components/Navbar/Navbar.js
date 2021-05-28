@@ -24,21 +24,15 @@ const NavBar = () => {
   const [server_name, setServerName] = useState('');
   const [img_url, setServerImg] = useState('');
 
-  useEffect(() => {
-    dispatch(getUsersServers());
-    dispatch(allServersByUserId(userId))
-  }, [dispatch]);
-
-
   // functions to handle opening and closing modal
   const handleOpen = () => {
     setOpen(true);
   };
-
+  
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   const createServer = (e) => {
     e.preventDefault();
     console.log(server_name)
@@ -47,6 +41,11 @@ const NavBar = () => {
     setOpen(false)
   }
 
+  useEffect(() => {
+    dispatch(getUsersServers());
+    dispatch(allServersByUserId(userId))
+  }, [dispatch]);
+  
   // function redirect() {
   //   setOpen(false)
   // }

@@ -47,14 +47,24 @@ def post_server():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @server_routes.route('/<id>', methods=["DELETE"])
-def delete_server(id):
+def server(id):
     '''
     Delete a server
     '''
+    request.method == 'DELETE':
     print("TRYING TO SEE IF I GET THE ID", id)
-    
     server = Server.query.get(id)
     db.session.delete(server)
     db.session.commit()
+    return {"server": server.to_dict()}
 
+
+@server_routes.route('/<id>', methods=["GET"])
+def get_server(id):
+    '''
+    Getting current server
+    '''   
+    request.method == 'GET':
+    server = Server.query.get(id)
+    print("THE SERVER WE ARE TRYING TO GET", server)
     return {"server": server.to_dict()}

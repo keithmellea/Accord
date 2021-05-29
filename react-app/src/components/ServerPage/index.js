@@ -4,10 +4,10 @@ import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
-import { allCategories } from "../../store/category"
-import { allUsersByServerId } from "../../store/user_server"
+import { allCategories } from "../../store/category";
+import { allUsersByServerId, allServersByUserId } from "../../store/user_server";
+import { getServer } from "../../store/servers";
 import  UserBar from '../UserBar'
-import { allServersByUserId } from "../../store/user_server";
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
 
@@ -17,14 +17,16 @@ const ServerPage = () => {
   const [channelName, setChannelName] = useState('');
   const [open, setOpen] = useState(false);
   const userId = useSelector((state) => state.session.user?.id);
+  // const server = useSelector(state => state.session)
   const { id } = useParams();
   const dispatch = useDispatch();
-
+// console.log('THIS IS THE SERVER ID',id)
   const channels = useSelector((state) => {
       return Object.values(state.channel);
      });
 
   useEffect(() => {
+    dispatch(getServer((id)))
     dispatch(getChannelsServer(id));
     dispatch(allCategories(id));
     dispatch(allUsersByServerId(id));
@@ -49,49 +51,13 @@ const ServerPage = () => {
     //  console.log("USERS BY SERVER", state.user_server["user"])
     return state.user_server["user"]
    })
-   console.log("GRABBING CHANNELS", channels[0])
 
-   const serverId = channels[0]?.server_id;
-   console.log("THIS IS THE SERVER ID", serverId)
-   const serverArr = servers? servers[0] : null
-   console.log("THIS IS THE SERVER ARR", serverArr)
-
-   const server = serverArr? serverArr[serverId - 1] : null
-   console.log('GRABBING SERVER', server);
        
   if(!servers)  {
      return null
-   
-     
-     //  if (!server || !channels) {
-       //    console.log(server)
-       //    console.log(channels)
-       //    return null;
        
   } else {
-        
-  //SOLUTION: has to do with this
-  //how can we clean out the cats from the previous version
-  //this will get all the catagories that belongs to a specific server
-  // const serverCategories = () => {
-    
-  //   let serverCats = [];
-  
-  //   for (let i = 0; i < channels.length; i++) {
-  //     let channel = channels[i];
-  //     for (let j = 0; j < categories.length; j++) {
-  //       let category = categories[j];
-  //       if (channel.category_id === category.id) {
-  //         serverCats.push(category);
-  //       }
-  //     }
-  //   }
 
-  //   return serverCats;
-  // };
-  
-  // const serverCats = serverCategories();
-  // console.log("-----------------server categories", serverCategories());
 
   const handleOpen = () => {
     setOpen(true);
@@ -131,7 +97,7 @@ const ServerPage = () => {
         </Modal>
 
         <div className="name">
-          <div>{`${server?.name}`}</div>
+          <div>{`test`}</div>
           <button id="delete-server">
             <NavLink to={`/servers/${id}/delete`}>
               delete
@@ -141,7 +107,7 @@ const ServerPage = () => {
      
   
       <div className="name">
-        <div>{`${server?.name}`}</div>
+        <div>{`test`}</div>
         <button id="delete-server">
           <NavLink to={`/servers/${id}/delete`}>
             delete

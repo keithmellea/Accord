@@ -2,6 +2,7 @@
 const LOAD = "servers/LOAD";
 const ADD_SERVER = "servers/ADD_SERVER"
 const DELETE_SERVER = "servers/DELETE_SERVER"
+const GET_SERVER = "servers/GET_SERVER"
 
 const load = (list) => ({
   type: LOAD,
@@ -15,6 +16,11 @@ const add_server = (server) => ({
 
 const delete_server = (server) => ({
   type: DELETE_SERVER,
+  server
+})
+
+const get_server = (server) => ({
+  type: GET_SERVER,
   server
 })
 
@@ -57,13 +63,28 @@ export const deleteServer = (id) => async (dispatch) => {
   })
   console.log('THIS IS THE SERVER ID', id)
   const data = await res.json();
-  console.log("THIS IS THE DATA FROM DELETION", data)
-  dispatch(delete_server(data))
+  console.log("THIS IS THE DATA FROM DELETION", data);
+  dispatch(delete_server(data));
   return;
 }
 
+export const getServer = (id) => async (dispatch) => {
+  console.log("test-------------", id)
+  const res = await fetch(`/api/servers/${id}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  console.log("test2------------",res)
+  const data = await res.json();
+  console.log("THE DATA THAT WE ARE DISPATCHING", data)
+  dispatch(get_server(data));
+}
+
 const initialState = {
-  list: []
+  list: [],
+  current: []
 };
 
 const serversReducer = (state = initialState, action) => {
@@ -86,6 +107,13 @@ const serversReducer = (state = initialState, action) => {
       delete state[action.server.id]
       return {
         ...state,
+      }
+    }
+
+    case GET_SERVER: {
+      return {
+        ...state,
+        current: action.server
       }
     }
 

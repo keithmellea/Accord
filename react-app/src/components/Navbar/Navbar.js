@@ -83,7 +83,7 @@ const NavBar = () => {
         </div>
         {usersServers?.map((server) => (
           <li key={server.server_name}className="user_server-div">
-            {/* {console.log(server)} */}
+            {/*Create a state variable when user clicks on a different server then delete all cats {console.log(server)} */}
             <NavLink to={`/servers/${server.id}`}>
               {/* <div className="title-bubble">
               <span className="title-bubble-text">{`${server.name}`}</span>

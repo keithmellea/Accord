@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user
-from app.models import db, User, Server
+from app.models import db, User, Server, Category, Channel
 from app.forms import ServerForm
 
 server_routes = Blueprint("server", __name__)
@@ -15,12 +15,13 @@ def getServers():
 
 
 @server_routes.route('/', methods=["POST"])
-def post_channel():
+def post_server():
     '''
     CREATE a server
     '''
     form = ServerForm()
     user = User.query.get(current_user.id)
+
     form['csrf_token'].data = request.cookies['csrf_token']
     print("WE ARE TRYING TO GET THE USER ID", user.id)
     if form.validate_on_submit():
@@ -29,10 +30,19 @@ def post_channel():
             img_url=form.data['img_url'],
             owner_id=current_user.id
         )
-        user.servers.append(server)
         db.session.add(user)
         db.session.add(server)
+        user.servers.append(server)
         db.session.commit()
+
+        new_category = Category(title="General")
+        db.session.add(new_category)
+        db.session.commit()
+
+        new_channel = Channel(title="room 1", category_id=new_category.id, server_id=server.id)
+        db.session.add(new_channel)
+        db.session.commit()
+
         return server.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

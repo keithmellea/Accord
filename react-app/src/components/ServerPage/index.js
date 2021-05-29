@@ -51,18 +51,27 @@ const ServerPage = () => {
     //  console.log("USERS BY SERVER", state.user_server["user"])
     return state.user_server["user"]
    })
+   console.log("GRABBING CHANNELS", channels[0])
 
-  const serverId = channels[0]?.server_id;
-  const serverArr = servers? servers[0] : null
-  const server = serverArr? serverArr[serverId - 1] : null
-  console.log(server);
+   const serverId = channels[0]?.server_id;
+   console.log("THIS IS THE SERVER ID", serverId)
+   const serverArr = servers? servers[0] : null
+   console.log("THIS IS THE SERVER ARR", serverArr)
 
-  if (!server || !channels) {
-
-    return null;
-
+   const server = serverArr? serverArr[serverId - 1] : null
+   console.log('GRABBING SERVER', server);
+       
+  if(!servers)  {
+     return null
+   
+     
+     //  if (!server || !channels) {
+       //    console.log(server)
+       //    console.log(channels)
+       //    return null;
+       
   } else {
-
+        
   //SOLUTION: has to do with this
   //how can we clean out the cats from the previous version
   //this will get all the catagories that belongs to a specific server

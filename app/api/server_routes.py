@@ -51,7 +51,7 @@ def server(id):
     '''
     Delete a server
     '''
-    request.method == 'DELETE':
+
     print("TRYING TO SEE IF I GET THE ID", id)
     server = Server.query.get(id)
     db.session.delete(server)
@@ -64,7 +64,9 @@ def get_server(id):
     '''
     Getting current server
     '''   
-    request.method == 'GET':
+    
     server = Server.query.get(id)
     print("THE SERVER WE ARE TRYING TO GET", server)
+    test = server.to_dict
+    print("SERVER TO DICT METHOD", test)
     return {"server": server.to_dict()}

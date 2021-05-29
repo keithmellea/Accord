@@ -32,7 +32,7 @@ const ServerPage = () => {
   }, [dispatch, id]);
 
   const servers = useSelector((state) => {
-    return Object.values(state.servers.list);
+    return Object.values(state?.servers?.list);
   });
 
   //  const channels = useSelector((state) => {
@@ -45,37 +45,53 @@ const ServerPage = () => {
      return Object.values(state.category);
    })
 
-   const usersByServer = useSelector((state) => {
+  const usersByServer = useSelector((state) => {
     //  console.log("USERS BY SERVER", state.user_server["user"])
-     return state.user_server["user"]
+    return state.user_server["user"]
    })
+   console.log("GRABBING CHANNELS", channels[0])
 
-    const serverId = channels[0]?.server_id;
-    const serverArr = servers? servers[0] : null
-    const server = serverArr? serverArr[serverId - 1] : null
-    // console.log(server);
+   const serverId = channels[0]?.server_id;
+   console.log("THIS IS THE SERVER ID", serverId)
+   const serverArr = servers? servers[0] : null
+   console.log("THIS IS THE SERVER ARR", serverArr)
 
-  if (!server || !channels) {
-
-    return null;
-
+   const server = serverArr? serverArr[serverId - 1] : null
+   console.log('GRABBING SERVER', server);
+       
+  if(!servers)  {
+     return null
+   
+     
+     //  if (!server || !channels) {
+       //    console.log(server)
+       //    console.log(channels)
+       //    return null;
+       
   } else {
+        
+  //SOLUTION: has to do with this
+  //how can we clean out the cats from the previous version
+  //this will get all the catagories that belongs to a specific server
+  // const serverCategories = () => {
+    
+  //   let serverCats = [];
+  
+  //   for (let i = 0; i < channels.length; i++) {
+  //     let channel = channels[i];
+  //     for (let j = 0; j < categories.length; j++) {
+  //       let category = categories[j];
+  //       if (channel.category_id === category.id) {
+  //         serverCats.push(category);
+  //       }
+  //     }
+  //   }
 
-    // const serverCategories = () => {
-    //   let serverCats = [];
-    //   for (let i = 0; i < channels.length; i++) {
-    //     let channel = channels[i];
-    //     for (let j = 0; j < categories.length; j++) {
-    //       let category = categories[j];
-    //       if (channel.category_id === category.id) {
-    //         serverCats.push(category);
-    //       }
-    //     }
-    //   }
-    //     return serverCats;
-    // };
-    // let serverCats = serverCategories();
-    // console.log("-----------------server categories", serverCats);
+  //   return serverCats;
+  // };
+  
+  // const serverCats = serverCategories();
+  // console.log("-----------------server categories", serverCategories());
 
   const handleOpen = () => {
     setOpen(true);
@@ -89,7 +105,8 @@ const ServerPage = () => {
       <div className="server-page">
         <Modal
         open={open}
-        onClose={handleClose}>
+        onClose={handleClose}
+        >
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
             <form>
@@ -121,6 +138,16 @@ const ServerPage = () => {
             </NavLink>
           </button>
         </div>
+     
+  
+      <div className="name">
+        <div>{`${server?.name}`}</div>
+        <button id="delete-server">
+          <NavLink to={`/servers/${id}/delete`}>
+            delete
+          </NavLink>
+        </button>
+      </div>
 
         <UserBar />
 
@@ -169,10 +196,22 @@ const ServerPage = () => {
             <li className="user">{`${user.username}`}</li>
           ))}
         </div>
-        <div className="options"></div>
+      <div className="chat-div">
+        <Chat />
       </div>
-    );
-}
+      <div className="channel-name">
+        {/* <img className="hash" height="24" width="24"></img> */}
+        <span className="channel-text"># channel</span>
+      </div>
+      <div className="members-div">
+        {usersByServer?.map((user) => (
+          <li className="user">{`${user.username}`}</li>
+        ))}
+      </div>
+      <div className="options"></div>
+    </div>
+  );
+  }
 }
 
 export default ServerPage;

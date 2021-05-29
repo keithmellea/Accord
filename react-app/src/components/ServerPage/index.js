@@ -16,8 +16,9 @@ import './ServerPage.css';
 const ServerPage = () => {
   const [channelName, setChannelName] = useState('');
   const [open, setOpen] = useState(false);
-  const userId = useSelector((state) => state.session.user?.id);
-  // const server = useSelector(state => state.session)
+  const userId = useSelector((state) => state.session?.user?.id);
+  const server = useSelector(state => state.servers?.current?.server)
+  console.log("THIS IS THE SERVER USE SELECTOR", server)
   const { id } = useParams();
   const dispatch = useDispatch();
 // console.log('THIS IS THE SERVER ID',id)
@@ -97,7 +98,7 @@ const ServerPage = () => {
         </Modal>
 
         <div className="name">
-          <div>{`test`}</div>
+          <div>{server?.name}</div>
           <button id="delete-server">
             <NavLink to={`/servers/${id}/delete`}>
               delete
@@ -107,7 +108,7 @@ const ServerPage = () => {
      
   
       <div className="name">
-        <div>{`test`}</div>
+        <div>{server?.name}</div>
         <button id="delete-server">
           <NavLink to={`/servers/${id}/delete`}>
             delete

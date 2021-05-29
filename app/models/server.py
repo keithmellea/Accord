@@ -11,7 +11,7 @@ class Server(db.Model):
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    channels = db.relationship("Channel", back_populates="server")
+    channels = db.relationship("Channel", cascade="all, delete", back_populates="server")
 
     users = db.relationship(
         "User",

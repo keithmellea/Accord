@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
 import { allCategories } from "../../store/category"
 import { allUsersByServerId } from "../../store/user_server"
+import  UserBar from '../UserBar'
 import { allServersByUserId } from "../../store/user_server";
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
@@ -18,17 +19,12 @@ const ServerPage = () => {
   const userId = useSelector((state) => state.session.user?.id);
   const { id } = useParams();
   const dispatch = useDispatch();
-  // console.log("server id: ", serverId)
-  // console.log("-------USE PARAMS-------: ", test)
 
   const channels = useSelector((state) => {
-    // console.log("CHANNELS", Object.values(state.channel));
       return Object.values(state.channel);
      });
 
   useEffect(() => {
-    console.log('--------------id: ', id)
-    // console.log("channel-----: ", channels)
     dispatch(getChannelsServer(id));
     dispatch(allCategories(id));
     dispatch(allUsersByServerId(id));
@@ -45,7 +41,7 @@ const ServerPage = () => {
   //  });
 
    const categories = useSelector((state) => {
-     console.log("-----CATEGORIES", Object.values(state.category));
+    //  console.log("-----CATEGORIES", Object.values(state.category));
      return Object.values(state.category);
    })
 
@@ -65,7 +61,6 @@ const ServerPage = () => {
 
   } else {
 
-//every re-render it will hit this function
     // const serverCategories = () => {
     //   let serverCats = [];
     //   for (let i = 0; i < channels.length; i++) {
@@ -92,7 +87,6 @@ const ServerPage = () => {
 
     return (
       <div className="server-page">
-
         <Modal
         open={open}
         onClose={handleClose}>
@@ -119,7 +113,17 @@ const ServerPage = () => {
           </div>
         </Modal>
 
-        <div className="name">{`${server.name}`}</div>
+        <div className="name">
+          <div>{`${server?.name}`}</div>
+          <button id="delete-server">
+            <NavLink to={`/servers/${id}/delete`}>
+              delete
+            </NavLink>
+          </button>
+        </div>
+
+        <UserBar />
+
         <div className="categories">
           <div>
             {/* {channels?.map((channel) => (

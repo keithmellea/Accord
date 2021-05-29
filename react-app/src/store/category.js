@@ -5,19 +5,17 @@ const get_category = (data) => ({
   payload: data,
 });
 
-//GET all categories
-export const allCategories = (server_id) => async (dispatch) => {
-  const response = await fetch("/api/categories");
-  const resChannels = await fetch(`/api/channels/server/${server_id}`)
-  //we use the data to update the store.
-  //so what if I use the double for loop to update the store more dynamically
-  const data = await response.json();
-  const dataChannels = await resChannels.json();
 
+export const allCategories = (server_id) => async (dispatch) => {
+
+  const response = await fetch("/api/categories/");  //Fetch all the categories
+  const resChannels = await fetch(`/api/channels/server/${server_id}`)  //Fetch all the channels based on server id
+  const data = await response.json(); //All the categories
+  const dataChannels = await resChannels.json();  //All the channels
+
+  //Check if the Foreign Key category_id matches === to the category primary key id
   const serverCategories = () => {
     let serverCats = [];
-    console.log("------dataChannels: ", dataChannels)
-    console.log("--------DATACat: ", data)
     for (let i = 0; i < dataChannels["channels"].length; i++) {
       let channel = dataChannels["channels"][i];
       for (let j = 0; j < data["categories"].length; j++) {
@@ -29,12 +27,11 @@ export const allCategories = (server_id) => async (dispatch) => {
     }
       return serverCats;
   };
+
   let serverCats = serverCategories();
-  console.log("==============serverCats: ", serverCats)
   dispatch(get_category(serverCats));
   return;
 };
-
 
 
 const categoryReducer = (state = {}, action) => {
@@ -42,9 +39,6 @@ const categoryReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_CATEGORY:
       newState = {};
-      // action.payload["categories"].forEach((category) => {
-      //   newState[category.id] = category;
-      // });
       action.payload.forEach((category) => {
           newState[category.id] = category;
         });

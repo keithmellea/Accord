@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/20210528_135652_.py
-Revision ID: 4d1f6c8282c2
+Revision ID: 2329162fc04a
 Revises: 
-Create Date: 2021-05-28 13:56:52.473644
-=======
-Revision ID: ef0ebc43b408
-Revises: 
-Create Date: 2021-05-28 13:54:48.777577
->>>>>>> main:migrations/versions/20210528_135448_.py
+Create Date: 2021-05-27 18:16:05.121534
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/20210528_135652_.py
-revision = '4d1f6c8282c2'
-=======
-revision = 'ef0ebc43b408'
->>>>>>> main:migrations/versions/20210528_135448_.py
+revision = '2329162fc04a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,6 +25,14 @@ def upgrade():
     sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('servers',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('server_name', sa.String(length=15), nullable=False),
+    sa.Column('img_url', sa.Text(), nullable=False),
+    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -44,16 +42,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
-    )
-    op.create_table('servers',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('server_name', sa.String(length=15), nullable=False),
-    sa.Column('img_url', sa.Text(), nullable=False),
-    sa.Column('owner_id', sa.Integer(), nullable=True),
-    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('channels',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -90,7 +78,7 @@ def downgrade():
     op.drop_table('chats')
     op.drop_table('usersServers')
     op.drop_table('channels')
-    op.drop_table('servers')
     op.drop_table('users')
+    op.drop_table('servers')
     op.drop_table('categories')
     # ### end Alembic commands ###

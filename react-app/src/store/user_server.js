@@ -14,7 +14,7 @@ const get_server_by_users = (data) => ({
 export const allServersByUserId = (user_id) => async (dispatch) => {
     const response = await fetch(`/api/usersservers/user/${user_id}`);
     const data = await response.json();
-    console.log("All Servers By a User Id", data)
+    // console.log("All Servers By a User Id", data)
     dispatch(get_server_by_users(data))
     return;
 }
@@ -22,7 +22,7 @@ export const allServersByUserId = (user_id) => async (dispatch) => {
 export const allUsersByServerId = (server_id) => async (dispatch) => {
     const response = await fetch(`/api/usersservers/server/${server_id}`);
     const data = await response.json();
-    console.log("All Users By Server Id: ", data)
+    // console.log("All Users By Server Id: ", data)
     dispatch(get_user_by_servers(data))
     return;
 }

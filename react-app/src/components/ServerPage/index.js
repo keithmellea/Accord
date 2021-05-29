@@ -12,7 +12,6 @@ import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
 
 import './ServerPage.css';
-//SOLUTION: when the user clicks on another server you want to clean out the redux store cats
 
 const ServerPage = () => {
   const [channelName, setChannelName] = useState('');
@@ -21,31 +20,30 @@ const ServerPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  // console.log("server id: ", serverId)
-  // console.log("-------USE PARAMS-------: ", test)
+  const channels = useSelector((state) => {
+      return Object.values(state.channel);
+     });
 
   useEffect(() => {
     dispatch(getChannelsServer(id));
-    dispatch(allCategories());
+    dispatch(allCategories(id));
     dispatch(allUsersByServerId(id));
     dispatch(allServersByUserId(userId));
-  }, [dispatch]);
-
+  }, [dispatch, id]);
 
   const servers = useSelector((state) => {
     return Object.values(state?.servers?.list);
   });
 
-  const channels = useSelector((state) => {
-  // console.log("CHANNELS", Object.values(state.channel));
-    return Object.values(state?.channel);
-  });
+  //  const channels = useSelector((state) => {
+  // // console.log("CHANNELS", Object.values(state.channel));
+  //   return Object.values(state.channel);
+  //  });
 
-  //---------This will always render all the cats no matter what or what server you click-----
-  const categories = useSelector((state) => {
-    //  console.log("CATEGORIES", Object.values(state.category));
-    return Object.values(state.category);
-  })
+   const categories = useSelector((state) => {
+    //  console.log("-----CATEGORIES", Object.values(state.category));
+     return Object.values(state.category);
+   })
 
   const usersByServer = useSelector((state) => {
     //  console.log("USERS BY SERVER", state.user_server["user"])
@@ -75,25 +73,25 @@ const ServerPage = () => {
   //SOLUTION: has to do with this
   //how can we clean out the cats from the previous version
   //this will get all the catagories that belongs to a specific server
-  const serverCategories = () => {
+  // const serverCategories = () => {
     
-    let serverCats = [];
+  //   let serverCats = [];
   
-    for (let i = 0; i < channels.length; i++) {
-      let channel = channels[i];
-      for (let j = 0; j < categories.length; j++) {
-        let category = categories[j];
-        if (channel.category_id === category.id) {
-          serverCats.push(category);
-        }
-      }
-    }
+  //   for (let i = 0; i < channels.length; i++) {
+  //     let channel = channels[i];
+  //     for (let j = 0; j < categories.length; j++) {
+  //       let category = categories[j];
+  //       if (channel.category_id === category.id) {
+  //         serverCats.push(category);
+  //       }
+  //     }
+  //   }
 
-    return serverCats;
-  };
+  //   return serverCats;
+  // };
   
-  const serverCats = serverCategories();
-  console.log("-----------------server categories", serverCategories());
+  // const serverCats = serverCategories();
+  // console.log("-----------------server categories", serverCategories());
 
   const handleOpen = () => {
     setOpen(true);
@@ -103,33 +101,44 @@ const ServerPage = () => {
     setOpen(false);
   };
 
-  return (
-    <div className="server-page">
-      <Modal 
-      open={open} 
-      onClose={handleClose}>
-        <div id="modal">
-          <h1>Edit/Delete Channel</h1>
-          <form>
-            <label for="channel-name" className="edit-label">
-              Edit Channel
-            </label>
-            <input
-              type="text"
-              name="channel_name"
-              className="form_input"
-              required
-            ></input>
-            <button
-              type="submit"
-              id="form_button"
-              onClick={(channel) => editChannel(channel)}
-            >
-              Edit Channel
-            </button>
-          </form>
+    return (
+      <div className="server-page">
+        <Modal
+        open={open}
+        onClose={handleClose}
+        >
+          <div id="modal">
+            <h1>Edit/Delete Channel</h1>
+            <form>
+              <label for="channel-name" className="edit-label">
+                Edit Channel
+              </label>
+              <input
+                type="text"
+                name="channel_name"
+                className="form_input"
+                required
+              ></input>
+              <button
+                type="submit"
+                id="form_button"
+                onClick={(channel) => editChannel(channel)}
+              >
+                Edit Channel
+              </button>
+            </form>
+          </div>
+        </Modal>
+
+        <div className="name">
+          <div>{`${server?.name}`}</div>
+          <button id="delete-server">
+            <NavLink to={`/servers/${id}/delete`}>
+              delete
+            </NavLink>
+          </button>
         </div>
-      </Modal>
+     
   
       <div className="name">
         <div>{`${server?.name}`}</div>
@@ -140,41 +149,53 @@ const ServerPage = () => {
         </button>
       </div>
 
-      <UserBar />
-     
-      <div className="categories">
-        <div>
-          {/* {channels?.map((channel) => (
-        <li className="channel">
-          {`${channel.title}`}
-          </li>))}
-          </div> */}
-          {serverCats.map((category) => (
-            <div id="category" className="channel">
-              {`${category.title.toUpperCase()}`}
-              <ul className="text-channels">
-                {channels?.map((channel) =>
-                  channel.category_id === category.id ? (
-                    <NavLink to={`/channels/${channel.id}`}>
-                      <li className="channel">
-                        {" "}
-                        {`${channel.title}`}
-                        <button
-                          type="button"
-                          onClick={handleOpen}
-                          className="edit-channel"
-                        >
-                          ⚙
-                        </button>
-                      </li>
-                    </NavLink>
-                  ) : null
-                )}
-              </ul>
-            </div>
+        <UserBar />
+
+        <div className="categories">
+          <div>
+            {/* {channels?.map((channel) => (
+          <li className="channel">
+            {`${channel.title}`}
+            </li>))}
+            </div> */}
+            {categories.map((category) => (
+              <div id="category" className="channel">
+                {`${category.title.toUpperCase()}`}
+                <ul className="text-channels">
+                  {channels?.map((channel) =>
+                    channel.category_id === category.id ? (
+                      <NavLink to={`/channels/${channel.id}`}>
+                        <li className="channel">
+                          {" "}
+                          {`${channel.title}`}
+                          <button
+                            type="button"
+                            onClick={handleOpen}
+                            className="edit-channel"
+                          >
+                            ⚙
+                          </button>
+                        </li>
+                      </NavLink>
+                    ) : null
+                  )}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="chat-div">
+          <Chat />
+        </div>
+        <div className="channel-name">
+          {/* <img className="hash" height="24" width="24"></img> */}
+          <span className="channel-text"># channel</span>
+        </div>
+        <div className="members-div">
+          {usersByServer?.map((user) => (
+            <li className="user">{`${user.username}`}</li>
           ))}
         </div>
-      </div>
       <div className="chat-div">
         <Chat />
       </div>
@@ -190,7 +211,7 @@ const ServerPage = () => {
       <div className="options"></div>
     </div>
   );
-}
+  }
 }
 
 export default ServerPage;

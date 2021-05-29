@@ -34,7 +34,7 @@ function Delete() {
    return(
       <div>
          <form onSubmit={deleteServ}>
-            <h1>Do you want to delete server {server.name}?</h1>
+            <h1>Do you want to delete server {server?.name}?</h1>
             <button type="submit">Delete</button>
             <NavLink to="/">
                <button>Cancel</button>

@@ -1,8 +1,8 @@
 # Welcome to Accord!
 ## Live Link: ...
 A clone of discord.com where users are able to join servers and chat in channels.
-![accordSplashPage](https://user-images.githubusercontent.com/76798385/120115081-1b083800-c150-11eb-83ec-4dc6ae13d465.png)
 
+![accordSplashPage](https://user-images.githubusercontent.com/76798385/120115081-1b083800-c150-11eb-83ec-4dc6ae13d465.png)
 ## MVP
   * New account creation, log in, log out, and guest/demo login.
   * Users can browse through a list or servers they belong to.

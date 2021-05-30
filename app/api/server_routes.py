@@ -46,25 +46,27 @@ def post_server():
         return server.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-# @server_routes.route('/<id>', methods=["DELETE"])
-# def server(id):
-#     '''
-#     Delete a server
-#     '''
-#     # request.method == 'DELETE'
-#     print("TRYING TO SEE IF I GET THE ID", id)
-#     server = Server.query.get(id)
-#     db.session.delete(server)
-#     db.session.commit()
-#     return {"server": server.to_dict()}
+@server_routes.route('/<id>', methods=["DELETE"])
+def server(id):
+    '''
+    Delete a server
+    '''
+
+    print("TRYING TO SEE IF I GET THE ID", id)
+    server = Server.query.get(id)
+    db.session.delete(server)
+    db.session.commit()
+    return {"server": server.to_dict()}
 
 
-# @server_routes.route('/<id>', methods=["GET"])
-# def get_server(id):
-#     '''
-#     Getting current server
-#     '''
-#     request.method == 'GET':
-#     server = Server.query.get(id)
-#     print("THE SERVER WE ARE TRYING TO GET", server)
-#     return {"server": server.to_dict()}
+@server_routes.route('/<id>', methods=["GET"])
+def get_server(id):
+    '''
+    Getting current server
+    '''
+
+    server = Server.query.get(id)
+    print("THE SERVER WE ARE TRYING TO GET", server)
+    test = server.to_dict
+    print("SERVER TO DICT METHOD", test)
+    return {"server": server.to_dict()}

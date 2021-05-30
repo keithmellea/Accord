@@ -1,7 +1,6 @@
-/*
  #root {
-    overflow: hidden;
-} */
+    overflow:hidden;
+}
 
 /* #html::-webkit-scrollbar {
     display: none;
@@ -23,7 +22,7 @@
     "channels channels channels chat chat chat chat chat chat users users"
     "channels channels channels chat chat chat chat chat chat users users"
     "channels channels channels . . . . . . users users";
-    height: 100%;
+    height: 100vh;
 }
 
 .name {
@@ -41,6 +40,7 @@
     transition: background-color ease 0.1s;
     color: #dcddde;
     background-color: #2e3236;
+    padding-left: 5px;
 }
 
 .name:hover {
@@ -48,15 +48,22 @@
 }
 
 #delete-server {
-    background-color: #2e3236;
+    background-color: #36393F;
+    border: none;
     border: 1px solid black;
-    margin-left: 160px;
-    color: #dcddde;
-    transition: border-color .2s;
+    border-radius: 5px;
+    position: absolute;
+    left: 250px;
+    transition: background-color .2s;
+}
+
+#delete-server a {
+    text-decoration: none;
+    color: #BBBABD;
 }
 
 #delete-server:hover {
-    border-color: #3b4770;
+    background-color: #444850;
 }
 
 .categories {
@@ -75,6 +82,7 @@
     background-color: #2F3136;
     width: 5px;
 } */
+
 
 .categories li {
     /* list-style-image: url("../../images/1247106.png"); */
@@ -98,6 +106,12 @@
     color: #8e9296;
     font-size: 12px;
     font-weight: 500;
+    text-decoration: none;
+
+}
+
+.text-channels a{
+    text-decoration: none;
 }
 
 li.channel {
@@ -138,13 +152,11 @@ li.channel {
     border-bottom: 1px solid rgb(16, 16, 16);
     box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
     padding-left: 20px;
-    padding-top: 5px;
+    padding-top: 17px;
 }
 
 .channel-text {
-    margin-bottom: 30px;
     color: #dcddde;
-    padding-left: 10px;
 }
 
 .hash {

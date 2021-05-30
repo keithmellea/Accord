@@ -1,3 +1,107 @@
+# Welcome to Accord!
+## Live Link: ...
+A clone of discord.com where users are able to join servers and chat in channels.
+
+![accordSplashPage](https://user-images.githubusercontent.com/76798385/120115081-1b083800-c150-11eb-83ec-4dc6ae13d465.png)
+## MVP
+  * New account creation, log in, log out, and guest/demo login.
+  * Users can browse through a list or servers they belong to.
+  * Users can explore servers to join by clicking the compass button.  
+  * Users can browse through channels named for different purposes.
+  * Logged in users can live chat in any channel.
+  * Logged in users can post messages that update the channel automatically without reloading the page.
+ 
+## BONUS / STRETCH GOALS
+  * Logged in users can privately direct message with other users in a specific server.
+  * Logged in users can be invited to private channels within a server. Users can post media in channels.
+  
+## TECHNOLOGIES USED
+  * React-Redux
+  * Javascript
+  * Flask
+  * SQL-Alchemy
+  * PSQL Database
+  * CSS
+  * HTML
+  
+# **Database Schema**
+
+## `users`
+
+| Column Name     | Data Type  | Details               |
+|-----------------|------------|-----------------------|
+| id              | Integer    | Not Null, Primary Key |
+| email           | String     | Not Null              |
+| user_name       | String(15) | Not Null              |
+| hashed_password | String(15) | Not Null, Unique      |
+| created_at      | dateTime   | Not Null              |
+| updated_at      | dateTime   | Not Null              |
+
+## `usersservers`
+
+| Column Name      | Data Type | Details                       |
+|------------------|-----------|-------------------------------|
+| user_id          | Integer   | Primary Key                   |
+| server_id        | String(15)| Primary Key                   |
+| created_at       | dateTime  | Not Null                      |
+| updated_at       | dateTime  | Not Null                      |
+
+
+* `user_id` references `users` table
+* `server_id` references `servers` table
+
+## `servers`
+
+| Column Name     | Data Type  | Details               |
+|-----------------|------------|-----------------------|
+| id              | Integer    | Not Null, Primary Key |
+| server_name     | String(15) | Not Null              |
+| img_url         | String     | Not Null              |
+| user_id         | Integer    | Not Null, Foreign Key |
+| category_id     | Integer    | Not Null, Foreign Key |
+| created_at      | dateTime   | Not Null              |
+| updated_at      | dateTime   | Not Null              |
+
+* `user_id` references `users` table
+* `category_id` references `categories` table
+
+## `categories`
+
+| Column Name | Data Type | Details                 |
+|-------------|-----------|-------------------------|
+| id          | Integer   | Not Null, Primary Key   |
+| title       | String(15)| Not Null                |
+| created_at  | dateTime  | Not Null                |
+| updated_at  | dateTime  | Not Null                |
+
+## `channels`
+
+| Column Name    | Data Type | Details                |
+|----------------|-----------|------------------------|
+| id             | Integer   | Not Null, Primary Key  |
+| title          | String(15)| Not Null               |
+| category_id    | Integer   | Not Null, Foreign Key  |
+| server_id      | Integer   | Not Null, Foreign Key  |
+| created_at     | dateTime  | Not Null               |
+| updated_at     | dateTime  | Not Null               |
+
+* `category_id ` references `categories` table
+* `server_id ` references `servers` table
+
+## `chats`
+
+| Column Name      | Data Type | Details                |
+|---------------|-----------|------------------------|
+| id            | Integer   | Not Null, Primary Key  |
+| content       | Text      | Not Null               |
+| channel_id    | Integer   | Not Null, Foreign Key  |
+| created_at    | dateTime  | Not Null               |
+| updated_at    | dateTime  | Not Null               |
+
+* `channel_id` references `categories` table
+
+
+
 # Flask React Project
 
 This is the backend for the Flask React project.

@@ -1,0 +1,52 @@
+#delete__container {
+   background-color: #36393F;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+#form__container {
+   margin-top: 15vh;
+   background-color: #2F3136;
+   width: 450px;
+   height: 125px;
+   display: flex;
+   justify-content: center;
+   border-radius: 15px;
+}
+
+#server__question {
+   margin: 0px;
+   margin-top: 25px;
+   color: white;
+   font-size: 20px;
+}
+
+#delete {
+   margin-left: 230px;
+   transition: background-color .2s;
+}
+
+#delete:hover {
+   background-color: #444850;
+}
+
+#cancel {
+   transition: background-color .2s;
+}
+
+#cancel:hover {
+   background-color: #444850;
+}
+
+.delete__buttons {
+   background-color: #36393F;
+   border: none;
+   border: 2px solid black;
+   margin-left: 5px;
+   margin-top: 28px;
+   color: #BBBABD;
+   border-radius: 5px;
+}
+

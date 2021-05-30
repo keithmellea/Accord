@@ -4,47 +4,48 @@ import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getChannelsServer, editChannel, deleteChannel } from "../../store/channel";
-import { allCategories } from "../../store/category"
-import { allUsersByServerId } from "../../store/user_server"
-import  UserBar from '../UserBar'
-import { allServersByUserId } from "../../store/user_server";
+import { allCategories } from "../../store/category";
+import { allUsersByServerId, allServersByUserId } from "../../store/user_server";
+import { getServer } from "../../store/servers";
+import UserBar from '../UserBar'
 import Chat from '../Chat/Chat'
+import About from '../auth/About';
 import Modal from "@material-ui/core/Modal";
 
 import './ServerPage.css';
-//SOLUTION: when the user clicks on another server you want to clean out the redux store cats
 
 const ServerPage = () => {
   const [channelName, setChannelName] = useState('');
   const [open, setOpen] = useState(false);
-  const userId = useSelector((state) => state.session.user?.id);
+  const userId = useSelector((state) => state.session?.user?.id);
+  const server = useSelector(state => state.servers?.current?.server)
+  console.log("THIS IS THE SERVER USE SELECTOR", server)
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  // console.log("server id: ", serverId)
-  // console.log("-------USE PARAMS-------: ", test)
-
-  useEffect(() => {
-    dispatch(getChannelsServer(id));
-    dispatch(allCategories());
-    dispatch(allUsersByServerId(id));
-    dispatch(allServersByUserId(userId));
-  }, [dispatch]);
-
-
-  const servers = useSelector((state) => {
-    return Object.values(state.servers.list);
-  });
-
+  // console.log('THIS IS THE SERVER ID',id)
   const channels = useSelector((state) => {
-    console.log("CHANNELS", Object.values(state.channel));
-
     return Object.values(state.channel);
   });
 
-   //---------This will always render all the cats no matter what or what server you click-----
-   const categories = useSelector((state) => {
-    //  console.log("CATEGORIES", Object.values(state.category));
+  useEffect(() => {
+    dispatch(getServer((id)))
+    dispatch(getChannelsServer(id));
+    dispatch(allCategories(id));
+    dispatch(allUsersByServerId(id));
+    dispatch(allServersByUserId(userId));
+  }, [dispatch, id]);
+
+  const servers = useSelector((state) => {
+    return Object.values(state?.servers?.list);
+  });
+
+  //  const channels = useSelector((state) => {
+  // // console.log("CHANNELS", Object.values(state.channel));
+  //   return Object.values(state.channel);
+  //  });
+
+  const categories = useSelector((state) => {
+    //  console.log("-----CATEGORIES", Object.values(state.category));
     return Object.values(state.category);
   })
 
@@ -53,36 +54,12 @@ const ServerPage = () => {
     return state.user_server["user"]
   })
 
-    const serverId = channels[0]?.server_id;
-    const serverArr = servers? servers[0] : null
-    const server = serverArr? serverArr[serverId - 1] : null
-    console.log(server);
 
-  if (!server || !channels) {
-
-    return null;
+  if (!servers) {
+    return null
 
   } else {
 
-
-//SOLUTION: has to do with this
-//how can we clean out the cats from the previous version
-//this will get all the catagories that belongs to a specific server
-    const serverCategories = () => {
-      let serverCats = [];
-      for (let i = 0; i < channels.length; i++) {
-        let channel = channels[i];
-        for (let j = 0; j < categories.length; j++) {
-          let category = categories[j];
-          if (channel.category_id === category.id) {
-            serverCats.push(category);
-          }
-        }
-      }
-      return serverCats;
-    };
-    const serverCats = serverCategories();
-    console.log("-----------------server categories", serverCategories());
 
     const handleOpen = () => {
       setOpen(true);
@@ -95,8 +72,9 @@ const ServerPage = () => {
     return (
       <div className="server-page">
         <Modal
-        open={open}
-        onClose={handleClose}>
+          open={open}
+          onClose={handleClose}
+        >
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
             <form>
@@ -121,13 +99,23 @@ const ServerPage = () => {
         </Modal>
 
         <div className="name">
-          <div>{`${server?.name}`}</div>
+          <div>{server?.name}</div>
           <button id="delete-server">
             <NavLink to={`/servers/${id}/delete`}>
               delete
             </NavLink>
           </button>
         </div>
+
+
+        {/* <div className="name">
+        <div>{server?.name}</div>
+        <button id="delete-server">
+          <NavLink to={`/servers/${id}/delete`}>
+            delete
+          </NavLink>
+        </button>
+      </div> */}
 
         <UserBar />
 
@@ -138,7 +126,7 @@ const ServerPage = () => {
             {`${channel.title}`}
             </li>))}
             </div> */}
-            {serverCats.map((category) => (
+            {categories.map((category) => (
               <div id="category" className="channel">
                 {`${category.title.toUpperCase()}`}
                 <ul className="text-channels">
@@ -177,6 +165,9 @@ const ServerPage = () => {
           ))}
         </div>
         <div className="options"></div>
+        <button className="about-btn">
+          <About />
+        </button>
       </div>
     );
   }

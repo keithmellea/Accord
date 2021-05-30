@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2329162fc04a
+Revision ID: 9a3839132a7a
 Revises: 
-Create Date: 2021-05-27 18:16:05.121534
+Create Date: 2021-05-29 19:43:45.421735
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2329162fc04a'
+revision = '9a3839132a7a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,23 +25,24 @@ def upgrade():
     sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('servers',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('server_name', sa.String(length=15), nullable=False),
-    sa.Column('img_url', sa.Text(), nullable=False),
-    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('profile_picture', sa.Text(), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
+    )
+    op.create_table('servers',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('server_name', sa.String(length=15), nullable=False),
+    sa.Column('img_url', sa.Text(), nullable=False),
+    sa.Column('owner_id', sa.Integer(), nullable=True),
+    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('channels',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -78,7 +79,7 @@ def downgrade():
     op.drop_table('chats')
     op.drop_table('usersServers')
     op.drop_table('channels')
-    op.drop_table('users')
     op.drop_table('servers')
+    op.drop_table('users')
     op.drop_table('categories')
     # ### end Alembic commands ###

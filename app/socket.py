@@ -4,8 +4,8 @@ from .models import User, Chat, Channel, db
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-        'https://accordapp.herokuapp.com',
-        'https://accordapp.herokuapp.com'
+        'https://accordapp.herokuapp.com/',
+        'https://accordapp.herokuapp.com/'
     ]
 else:
     origins = "*"

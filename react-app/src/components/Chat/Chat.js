@@ -15,7 +15,7 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     let chats = useSelector(state => state.chats)
-    console.log(chats)
+    // console.log(chats)
 
     useEffect(() => {
 
@@ -101,7 +101,7 @@ const Chat = () => {
         await dispatch(chatForChannel(channel))
         setShow(true)
     }
-    console.log("Chats", chats)
+    // console.log("Chats", chats)
 
     return (user && (
         <div id="top_level" >

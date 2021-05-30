@@ -7,7 +7,6 @@ import category from "./category"
 import discover from "./discover"
 import servers from "./servers"
 
-//--------testing user servers--------//
 import user_server from "./user_server";
 
 import chats from "./chats"

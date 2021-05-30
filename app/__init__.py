@@ -13,6 +13,7 @@ from .api.home_routes import home_routes
 from .api.server_routes import server_routes
 from .api.category_routes import category_routes
 from .api.user_server_routes import user_server_routes
+from .api.current_server_route import current_server_route
 
 from .api.chat_routes import chat_routes
 # import your socketio object (with the other imports at the
@@ -49,6 +50,7 @@ app.register_blueprint(home_routes, url_prefix='/api/home')
 app.register_blueprint(server_routes, url_prefix='/api/servers')
 app.register_blueprint(category_routes, url_prefix="/api/categories")
 app.register_blueprint(user_server_routes, url_prefix='/api/usersservers')
+app.register_blueprint(current_server_route, url_prefix='/api/current_server')
 db.init_app(app)
 Migrate(app, db)
 # initialize the app with the socket instance

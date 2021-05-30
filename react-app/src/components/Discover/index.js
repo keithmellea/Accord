@@ -38,8 +38,10 @@ function Discover() {
          <UserBar />
          <div id="discover">
             <div id="discover__svg--container">
+               <div id="discover--svg">
                <h1 id="discover__svg--title">Servers</h1>
-               <div id="discover--svg"></div>
+
+               </div>
             </div>
             <div></div>
             <div id="discover__servers">

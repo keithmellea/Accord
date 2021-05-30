@@ -48,15 +48,17 @@
 }
 
 #delete-server {
-    background-color: #2e3236;
-    border: 1px solid black;
-    margin-left: 160px;
-    color: #dcddde;
-    transition: border-color .2s;
+    background-color: #36393F;
+    border: none;
+    border: 2px solid black;
+    margin-left: 5px;
+    margin-top: 28px;
+    color: #BBBABD;
+    border-radius: 5px;
 }
 
 #delete-server:hover {
-    border-color: #3b4770;
+    background-color: #444850;
 }
 
 .categories {

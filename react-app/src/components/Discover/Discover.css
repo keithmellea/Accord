@@ -26,11 +26,12 @@ body {
 #discover {
    overflow-x: hidden;
    background-color: #36393F;
-   width: 100%;
-   height: 100%;
+   width:100%;
    display: flex;
    justify-content: center;
+   flex-wrap: wrap;
    flex-direction: column;
+   /* align-items: center; */
 }
 
 #discover__servers {
@@ -44,11 +45,12 @@ body {
    width:100%;
    display: flex;
    justify-content: center;
+   align-items: center;
 }
 
 #discover__svg--title {
-   position: absolute;
-   top: 130px;
+   /* position: absolute; */
+   /* top: 130px; */
    color: white;
 }
 
@@ -60,8 +62,9 @@ body {
    border-radius: 8px;
    background-repeat: no-repeat;
    object-fit: contain;
-   /* display: flex;
-   justify-content: center; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .server__container {

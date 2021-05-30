@@ -37,12 +37,11 @@ function Discover() {
          </div>
          <UserBar />
          <div id="discover">
-            <div id="discover__svg--container">
+            {/* <div id="discover__svg--container">
                <div id="discover--svg">
                <h1 id="discover__svg--title">Servers</h1>
                </div>
-            </div>
-            <div></div>
+            </div> */}
             <div id="discover__servers">
                {servers.map((server)=> (
                   <form key={server.id} onSubmit={joinServerSubmit} id="join__form">

@@ -31,14 +31,16 @@ body {
    justify-content: center;
    flex-wrap: wrap;
    flex-direction: column;
-   /* align-items: center; */
+
 }
 
 #discover__servers {
    display: grid;
    grid-gap: 5px;
    grid-template-columns: repeat(auto-fit, 300px);
+   grid-template-rows: repeat(auto-fill, 350px);
    justify-content: center;
+   height: 100vh;
 }
 
 #discover__svg--container {

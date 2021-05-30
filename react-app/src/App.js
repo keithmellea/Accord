@@ -58,7 +58,6 @@ function App() {
           <ServerPage />
         </ProtectedRoute>
         <ProtectedRoute path="/servers/:id/delete" exact={true}>
-          <h1>delete page</h1>
           <Delete />
         </ProtectedRoute>
         <Route path="/channels" exact={true}>

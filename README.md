@@ -1,3 +1,62 @@
+Welcome to Harmony!
+Live Link: Harmony
+Harmony is a real-time messaging application heavily inspired by Discord. The site allows users to create an account, join and create servers, and talk to others via channels in their joined servers.
+
+Check out the wiki for more information!
+
+Technologies
+Front-End
+React
+Redux
+CSS
+Back-End
+Python
+PostgreSQL
+Flask
+SQLAlchemy
+SocketIO
+Features
+Sign up a new account and log in
+Create / Edit / Join / Delete servers
+Create / Edit / Delete channels
+Edit User Username, Email, and Profile picture
+Search for servers to join
+Enter public text channels to communicate with other users in real-time
+Privately message individual users to communicate with one another in real-time
+Receive notifications when a user messages you in real-time
+See a list of online and offline users updated in real-time
+Instructions
+To run this application:
+
+Clone this repository (only this branch)
+
+git clone https://github.com/danielshoun/harmony.git
+Install dependencies
+
+pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+Create a .env file based on the .env.example file
+
+Setup a PostgreSQL user, password and database that matches the .env file
+
+Enter the python virtual environment, migrate the database, seed the database, and run the flask app
+
+pipenv shell
+flask db upgrade
+flask seed all
+flask run
+Install front end dependencies from the react-app directory and then run the front end server
+
+npm install && npm run
+Code Snippets
+// Insert here
+# Insert here
+Future To Do Items
+ Creating a role system
+ Adding a friends system
+ Implementing voice chat
+
+
+
 # Flask React Project
 
 This is the backend for the Flask React project.

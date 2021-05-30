@@ -1,8 +1,7 @@
-# Welcome to JS Overflow!
+# Welcome to Accord!
 ## Live Link: ...
 A clone of discord.com where users are able to join servers and chat in channels.
-![js_overflow_splashpage](https://user-images.githubusercontent.com/76798385/116944241-1892eb00-ac43-11eb-8a61-a285b090502e.png)
-
+[accordSplashPage](https://user-images.githubusercontent.com/76798385/120115081-1b083800-c150-11eb-83ec-4dc6ae13d465.png)
 
 ## MVP
   * New account creation, log in, log out, and guest/demo login.

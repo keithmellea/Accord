@@ -40,7 +40,7 @@ body {
    grid-template-columns: repeat(auto-fit, 300px);
    grid-template-rows: repeat(auto-fill, 350px);
    justify-content: center;
-   height: 100vh;
+   height: 60vh;
 }
 
 #discover__svg--container {
@@ -48,6 +48,7 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
+   height: 40vh;
 }
 
 #discover__svg--title {

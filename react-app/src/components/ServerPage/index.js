@@ -151,18 +151,6 @@ const ServerPage = () => {
             ))}
           </div>
         </div>
-        <div className="chat-div">
-          <Chat />
-        </div>
-        <div className="channel-name">
-          {/* <img className="hash" height="24" width="24"></img> */}
-          <span className="channel-text"># channel</span>
-        </div>
-        <div className="members-div">
-          {usersByServer?.map((user) => (
-            <li className="user">{`${user.username}`}</li>
-          ))}
-        </div>
       <div className="chat-div">
         <Chat />
       </div>

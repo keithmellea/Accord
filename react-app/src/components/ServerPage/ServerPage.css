@@ -153,13 +153,11 @@ li.channel {
     border-bottom: 1px solid rgb(16, 16, 16);
     box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
     padding-left: 20px;
-    padding-top: 5px;
+    padding-top: 17px;
 }
 
 .channel-text {
-    margin-bottom: 30px;
     color: #dcddde;
-    padding-left: 10px;
 }
 
 .hash {

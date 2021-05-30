@@ -34,21 +34,21 @@ body {
 
 }
 
+#discover__svg--container {
+   width:100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 45vh;
+}
+
 #discover__servers {
    display: grid;
    grid-gap: 5px;
    grid-template-columns: repeat(auto-fit, 300px);
    grid-template-rows: repeat(auto-fill, 350px);
    justify-content: center;
-   height: 60vh;
-}
-
-#discover__svg--container {
-   width:100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 40vh;
+   height: 55vh;
 }
 
 #discover__svg--title {

@@ -187,7 +187,7 @@ li.channel {
 } */
 
 #top_level {
-    height: 100%;
+    height: 90%;
     grid-area: chat;
     width: 1500px;
     overflow-wrap: normal;

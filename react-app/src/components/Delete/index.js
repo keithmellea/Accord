@@ -1,38 +1,39 @@
 import React, { useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteServer } from "../../store/servers"
+import { deleteServer, getServer } from "../../store/servers"
 import './Delete.css'
 
 
 function Delete() {
 
    let dispatch = useDispatch()
+   let history = useHistory()
 
    const { id } = useParams();
 
+   const server = useSelector((state) => {
+      return state.servers.current.server;
+   });
+
    const deleteServ = (e) => {
       e.preventDefault();
-      console.log("CHECKING ID FOR USEPARAMS", id)
       dispatch(deleteServer(Number(id)))
+      history.push("/")
    }
 
-   const servers = useSelector((state) => {
-      return state.servers.list.servers;
-    });
+   useEffect(() => {
+      dispatch(getServer(Number(id)))
+    },[server])
 
-    useEffect(() => {
-
-    },[servers])
-
-    if(!servers) return null;
+    if(!server) return null;
 
 
-   const server = servers[id]
+   // const server = servers[id]
 
 
    return(
-      <div>
+      <div id="delete__container">
          <form onSubmit={deleteServ}>
             <h1>Do you want to delete server {server?.name}?</h1>
             <button type="submit">Delete</button>

@@ -228,7 +228,8 @@ li.channel {
 /* The About btn */
 .about-btn {
     background-color: rgb(100, 99, 99);
-    font-size: 1.4em;
-    border-radius: 4px;
+    border-radius: 5px;
     position: fixed;
-}
+    right:    30px;
+    bottom:   10px;
+ }

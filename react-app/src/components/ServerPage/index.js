@@ -9,8 +9,8 @@ import { allUsersByServerId, allServersByUserId } from "../../store/user_server"
 import { getServer } from "../../store/servers";
 import UserBar from '../UserBar'
 import Chat from '../Chat/Chat'
+import About from '../auth/About';
 import Modal from "@material-ui/core/Modal";
-import About from "../auth/About"
 
 import './ServerPage.css';
 
@@ -108,17 +108,7 @@ const ServerPage = () => {
         </div>
 
 
-        <div className="name">
-          <div>{`test`}</div>
-          <button id="delete-server">
-            <NavLink to={`/servers/${id}/delete`}>
-              delete
-          </NavLink>
-          </button>
-        </div>
-
-
-      {/* <div className="name">
+        {/* <div className="name">
         <div>{server?.name}</div>
         <button id="delete-server">
           <NavLink to={`/servers/${id}/delete`}>
@@ -162,19 +152,21 @@ const ServerPage = () => {
             ))}
           </div>
         </div>
-      <div className="chat-div">
-        <Chat />
-      </div>
-      <div className="channel-name">
-        {/* <img className="hash" height="24" width="24"></img> */}
-        <span className="channel-text"># channel</span>
-      </div>
-      <div className="members-div">
-        {usersByServer?.map((user) => (
-          <li className="user">{`${user.username}`}</li>
-        ))}
-      <button className="about-btn">
-          <About/>
+        <div className="chat-div">
+          <Chat />
+        </div>
+        <div className="channel-name">
+          {/* <img className="hash" height="24" width="24"></img> */}
+          <span className="channel-text"># channel</span>
+        </div>
+        <div className="members-div">
+          {usersByServer?.map((user) => (
+            <li className="user">{`${user.username}`}</li>
+          ))}
+        </div>
+        <div className="options"></div>
+        <button className="about-btn">
+          <About />
         </button>
       </div>
     );

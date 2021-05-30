@@ -126,9 +126,8 @@ body {
 /* The About btn */
 .about-btn {
    background-color: rgb(100, 99, 99);
-   font-size: 1.4em;
-   border-radius: 4px;
-   position: absolute;
-   right:    10px;
+   border-radius: 5px;
+   position: fixed;
+   right:    30px;
    bottom:   10px;
 }

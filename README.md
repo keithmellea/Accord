@@ -24,8 +24,6 @@ A clone of discord.com where users are able to join servers and chat in channels
   * CSS
   * HTML
   
-## DATABASE SCHEMA
-
 # **Database Schema**
 
 ## `users`

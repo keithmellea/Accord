@@ -41,6 +41,7 @@
     transition: background-color ease 0.1s;
     color: #dcddde;
     background-color: #2e3236;
+    padding-left: 5px;
 }
 
 .name:hover {
@@ -50,11 +51,16 @@
 #delete-server {
     background-color: #36393F;
     border: none;
-    border: 2px solid black;
-    margin-left: 5px;
-    margin-top: 28px;
-    color: #BBBABD;
+    border: 1px solid black;
     border-radius: 5px;
+    position: absolute;
+    left: 250px;
+    transition: background-color .2s;
+}
+
+#delete-server a {
+    text-decoration: none;
+    color: #BBBABD;
 }
 
 #delete-server:hover {
@@ -78,6 +84,7 @@
     width: 5px;
 } */
 
+
 .categories li {
     /* list-style-image: url("../../images/1247106.png"); */
     list-style-type: none;
@@ -100,6 +107,12 @@
     color: #8e9296;
     font-size: 12px;
     font-weight: 500;
+    text-decoration: none;
+
+}
+
+.text-channels a{
+    text-decoration: none;
 }
 
 li.channel {

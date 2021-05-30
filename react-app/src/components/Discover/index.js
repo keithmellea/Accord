@@ -40,7 +40,6 @@ function Discover() {
             <div id="discover__svg--container">
                <div id="discover--svg">
                <h1 id="discover__svg--title">Servers</h1>
-
                </div>
             </div>
             <div></div>

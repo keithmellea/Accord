@@ -9,7 +9,7 @@ body {
 
 #discover__sidebar {
    position: sticky;
-   padding-right: 120px;
+   padding-right: 137px;
    background-color: #2F3136;
    top: 0px;
    height: 100vh;
@@ -37,7 +37,7 @@ body {
 #discover__servers {
    display: grid;
    grid-gap: 5px;
-   grid-template-columns: repeat(auto-fill, 300px);
+   grid-template-columns: repeat(auto-fit, 300px);
    justify-content: center;
 }
 

@@ -107,14 +107,14 @@ const ServerPage = () => {
         </div>
      
   
-      <div className="name">
+      {/* <div className="name">
         <div>{server?.name}</div>
         <button id="delete-server">
           <NavLink to={`/servers/${id}/delete`}>
             delete
           </NavLink>
         </button>
-      </div>
+      </div> */}
 
         <UserBar />
 

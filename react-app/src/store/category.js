@@ -13,7 +13,7 @@ export const allCategories = (server_id) => async (dispatch) => {
   const data = await response.json(); //All the categories
   const dataChannels = await resChannels.json();  //All the channels
 
-  //Check if the Foreign Key category_id matches === to the category primary key id
+  //Check if the channel Foreign Key category_id matches === to the category primary key id
   const serverCategories = () => {
     let serverCats = [];
     for (let i = 0; i < dataChannels["channels"].length; i++) {

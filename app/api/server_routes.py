@@ -63,8 +63,8 @@ def server(id):
 def get_server(id):
     '''
     Getting current server
-    '''   
-    
+    '''
+
     server = Server.query.get(id)
     print("THE SERVER WE ARE TRYING TO GET", server)
     test = server.to_dict

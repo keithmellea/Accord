@@ -61,7 +61,7 @@ body {
    background-image: url("../../images/3e0acf6d69894a5d20deb7c513cd1412.svg");
    width: 1064px;
    height: 332px;
-   margin: 15px 30px; 
+   margin: 15px 30px;
    border-radius: 8px;
    background-repeat: no-repeat;
    object-fit: contain;
@@ -121,3 +121,13 @@ body {
 #login__form input:focus {
    border: 1px solid #00B0F4;
 } */
+
+
+/* The About btn */
+.about-btn {
+   background-color: rgb(100, 99, 99);
+   border-radius: 5px;
+   position: fixed;
+   right:    30px;
+   bottom:   10px;
+}

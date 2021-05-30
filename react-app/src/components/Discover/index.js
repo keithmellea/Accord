@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import UserBar from "../UserBar"
 import Navbar from "../Navbar/Navbar"
+import About from "../auth/About"
 import './Discover.css'
 
 function Discover() {
@@ -58,6 +59,9 @@ function Discover() {
                ))}
             </div>
          </div>
+         <button className="about-btn">
+          <About/>
+        </button>
       </div>
    )
 }

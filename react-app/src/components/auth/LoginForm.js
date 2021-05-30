@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
+import NavBar from "../Navbar/Navbar";
+import About from "./About";
+
 import './LoginForm.css'
+
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -47,8 +51,8 @@ const LoginForm = () => {
     <div id="login__background">
       {/* <h1>Hello</h1> */}
       <div id="login__container">
-      <h1 id="login__title">Welcome back!</h1>
-      <h3 id="login__title--subtitle">We're so excited to see you again!</h3>
+        <h1 id="login__title">Welcome back!</h1>
+        <h3 id="login__title--subtitle">We're so excited to see you again!</h3>
         <form onSubmit={onLogin} id="login__form">
           <div>
             {errors.map((error) => (
@@ -79,6 +83,7 @@ const LoginForm = () => {
             <p>Need an account?</p>
             <NavLink to="/sign-up">Register</NavLink>
           </div>
+          <About/>
         </form>
       </div>
     </div>

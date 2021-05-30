@@ -6,10 +6,9 @@ faker = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_users():
 
-    demo = User(username='Demo', email='demo@aa.io',
-                profile_picture='https://randomuser.me/api/portraits/men/37.jpg', password='password')
+    demo = User(username='Demo', email='demo@aa.io', password='password')
     for i in range(0, 20):
-        another = User(username=faker.name(), email = faker.email(), profile_picture=faker.image_url(), password='password')
+        another = User(username=faker.name(), email = faker.email(), password='password')
         db.session.add(another)
 
     db.session.add(demo)

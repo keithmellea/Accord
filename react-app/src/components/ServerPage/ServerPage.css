@@ -15,6 +15,7 @@
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 130px 125px;
     /* sizing for navbar may be off due to grid size being larger
     than the chat and server name bar */
+    /* grid-template-rows: 50px 400px 400px 90px ; */
     grid-template-rows: 50px 400px 400px 400px 300px;
     grid-template-areas:
     "name name name channel-name channel-name channel-name channel-name channel-name channel-name options options"
@@ -69,7 +70,7 @@
 .categories {
     background-color: #2F3136;
     grid-area: channels;
-    height: 80%;
+    height: 100%;
     padding-top: 20px;
     overflow-y: hidden scroll;
     /* position: fixed;
@@ -202,7 +203,7 @@ li.channel {
 .members-div {
     grid-area: users;
     background-color: #32353a;
-    height: 80%;
+    height: 100%;
 }
 
 .user {

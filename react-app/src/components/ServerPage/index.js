@@ -7,9 +7,10 @@ import { getChannelsServer, editChannel, deleteChannel } from "../../store/chann
 import { allCategories } from "../../store/category";
 import { allUsersByServerId, allServersByUserId } from "../../store/user_server";
 import { getServer } from "../../store/servers";
-import  UserBar from '../UserBar'
+import UserBar from '../UserBar'
 import Chat from '../Chat/Chat'
 import Modal from "@material-ui/core/Modal";
+import About from "../auth/About"
 
 import './ServerPage.css';
 
@@ -20,10 +21,10 @@ const ServerPage = () => {
   // const server = useSelector(state => state.session)
   const { id } = useParams();
   const dispatch = useDispatch();
-// console.log('THIS IS THE SERVER ID',id)
+  // console.log('THIS IS THE SERVER ID',id)
   const channels = useSelector((state) => {
-      return Object.values(state.channel);
-     });
+    return Object.values(state.channel);
+  });
 
   useEffect(() => {
     dispatch(getServer((id)))
@@ -42,36 +43,36 @@ const ServerPage = () => {
   //   return Object.values(state.channel);
   //  });
 
-   const categories = useSelector((state) => {
+  const categories = useSelector((state) => {
     //  console.log("-----CATEGORIES", Object.values(state.category));
-     return Object.values(state.category);
-   })
+    return Object.values(state.category);
+  })
 
   const usersByServer = useSelector((state) => {
     //  console.log("USERS BY SERVER", state.user_server["user"])
     return state.user_server["user"]
-   })
+  })
 
-       
-  if(!servers)  {
-     return null
-       
+
+  if (!servers) {
+    return null
+
   } else {
 
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+    const handleOpen = () => {
+      setOpen(true);
+    };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     return (
       <div className="server-page">
         <Modal
-        open={open}
-        onClose={handleClose}
+          open={open}
+          onClose={handleClose}
         >
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
@@ -104,16 +105,16 @@ const ServerPage = () => {
             </NavLink>
           </button>
         </div>
-     
-  
-      <div className="name">
-        <div>{`test`}</div>
-        <button id="delete-server">
-          <NavLink to={`/servers/${id}/delete`}>
-            delete
+
+
+        <div className="name">
+          <div>{`test`}</div>
+          <button id="delete-server">
+            <NavLink to={`/servers/${id}/delete`}>
+              delete
           </NavLink>
-        </button>
-      </div>
+          </button>
+        </div>
 
         <UserBar />
 
@@ -162,21 +163,24 @@ const ServerPage = () => {
             <li className="user">{`${user.username}`}</li>
           ))}
         </div>
-      <div className="chat-div">
-        <Chat />
+        <div className="chat-div">
+          <Chat />
+        </div>
+        <div className="channel-name">
+          {/* <img className="hash" height="24" width="24"></img> */}
+          <span className="channel-text"># channel</span>
+        </div>
+        <div className="members-div">
+          {usersByServer?.map((user) => (
+            <li className="user">{`${user.username}`}</li>
+          ))}
+        </div>
+        <div className="options"></div>
+        <button className="about-btn">
+          <About/>
+        </button>
       </div>
-      <div className="channel-name">
-        {/* <img className="hash" height="24" width="24"></img> */}
-        <span className="channel-text"># channel</span>
-      </div>
-      <div className="members-div">
-        {usersByServer?.map((user) => (
-          <li className="user">{`${user.username}`}</li>
-        ))}
-      </div>
-      <div className="options"></div>
-    </div>
-  );
+    );
   }
 }
 

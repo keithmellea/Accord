@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from "../../store/session";
 import { signUp } from '../../store/session';
+import About from "./About";
 import './SignUpForm.css'
 
 const SignUpForm = () => {
@@ -98,6 +99,7 @@ const SignUpForm = () => {
           <button type="submit" id="demo__login" onClick={demoLogin}>Demo Login</button>
           <NavLink to="/login" id="login__link">Already have an account?</NavLink>
         </form>
+        <About/>
       </div>
     </div>
   );

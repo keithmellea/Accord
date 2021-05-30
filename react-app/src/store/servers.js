@@ -69,16 +69,16 @@ export const deleteServer = (id) => async (dispatch) => {
 }
 
 export const getServer = (id) => async (dispatch) => {
-  console.log("test-------------", id)
+  console.log("-------------------test-------------", id)
   const res = await fetch(`/api/servers/${id}`, {
     method: "GET",
     headers: {
       'Content-Type': 'application/json'
     },
   });
-  console.log("test2------------",res)
+  console.log("----------------test2------------",res)
   const data = await res.json();
-  console.log("THE DATA THAT WE ARE DISPATCHING", data)
+  console.log("---------------------THE DATA THAT WE ARE DISPATCHING=============", data)
   dispatch(get_server(data));
 }
 

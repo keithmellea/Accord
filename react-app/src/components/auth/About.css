@@ -1,0 +1,34 @@
+#modal {
+    width: 50%;
+    height: 300px;
+    background-color: rgb(226, 224, 224);
+    margin: auto;
+    margin-top: 21vh;
+    border-radius: 5px;
+    outline: none;
+}
+
+.about_span {
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 0.9em;
+}
+
+.developer-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.developer-card{
+    text-align: center;
+    border: 1px solid #9d9d9d;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.developer-name {
+    font-weight: bold;
+    font-size: 1em;
+}

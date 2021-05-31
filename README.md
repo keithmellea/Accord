@@ -1,5 +1,5 @@
 # Welcome to Accord!
-## Live Link: ...
+## Live Link: https://accordapp.herokuapp.com/
 A clone of discord.com where users are able to join servers and chat in channels.
 
 ![accordSplashPage](https://user-images.githubusercontent.com/76798385/120115081-1b083800-c150-11eb-83ec-4dc6ae13d465.png)

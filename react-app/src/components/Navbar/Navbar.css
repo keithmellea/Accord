@@ -152,7 +152,7 @@
     border-radius: 25px;
 }
 
-#modal {
+#create_server_modal {
     width: 400px;
     height: 280px;
     background-color: white;
@@ -163,7 +163,7 @@
     /* padding: 10px; */
 }
 
-#modal h1 {
+#create_server_modal h1 {
     display: flex;
     justify-content: center;
     color: black;
@@ -174,7 +174,7 @@
     padding-bottom: 15px;
 }
 
-#modal form {
+#create_server_modal form {
     margin-left: 15px;
 }
 

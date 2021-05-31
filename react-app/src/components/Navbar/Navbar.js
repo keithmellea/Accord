@@ -60,7 +60,7 @@ const NavBar = () => {
         open={open}
         onClose={handleClose}
         >
-        <div id="modal">
+        <div id="create_server_modal">
           <h1>Create a server</h1>
           <form onSubmit={createServer}>
             <label className="form_label">Image Url</label>

@@ -126,16 +126,15 @@ const Chat = () => {
                 ))}
 
             </div>
-
-            <form id="top_level_chat" method="POST" onSubmit={sendChat}>
-                <input
-                    id="bar"
-                    placeholder="Message"
-                    value={chatInput}
-                    onChange={updateChatInput}
-                />
-                {/* <button type="submit">Send</button> */}
-            </form>
+                <form id="top_level_chat" method="POST" onSubmit={sendChat}>
+                    <input
+                        id="bar"
+                        placeholder="Message"
+                        value={chatInput}
+                        onChange={updateChatInput}
+                    />
+                    {/* <button type="submit">Send</button> */}
+                </form>
         </div>
     )
     )

@@ -20,11 +20,11 @@ def handle_chat(data):
     emit("chat", data, broadcast=True)
 
 #handle chat messages to specific rooms
-@socketio.on('chat_to_channel')
-def chat_to_channel(data):
-    message = Chat(content=data['content'], channel_id=data['channel_id'], created_at=datetime.datetime.utcnow())
+# @socketio.on('chat_to_channel')
+# def chat_to_channel(data):
+#     message = Chat(content=data['content'], channel_id=data['channel_id'], created_at=datetime.datetime.utcnow())
 
-    db.session.add(message)
-    db.session.commit()
+#     db.session.add(message)
+#     db.session.commit()
 
-    send(message.to_dict(), to=f'channel_{data["channel_id"]}')
+#     send(message.to_dict(), to=f'channel_{data["channel_id"]}')

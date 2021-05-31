@@ -1,7 +1,7 @@
 #top_level {
     padding:15px;
     width: 100%;
-    background-color:#36393F;
+    /* background-color:#36393F; */
     border-radius: 3px;
     display:inline-block;
     height: 800px;
@@ -20,6 +20,8 @@
     /* border: 1px solid red; */
     padding: 10px;
 }
+
+
 
 /* #RecentMessage > div {
     padding-bottom: 15px;

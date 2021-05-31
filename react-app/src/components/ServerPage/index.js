@@ -155,6 +155,9 @@ const ServerPage = () => {
         <div className="chat-div">
           <Chat />
         </div>
+        <div className="sqr">
+
+        </div>
         <div className="channel-name">
           {/* <img className="hash" height="24" width="24"></img> */}
           <span className="channel-text"># channel</span>

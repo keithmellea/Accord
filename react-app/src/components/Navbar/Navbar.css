@@ -14,11 +14,11 @@
 ::-webkit-scrollbar-track {
     background: #2E3338;
     /* border-radius: 5px; */
-} 
+}
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #202225; 
+    background: #202225;
     border-radius: 5px;
   }
 
@@ -212,7 +212,7 @@
     background-color: #68727F;
 }
 
-/* 
+/*
 .title-bubble {
     position: relative;
     display: inline-block;

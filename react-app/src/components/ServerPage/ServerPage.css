@@ -22,7 +22,7 @@
     "channels channels channels chat chat chat chat chat chat users users"
     "channels channels channels chat chat chat chat chat chat users users"
     "channels channels channels chat chat chat chat chat chat users users"
-    "channels channels channels . . . . . . users users";
+    "channels channels channels msg msg msg msg msg msg users users";
     height: 100vh;
 }
 
@@ -98,9 +98,9 @@
     background-color: #32353a;
     grid-area: chat;
     width: 100%;
-    height: 100%;
+    height: 850px;
     color: #dcddde;
-    overflow-y: hidden scroll;
+    overflow: visible scroll;
 }
 
 .channel {
@@ -195,9 +195,13 @@ li.channel {
 
 #top_level_chat {
     position: fixed;
-    bottom: 0;
+    bottom: 15px;
     left: 3;
     overflow-y: hidden;
+}
+.sqr {
+    grid-area: chat;
+    background-color: #36393F;
 }
 
 .members-div {

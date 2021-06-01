@@ -28,8 +28,7 @@ const About = () => {
                     <div className="developer-grid">
                         <div className="developer-card">
                             <p className="developer-name">Keith Mellea</p>
-                            <a href="https://github.com/keithmellea">
-                            <i class="fab fa-github-square"></i>GitHub</a>
+                            <a href="https://github.com/keithmellea">GitHub</a>
                         </div>
                         <div className="developer-card">
                             <p className="developer-name">Hector Crespo</p>

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { chatPost, chatForChannel } from "../../store/chats"
@@ -15,7 +16,21 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     let chats = useSelector(state => state.chats)
-    // console.log(chats)
+    const { channelId } = useParams();
+    console.log("THIS IS THE CHANNEL ID PARAMS", channelId)
+    console.log("THIS IS THE CHATS COMPONENT", chats)
+
+  //Auto scroll feature
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    if (channel) {
+    }
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
+  //
+
+
 
     useEffect(() => {
 
@@ -105,6 +120,7 @@ const Chat = () => {
 
     return (user && (
         <div id="top_level" >
+
             <div id="channelTest">
                 <input
                     placeholder="Select Channel"
@@ -116,7 +132,7 @@ const Chat = () => {
             <div >
                 {place()}
                 {messages.map((message, ind) => (
-                    <div id="messageComponent">
+                    <div id="messageComponent" >
                         {/* <div id="RecentMessage">Most Recent Message From you</div> */}
                         <div id="Chat_user" key={ind}>{`${message.user}`}</div>
                         <div id="another">
@@ -124,17 +140,17 @@ const Chat = () => {
                         </div>
                     </div>
                 ))}
-
+            <div ref={divRef} />
             </div>
-                <form id="top_level_chat" method="POST" onSubmit={sendChat}>
-                    <input
-                        id="bar"
-                        placeholder="Message"
-                        value={chatInput}
-                        onChange={updateChatInput}
-                    />
-                    {/* <button type="submit">Send</button> */}
-                </form>
+            <form id="top_level_chat" method="POST" onSubmit={sendChat}>
+                <input
+                    id="bar"
+                    placeholder="Message"
+                    value={chatInput}
+                    onChange={updateChatInput}
+                />
+                {/* <button type="submit">Send</button> */}
+            </form>
         </div>
     )
     )

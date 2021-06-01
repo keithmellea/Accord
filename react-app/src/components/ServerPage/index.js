@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { useState, useEffect } from "react";
@@ -22,7 +22,19 @@ const ServerPage = () => {
   console.log("THIS IS THE SERVER USE SELECTOR", server)
   const { id } = useParams();
   const dispatch = useDispatch();
-  // console.log('THIS IS THE SERVER ID',id)
+
+
+
+  // const messagesEndRef = useRef(null)
+
+  // const scrollToBottom = () => (
+  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  // )
+
+  // useEffect(() => {
+  //   scrollToBottom()
+  // }, []);
+
   const channels = useSelector((state) => {
     return Object.values(state.channel);
   });
@@ -101,7 +113,7 @@ const ServerPage = () => {
         <div className="name">
           <div>{server?.name}</div>
           <button id="delete-server">
-            <NavLink to={`/servers/${id}/delete`}>
+            <NavLink to={`/servers/${id}/delete`} id="textt">
               delete
             </NavLink>
           </button>
@@ -156,7 +168,6 @@ const ServerPage = () => {
           <Chat />
         </div>
         <div className="sqr">
-
         </div>
         <div className="channel-name">
           {/* <img className="hash" height="24" width="24"></img> */}

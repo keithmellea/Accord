@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import NavBar from "../Navbar/Navbar";
-import About from "./About";
 
 import './LoginForm.css'
 
@@ -83,7 +82,6 @@ const LoginForm = () => {
             <p>Need an account?</p>
             <NavLink to="/sign-up">Register</NavLink>
           </div>
-          <About/>
         </form>
       </div>
     </div>

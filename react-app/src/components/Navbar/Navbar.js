@@ -16,9 +16,8 @@ const NavBar = () => {
   let history = useHistory()
 
   const dispatch = useDispatch();
-  const userId = useSelector(state => state?.session?.user?.id)
-  const usersServers = useSelector(state => state?.user_server?.servers);
-
+  const usersServers = useSelector(state => state.user_server.servers);
+  console.log(usersServers)
   // use state for modal
   const [open, setOpen] = useState(false);
   const [server_name, setServerName] = useState('');
@@ -35,18 +34,17 @@ const NavBar = () => {
 
   const createServer = (e) => {
     e.preventDefault();
-    console.log(server_name)
-    console.log(img_url)
     dispatch(addServer(img_url, server_name))
     setOpen(false)
   }
 
   useEffect(() => {
-    // dispatch(allServersByUserId(userId))
+    dispatch(allServersByUserId())
   }, [dispatch]);
 
-  if(!usersServers || !userId) return null;
-
+  if(!usersServers) dispatch(allServersByUserId());
+  if(!usersServers) return null;
+  
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
@@ -78,12 +76,15 @@ const NavBar = () => {
             </NavLink>
           <div id="home__border"></div>
         </div>
-      
-          {/* // <li key={server.server_name}className="user_server-div">
-          //   <NavLink to={`/servers/${server.id}`}>
-          //     <img className="user_server-img" alt="" src={server?.img_url}></img>
-          //   </NavLink>
-          // </li> */}
+        {
+          usersServers.map((server) => (
+            <li key={server.server_name}className="user_server-div">
+              <NavLink to={`/servers/${server.id}`}>
+                <img className="user_server-img" alt="" src={server?.img_url}></img>
+              </NavLink>
+            </li>
+          ))
+        }
     
         {/* <NavLink to={"/servers/create"}> */}
 

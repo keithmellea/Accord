@@ -4,12 +4,12 @@ from app.models import db, User, Server
 
 user_server_routes = Blueprint("userserver", __name__)
 
-@user_server_routes.route("/user/<id>", methods=["GET"])
-def getServersByUser(id):
+@user_server_routes.route("/user/", methods=["GET"])
+def getServersByUser():
     '''
     GET all servers from a specific user
     '''
-    user = User.query.get(id)
+    user = User.query.get(current_user.get_id())
     user_servers = user.servers
     return {"user_server": [userserver.to_dict() for userserver in user_servers]}
 

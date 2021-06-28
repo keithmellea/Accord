@@ -48,7 +48,7 @@ const About = () => {
                             <a className="dev_link" href="https://tonomatic.github.io/">Portfolio</a>
                         </div>
                     </div>
-                    {/* <p className="project_repo-text">Project Repo</p> */}
+                    
                     <div>
                         <a className="project_repo-link" href="https://github.com/keithmellea/Accord"><i class="fab fa-github"></i></a>
                     </div>

@@ -11,8 +11,8 @@ const get_server_by_users = (data) => ({
     data
 })
 
-export const allServersByUserId = (user_id) => async (dispatch) => {
-    const response = await fetch(`/api/usersservers/user/${user_id}`);
+export const allServersByUserId = () => async (dispatch) => {
+    const response = await fetch(`/api/usersservers/user/`);
     const data = await response.json();
     // console.log("All Servers By a User Id", data)
     dispatch(get_server_by_users(data))
@@ -29,15 +29,13 @@ export const allUsersByServerId = (server_id) => async (dispatch) => {
 
 
 const user_serverReducer = (state = {}, action) => {
-    let newState;
+    let newState = {...state};
     switch (action.type) {
         case GET_SERVER_BY_USER:
-            newState = { ...state };
-            newState["server"] = action.data["user_server"]
+            newState["servers"] = action.data.user_server
             return newState;
 
         case GET_USER_BY_SERVER:
-            newState = { ...state };
             newState["user"] = action.data["user_server"]
             return newState;
 

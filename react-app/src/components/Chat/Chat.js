@@ -24,7 +24,7 @@ const Chat = () => {
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
         })
-        console.log("first milestone")
+        // console.log("first milestone")
 
         return (() => {
             socket.disconnect()
@@ -97,7 +97,7 @@ const Chat = () => {
 
 
     const messagesForChannel = async () => {
-        console.log("This is a test")
+        // console.log("This is a test")
         await dispatch(chatForChannel(channel))
         setShow(true)
     }

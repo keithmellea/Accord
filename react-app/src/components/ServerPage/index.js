@@ -19,7 +19,7 @@ const ServerPage = () => {
   const [open, setOpen] = useState(false);
   const userId = useSelector((state) => state.session?.user?.id);
   const server = useSelector(state => state.servers?.current?.server)
-  console.log("THIS IS THE SERVER USE SELECTOR", server)
+  // console.log("THIS IS THE SERVER USE SELECTOR", server)
   const { id } = useParams();
   const dispatch = useDispatch();
   // console.log('THIS IS THE SERVER ID',id)

@@ -16,8 +16,8 @@ const NavBar = () => {
   let history = useHistory()
 
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user?.id)
-  const usersServers = useSelector((state) => {return state.user_server.server;});
+  const userId = useSelector(state => state?.session?.user?.id)
+  const usersServers = useSelector(state => state?.user_server?.servers);
 
   // use state for modal
   const [open, setOpen] = useState(false);
@@ -42,13 +42,10 @@ const NavBar = () => {
   }
 
   useEffect(() => {
-    dispatch(getUsersServers());
-    dispatch(allServersByUserId(userId))
+    // dispatch(allServersByUserId(userId))
   }, [dispatch]);
 
-  // function redirect() {
-  //   setOpen(false)
-  // }
+  if(!usersServers || !userId) return null;
 
   return (
     <nav className="navbar">
@@ -81,17 +78,13 @@ const NavBar = () => {
             </NavLink>
           <div id="home__border"></div>
         </div>
-        {usersServers?.map((server) => (
-          <li key={server.server_name}className="user_server-div">
-            {/*Create a state variable when user clicks on a different server then delete all cats {console.log(server)} */}
-            <NavLink to={`/servers/${server.id}`}>
-              {/* <div className="title-bubble">
-              <span className="title-bubble-text">{`${server.name}`}</span>
-              </div> */}
-              <img className="user_server-img" alt="" src={server?.img_url}></img>
-            </NavLink>
-          </li>
-        ))}
+      
+          {/* // <li key={server.server_name}className="user_server-div">
+          //   <NavLink to={`/servers/${server.id}`}>
+          //     <img className="user_server-img" alt="" src={server?.img_url}></img>
+          //   </NavLink>
+          // </li> */}
+    
         {/* <NavLink to={"/servers/create"}> */}
 
           <li className="create-button" onClick={handleOpen}>
@@ -117,32 +110,6 @@ const NavBar = () => {
       </ul>
     </nav>
   );
-}
-
-{
-  /* <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li> */
 }
 
 export default NavBar;

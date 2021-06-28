@@ -29,16 +29,14 @@ export const allUsersByServerId = (server_id) => async (dispatch) => {
 
 
 const user_serverReducer = (state = {}, action) => {
-    let newState;
+    let newState = {...state};
     switch (action.type) {
         case GET_SERVER_BY_USER:
-            newState = { ...state };
-            newState["server"] = action.data["user_server"]
+            newState["servers"] = action.data.user_server
             return newState;
 
         case GET_USER_BY_SERVER:
-            newState = { ...state };
-            newState["user"] = action.data["user_server"]
+            newState["user"] = action.data
             return newState;
 
         default:

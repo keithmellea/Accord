@@ -15,8 +15,9 @@ import Modal from "@material-ui/core/Modal";
 import './ServerPage.css';
 
 const ServerPage = () => {
-  const [channelName, setChannelName] = useState('');
   const [open, setOpen] = useState(false);
+  const [channel, setChannel] = useState({});
+  const [channelTitle, setChannelTitle] = useState('');
   const userId = useSelector((state) => state.session?.user?.id);
   const server = useSelector(state => state.servers?.current?.server)
   // console.log("THIS IS THE SERVER USE SELECTOR", server)
@@ -39,26 +40,32 @@ const ServerPage = () => {
     return Object.values(state?.servers?.list);
   });
 
-  //  const channels = useSelector((state) => {
-  // // console.log("CHANNELS", Object.values(state.channel));
-  //   return Object.values(state.channel);
-  //  });
-
   const categories = useSelector((state) => {
-    //  console.log("-----CATEGORIES", Object.values(state.category));
     return Object.values(state.category);
   })
 
   const usersByServer = useSelector((state) => {
-    //  console.log("USERS BY SERVER", state.user_server["user"])
     return state.user_server["user"]
   })
 
+  //dispatch the edit channel thunk action
+  const onClickEditChannel = () => {
+    dispatch(editChannel(channel.id, channelTitle));
+    setChannelTitle('');
+    setOpen(false)
+  }
+
+  //dispatch the delete channel thunk action
+  const onClickDeleteChannel = () => {
+    dispatch(deleteChannel(channel.id));
+    setOpen(false)
+  }
 
   if (!servers) {
     return null
   } else {
-    const handleOpen = () => {
+    const handleOpen = (channel) => {
+      setChannel(channel)
       setOpen(true);
     };
 
@@ -72,25 +79,28 @@ const ServerPage = () => {
           open={open}
           onClose={handleClose}
         >
-          <div id="modal">
+          <div id="modal_channel">
             <h1>Edit/Delete Channel</h1>
             <form>
-              <label for="channel-name" className="edit-label">
+              <label htmlFor="channel-name" className="edit-label">
                 Edit Channel
               </label>
               <input
                 type="text"
                 name="channel_name"
                 className="form_input"
+                value={channelTitle}
+                onChange={(e) => setChannelTitle(e.target.value)}
                 required
               ></input>
               <button
                 type="submit"
-                id="form_button"
-                onClick={(channel) => editChannel(channel)}
+                id="edit-form_button"
+                onClick={onClickEditChannel}
               >
                 Edit Channel
               </button>
+              <button type="button" onClick={onClickDeleteChannel} className="delete-btn_channel">Delete Channel</button>
             </form>
           </div>
         </Modal>
@@ -135,7 +145,7 @@ const ServerPage = () => {
                           {`${channel.title}`}
                           <button
                             type="button"
-                            onClick={handleOpen}
+                            onClick={() => handleOpen(channel)}
                             className="edit-channel"
                           >
                             ⚙

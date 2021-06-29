@@ -91,7 +91,7 @@
 }
 
 #category {
-    padding-left: 15px;
+    /* padding-left: 15px; */
 }
 
 .chat-div {
@@ -117,7 +117,9 @@
 
 li.channel {
     font-size: 14px;
-    width: 50px;
+    width: 80px;
+    padding-left: 10px;
+    /* margin-left: 10px; */
 }
 
 .text-channels {
@@ -125,9 +127,10 @@ li.channel {
     padding-bottom: 5px;
 }
 
-.li.channel:hover {
+li.channel:hover {
     background-color: #6f7580;
     color: white;
+    width: 240px;
 }
 
 #channel {

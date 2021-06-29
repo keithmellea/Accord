@@ -56,9 +56,12 @@ const ServerPage = () => {
 
 
   if (!servers) {
-    return null
-
-  } else {
+    return null;
+  }
+  else if (!usersByServer) {
+    return null;
+  }
+   else {
 
 
     const handleOpen = () => {
@@ -71,10 +74,7 @@ const ServerPage = () => {
 
     return (
       <div className="server-page">
-        <Modal
-          open={open}
-          onClose={handleClose}
-        >
+        <Modal open={open} onClose={handleClose}>
           <div id="modal">
             <h1>Edit/Delete Channel</h1>
             <form>
@@ -101,12 +101,9 @@ const ServerPage = () => {
         <div className="name">
           <div>{server?.name}</div>
           <button id="delete-server">
-            <NavLink to={`/servers/${id}/delete`}>
-              delete
-            </NavLink>
+            <NavLink to={`/servers/${id}/delete`}>delete</NavLink>
           </button>
         </div>
-
 
         {/* <div className="name">
         <div>{server?.name}</div>
@@ -155,14 +152,13 @@ const ServerPage = () => {
         <div className="chat-div">
           <Chat />
         </div>
-        <div className="sqr">
-
-        </div>
+        <div className="sqr"></div>
         <div className="channel-name">
           {/* <img className="hash" height="24" width="24"></img> */}
           <span className="channel-text"># channel</span>
         </div>
         <div className="members-div">
+          <div id="online-text">ONLINE - {`${usersByServer?.length}`}</div>
           {usersByServer?.map((user) => (
             <li className="user">{`${user.username}`}</li>
           ))}

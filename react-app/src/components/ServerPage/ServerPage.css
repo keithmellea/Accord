@@ -204,10 +204,17 @@ li.channel {
     background-color: #36393F;
 }
 
+#online-text {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
 .members-div {
     grid-area: users;
     background-color: #32353a;
     height: 100%;
+    color: #8e9296;
 }
 
 .user {

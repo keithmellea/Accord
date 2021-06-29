@@ -78,7 +78,7 @@ const NavBar = () => {
         </div>
         {
           usersServers.map((server) => (
-            <li key={server.server_name}className="user_server-div">
+            <li key={server.server_name} className="user_server-div">
               <NavLink to={`/servers/${server.id}`}>
                 <img className="user_server-img" alt="" src={server?.img_url}></img>
               </NavLink>

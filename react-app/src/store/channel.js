@@ -48,8 +48,8 @@ export const getChannelsCategory = (category_id) => async (dispatch) => {
     return ;
 }
 
-//POST a new channel
-export const addChannel = (title) => async (dispatch) => {
+//POST a new channel with server id and category id
+export const addChannel = (title, server_id, category_id ) => async (dispatch) => {
     const res = await fetch('/api/channels/', {
         method: "POST",
         headers: {
@@ -57,11 +57,13 @@ export const addChannel = (title) => async (dispatch) => {
         },
         body: JSON.stringify({
             title,
+            server_id,
+            category_id
         }),
     })
     const data = await res.json();
     // console.log('Created New Channel: ', data)
-    dispatch(add_channel(data));
+    // dispatch(add_channel(data));
     return ;
 }
 

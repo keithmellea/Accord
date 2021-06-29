@@ -1,17 +1,19 @@
-#modal {
+#modal-devs {
     width: 50%;
-    height: 300px;
+    height: 45%;
     background-color: rgb(226, 224, 224);
     margin: auto;
     margin-top: 21vh;
     border-radius: 5px;
     outline: none;
+    padding: 2px;
+    text-align: center;
 }
 
 .about_span {
     cursor: pointer;
     color: whitesmoke;
-    font-size: 1.6em;
+    font-size: 2em;
 }
 
 .developer-grid{
@@ -21,6 +23,8 @@
 }
 
 .developer-card{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     border: 1px solid #9d9d9d;
     border-radius: 5px;
@@ -31,4 +35,22 @@
 .developer-name {
     font-weight: bold;
     font-size: 1em;
+}
+
+.dev_link {
+    color: black;
+    text-decoration: none;
+}
+
+.dev_link:hover {
+    color: blue;
+}
+
+.project_repo-link {
+    font-size: 3em;
+    color: black;
+}
+
+.project_repo-link:hover {
+    color: blue;
 }

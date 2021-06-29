@@ -19,7 +19,7 @@ const ServerPage = () => {
   const [open, setOpen] = useState(false);
   const userId = useSelector((state) => state.session?.user?.id);
   const server = useSelector(state => state.servers?.current?.server)
-  console.log("THIS IS THE SERVER USE SELECTOR", server)
+  // console.log("THIS IS THE SERVER USE SELECTOR", server)
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -69,10 +69,7 @@ const ServerPage = () => {
 
   if (!servers) {
     return null
-
   } else {
-
-
     const handleOpen = () => {
       setOpen(true);
     };
@@ -139,12 +136,12 @@ const ServerPage = () => {
             </li>))}
             </div> */}
             {categories.map((category) => (
-              <div id="category" className="channel">
+              <div key={category.id} id="category" className="channel">
                 {`${category.title.toUpperCase()}`}
                 <ul className="text-channels">
                   {channels?.map((channel) =>
                     channel.category_id === category.id ? (
-                      <NavLink to={`/channels/${channel.id}`}>
+                      <NavLink key={channel.id} to={`/servers/${server.id}/channel/${channel.id}`}>
                         <li className="channel">
                           {" "}
                           {`${channel.title}`}
@@ -175,7 +172,7 @@ const ServerPage = () => {
         </div>
         <div className="members-div">
           {usersByServer?.map((user) => (
-            <li className="user">{`${user.username}`}</li>
+            <li key={user.id} className="user">{`${user.username}`}</li>
           ))}
         </div>
         <div className="options"></div>

@@ -24,7 +24,7 @@ const Chat = () => {
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
         })
-        console.log("first milestone")
+        // console.log("first milestone")
 
         return (() => {
             socket.disconnect()
@@ -97,7 +97,7 @@ const Chat = () => {
 
 
     const messagesForChannel = async () => {
-        console.log("This is a test")
+        // console.log("This is a test")
         await dispatch(chatForChannel(channel))
         setShow(true)
     }
@@ -116,7 +116,7 @@ const Chat = () => {
             <div >
                 {place()}
                 {messages.map((message, ind) => (
-                    <div id="messageComponent">
+                    <div key={ind} id="messageComponent">
                         {/* <div id="RecentMessage">Most Recent Message From you</div> */}
                         <div id="Chat_user" key={ind}>{`${message.user}`}</div>
                         <div id="another">

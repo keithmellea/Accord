@@ -17,7 +17,8 @@ const NavBar = () => {
 
   const dispatch = useDispatch();
   const usersServers = useSelector(state => state.user_server.servers);
-
+  // console.log(usersServers)
+  // use state for modal
   const [open, setOpen] = useState(false);
   const [server_name, setServerName] = useState('');
   const [img_url, setServerImg] = useState('');
@@ -43,7 +44,7 @@ const NavBar = () => {
 
   if(!usersServers) dispatch(allServersByUserId());
   if(!usersServers) return null;
-  
+
   return (
     <nav className="navbar">
       <ContextMenuTrigger id="contextmenu">
@@ -77,14 +78,14 @@ const NavBar = () => {
         </div>
         {
           usersServers.map((server) => (
-            <li key={server.server_name}className="user_server-div">
+            <li key={server.server_name} className="user_server-div">
               <NavLink to={`/servers/${server.id}`}>
                 <img className="user_server-img" alt="" src={server?.img_url}></img>
               </NavLink>
             </li>
           ))
         }
-    
+
         {/* <NavLink to={"/servers/create"}> */}
 
           <li className="create-button" onClick={handleOpen}>

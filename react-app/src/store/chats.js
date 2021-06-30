@@ -39,7 +39,7 @@ export const chatPost = (id, content) => async (dispatch) => {
     if (data.errors) {
         return data;
     }
-    console.log("this is the thunk data", data)
+    // console.log("this is the thunk data", data)
     dispatch(addChat(data))
     return {};
 }

@@ -39,7 +39,7 @@ export const getUsersServers = () => async (dispatch) => {
 
 //POST a new server
 export const addServer = (img_url, server_name) => async (dispatch) => {
-  console.log(img_url, server_name)
+  // console.log(img_url, server_name)
   const res = await fetch('/api/servers/', {
       method: "POST",
       headers: {
@@ -51,7 +51,7 @@ export const addServer = (img_url, server_name) => async (dispatch) => {
       }),
   })
   const data = await res.json();
-  console.log("THIS IS THE SERVEER WE ARE TRYING TO CRAETE", data)
+  // console.log("THIS IS THE SERVEER WE ARE TRYING TO CRAETE", data)
   dispatch(add_server(data));
   return ;
 }
@@ -60,24 +60,24 @@ export const deleteServer = (id) => async (dispatch) => {
   const res = await fetch(`/api/servers/${id}`, {
     method: "DELETE",
   })
-  console.log('THIS IS THE SERVER ID', id)
+  // console.log('THIS IS THE SERVER ID', id)
   const data = await res.json();
-  console.log("THIS IS THE DATA FROM DELETION", data);
+  // console.log("THIS IS THE DATA FROM DELETION", data);
   dispatch(delete_server(data));
   return;
 }
 
 export const getServer = (id) => async (dispatch) => {
-  console.log("-------------------test-------------", id)
+  // console.log("-------------------test-------------", id)
   const res = await fetch(`/api/servers/${id}`, {
     method: "GET",
     headers: {
       'Content-Type': 'application/json'
     },
   });
-  console.log("----------------test2------------",res)
+  // console.log("----------------test2------------",res)
   const data = await res.json();
-  console.log("---------------------THE DATA THAT WE ARE DISPATCHING=============", data)
+  // console.log("---------------------THE DATA THAT WE ARE DISPATCHING=============", data)
   dispatch(get_server(data));
 }
 

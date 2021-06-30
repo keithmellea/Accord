@@ -119,6 +119,7 @@ li.channel {
     font-size: 14px;
     width: 80px;
     padding-left: 10px;
+    padding: 4px 0;
     /* margin-left: 10px; */
 }
 

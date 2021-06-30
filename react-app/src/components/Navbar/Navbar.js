@@ -4,7 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ContextMenuTrigger } from "react-contextmenu";
-import { getUsersServers } from "../../store/servers";
+// import { getUsersServers } from "../../store/servers";
 import { allServersByUserId } from "../../store/user_server";
 // import {joinServer} from "../../store/discover";
 import { addServer } from "../../store/servers";
@@ -17,8 +17,7 @@ const NavBar = () => {
 
   const dispatch = useDispatch();
   const usersServers = useSelector(state => state.user_server.servers);
-  console.log(usersServers)
-  // use state for modal
+
   const [open, setOpen] = useState(false);
   const [server_name, setServerName] = useState('');
   const [img_url, setServerImg] = useState('');

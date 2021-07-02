@@ -8,7 +8,7 @@ class Chat(db.Model):
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False)
 
     channel = db.relationship("Channel", back_populates="chats")
-    # owner_id = db.Column(db.Integer, db.ForeignKey("owner"))
+    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -17,4 +17,5 @@ class Chat(db.Model):
         "id": self.id,
         "content": self.content,
         "channel_id": self.channel_id,
+        "owner_id": self.owner_id,
         }

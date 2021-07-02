@@ -21,16 +21,19 @@ const Chat = () => {
     console.log("THIS IS THE CHATS COMPONENT", chats)
 
   //Auto scroll feature
-  const divRef = useRef(null);
+    const divRef = useRef(null);
 
-  useEffect(() => {
-    if (channel) {
-    }
-    divRef.current.scrollIntoView({ behavior: 'smooth' });
-  });
+    useEffect(() => {
+        if (channel) {
+        }
+        divRef.current.scrollIntoView({ behavior: 'smooth' });
+    });
   //
 
-
+    useEffect(() => {
+            dispatch(chatForChannel(channelId))
+            setShow(true)
+    }, [dispatch, channelId])
 
     useEffect(() => {
 
@@ -47,30 +50,14 @@ const Chat = () => {
 
     }, [chats])
 
-    // function theChat(e) {
-    //     e.preventDefault();
-    //     socket.emit("chat_to_channel", {
-    //         channel_id: channel.id,
-    //         body: content
-    //     })
-    //     setContent("");
-    // }
-    // useEffect(() => {
-    //     if(messagePosted === true) {
-    //         setShow(true)
-    //     }
-    // },[messagePosted, channel])
-    // console.log(channel)
-    // console.log(messagePosted)
-
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
     };
 
-    const updateChannel = (e) => {
-        setChannel(e.target.value)
-    }
+    // const updateChannel = (e) => {
+    //     setChannel(e.target.value)
+    // }
 
     const sendChat = async (e) => {
         e.preventDefault()
@@ -111,24 +98,24 @@ const Chat = () => {
     // }) : <div></div>
 
 
-    const messagesForChannel = async () => {
-        // console.log("This is a test")
-        await dispatch(chatForChannel(channel))
-        setShow(true)
-    }
+    // const messagesForChannel = async () => {
+    //     // console.log("This is a test")
+    //     await dispatch(chatForChannel(channel))
+    //     setShow(true)
+    // }
     // console.log("Chats", chats)
 
     return (user && (
         <div id="top_level" >
 
-            <div id="channelTest">
+            {/* <div id="channelTest">
                 <input
                     placeholder="Select Channel"
                     value={channel}
                     onChange={updateChannel}
                 />
                 <button onClick={messagesForChannel}> Channel {channel}</button>
-            </div>
+            </div> */}
             <div >
                 {place()}
                 {messages.map((message, ind) => (

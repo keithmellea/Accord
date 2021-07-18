@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { chatPost, chatForChannel } from "../../store/chats"
@@ -15,7 +16,24 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     let chats = useSelector(state => state.chats)
-    // console.log(chats)
+    const { channelId } = useParams();
+    console.log("THIS IS THE CHANNEL ID PARAMS", channelId)
+    console.log("THIS IS THE CHATS COMPONENT", chats)
+
+  //Auto scroll feature
+    const divRef = useRef(null);
+
+    useEffect(() => {
+        if (channel) {
+        }
+        divRef.current.scrollIntoView({ behavior: 'smooth' });
+    });
+  //
+
+    useEffect(() => {
+            dispatch(chatForChannel(channelId))
+            setShow(true)
+    }, [dispatch, channelId])
 
     useEffect(() => {
 
@@ -32,30 +50,14 @@ const Chat = () => {
 
     }, [chats])
 
-    // function theChat(e) {
-    //     e.preventDefault();
-    //     socket.emit("chat_to_channel", {
-    //         channel_id: channel.id,
-    //         body: content
-    //     })
-    //     setContent("");
-    // }
-    // useEffect(() => {
-    //     if(messagePosted === true) {
-    //         setShow(true)
-    //     }
-    // },[messagePosted, channel])
-    // console.log(channel)
-    // console.log(messagePosted)
-
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
     };
 
-    const updateChannel = (e) => {
-        setChannel(e.target.value)
-    }
+    // const updateChannel = (e) => {
+    //     setChannel(e.target.value)
+    // }
 
     const sendChat = async (e) => {
         e.preventDefault()
@@ -96,23 +98,24 @@ const Chat = () => {
     // }) : <div></div>
 
 
-    const messagesForChannel = async () => {
-        // console.log("This is a test")
-        await dispatch(chatForChannel(channel))
-        setShow(true)
-    }
+    // const messagesForChannel = async () => {
+    //     // console.log("This is a test")
+    //     await dispatch(chatForChannel(channel))
+    //     setShow(true)
+    // }
     // console.log("Chats", chats)
 
     return (user && (
         <div id="top_level" >
-            <div id="channelTest">
+
+            {/* <div id="channelTest">
                 <input
                     placeholder="Select Channel"
                     value={channel}
                     onChange={updateChannel}
                 />
                 <button onClick={messagesForChannel}> Channel {channel}</button>
-            </div>
+            </div> */}
             <div >
                 {place()}
                 {messages.map((message, ind) => (
@@ -124,17 +127,17 @@ const Chat = () => {
                         </div>
                     </div>
                 ))}
-
+            <div ref={divRef} />
             </div>
-                <form id="top_level_chat" method="POST" onSubmit={sendChat}>
-                    <input
-                        id="bar"
-                        placeholder="Message"
-                        value={chatInput}
-                        onChange={updateChatInput}
-                    />
-                    {/* <button type="submit">Send</button> */}
-                </form>
+            <form id="top_level_chat" method="POST" onSubmit={sendChat}>
+                <input
+                    id="bar"
+                    placeholder="Message"
+                    value={chatInput}
+                    onChange={updateChatInput}
+                />
+                {/* <button type="submit">Send</button> */}
+            </form>
         </div>
     )
     )

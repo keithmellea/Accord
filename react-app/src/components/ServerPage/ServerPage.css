@@ -12,6 +12,7 @@
 
 .server-page {
     display: grid;
+    position: fixed;
     grid-template-columns: 52px 80px 120px 1fr 1fr 1fr 1fr 1fr 1fr 130px 125px;
     /* sizing for navbar may be off due to grid size being larger
     than the chat and server name bar */
@@ -54,8 +55,10 @@
     border: 1px solid black;
     border-radius: 5px;
     position: absolute;
-    left: 250px;
+    left: 180px;
     transition: background-color .2s;
+    cursor: pointer;
+
 }
 
 #delete-server a {
@@ -100,7 +103,14 @@
     width: 100%;
     height: 850px;
     color: #dcddde;
-    overflow: visible scroll;
+    overflow-y: auto;
+}
+.chat-div {
+    overflow-y: scroll;
+    position: relative;
+    overflow-x: hidden;
+    /* left: 32px;
+    top: 50px; */
 }
 
 .channel {
@@ -171,13 +181,6 @@ li.channel {
     box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px;
 }
 
-.chat-div {
-    overflow-y: scroll;
-    position: relative;
-    overflow-x: hidden;
-    /* left: 32px;
-    top: 50px; */
-}
 
 .chat-div::-webkit-scrollbar {
     background-color: #32353a;
@@ -226,7 +229,8 @@ li.channel {
 	font: inherit;
 	outline: inherit;
     font-size: 16px;
-    left: 300px;
+    left: 230px;
+    cursor: pointer;
 }
 
 
